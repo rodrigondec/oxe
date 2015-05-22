@@ -23,13 +23,26 @@
         <title>OxE</title>
     </head>
     <body>
+        <div class='wrapper'>
+            <div class='header'>
         <?php  
             include_once(TEMPLATES.'/geral/menu.php');
-        	include_conteudo(); //mostrar o template incluído
-
+        ?>
+            </div>
+            <div class='content'>
+        <?php  
+            include_conteudo(); //mostrar o template incluído
+        ?>
+        	</div>
+            <div class='footer'>
+        <?php  
+            include_once(TEMPLATES.'/geral/footer.php');
+        ?>
+            </div>
+        <?php
             //include_once(TEMPLATES.'/oxe/preview.php');
         ?>
-        
+        </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
