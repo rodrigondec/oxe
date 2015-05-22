@@ -1,6 +1,3 @@
 <?php  
-	echo "home OxE";
+	echo "home!";
 ?>
-<div align="center">
-	<img src="/oxe/estaticos/source/logo.png">
-</div>
