@@ -1,5 +1,5 @@
 <div align='center'>
-	<?php echo 'Organization & E-sports - OxE<br />E-mail.: contato@oxe.com.br. Tel.: (84) 9999-9999<br />CNPJ: 12.345.678/0001-99<br /><br />'; ?>
+	<?php echo '<br />Organization & E-sports - OxE<br />E-mail.: contato@oxe.com.br. Tel.: (84) 9999-9999<br />CNPJ: 12.345.678/0001-99<br /><br />'; ?>
 	<div id="share-buttons">
 		<!-- Facebook -->
 		<a href="http://www.facebook.com/" target="_blank"><img src="http://static.viewbook.com/images/social_icons/facebook_32.png" width="32" height="32" alt="Facebook" /></a>
