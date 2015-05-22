@@ -17,6 +17,7 @@
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
 	define('BASE', 'OxE');
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'/templates/');
+	define('SOURCE', ARQUIVOS.'/'.BASE.'/estaticos/source');
 	define('DB_NAME', 'oxe');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
