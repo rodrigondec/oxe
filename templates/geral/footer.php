@@ -4,9 +4,8 @@
 		<!-- Facebook -->
 		<a href="http://www.facebook.com/" target="_blank"><img src="http://static.viewbook.com/images/social_icons/facebook_32.png" width="32" height="32" alt="Facebook" /></a>
 		<!-- twitch -->
-		<a href=""><img src="http://s.jtvnw.net/jtv_user_pictures/hosted_images/GlitchIcon_white.png" width="32" height="32" alt="twitch"></a>
+		<a href="http://www.twitch.tv/"><img src="http://s.jtvnw.net/jtv_user_pictures/hosted_images/GlitchIcon_white.png" width="32" height="32" alt="twitch"></a>
 		<!-- Email -->
 		<a href="mailto:contato@oxe.com.br"><img src="/oxe/estaticos/source/imgs/mail.png" height="32" alt="Email" /></a>
-		
 	</div>
 </div>

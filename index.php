@@ -2,7 +2,7 @@
 <html>
     <head>
     	<meta charset="UTF-8">
-            <link rel="icon" href="/oxe/estaticos/source/imgs/logo.png">
+            <link rel="icon" href="/oxe/estaticos/source/imgs/oxe.png">
 
             <!--<link rel="stylesheet" type="text/css" href="/estaticos/estilo.css">-->
             <!-- Latest compiled and minified CSS -->
