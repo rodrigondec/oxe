@@ -7,10 +7,16 @@ function log(){
 }
 
 function remove_reserva(link){
+	label = link.parentNode;
+	if(counter == 2 && label.id == 'reserva_1'){
+		label_input_2 = document.getElementById('reserva_2');
+		label_input_2.id = 'reserva_1';
+		label_input_2.innerHTML = "Reserva #"+1+" <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a>"
+	};
 	counter--;
-	div_form_group = link.parentNode;
-	div_time = div_form_group.parentNode;
-	div_time.remove();
+	div_form_group = label.parentNode;
+	div = div_form_group.parentNode;
+	div.remove();
 	
 }
 
@@ -19,7 +25,7 @@ function reserva(){
 		counter++;
 		var div = document.getElementById('time');
 		var reserva = document.createElement('div')
-		reserva.innerHTML = "<div class='form-group'><label for='input_'>Reserva # <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label><input type='text' name='' class='form-control' id='input_' placeholder='nome' required /><input type='text' name='' class='form-control' id='input_' placeholder='email' style='margin-top: 10px;' /><input type='text' name='' class='form-control' id='input_' placeholder='nick' style='margin-top: 10px;' /><input type='text' name='' class='form-control' id='input_' placeholder='telefone' style='margin-top: 10px;' /><input type='text' name='' class='form-control' id='input_' placeholder='email' style='margin-top: 10px;' /><input type='text' name='' class='form-control' id='input_' placeholder='CPF/Identidade' style='margin-top: 10px;' /></div>"
+		reserva.innerHTML = "<div class='form-group'><label id='reserva_"+counter+"' for='input_reserva'>Reserva #"+counter+" <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label><input type='text' name='nome_reserva[]' class='form-control' id='input_reserva' placeholder='nome' required /><input type='text' name='email_reserva[]' class='form-control' placeholder='email' style='margin-top: 10px;' required /><input type='text' name='nick_reserva[]' class='form-control' placeholder='nick' style='margin-top: 10px;' required /><input type='text' name='telefone_reserva[]' class='form-control' placeholder='telefone' style='margin-top: 10px;' required /><input type='text' name='email_reserva[]' class='form-control' placeholder='email' style='margin-top: 10px;' required /><input type='text' name='cpf_reserva[]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required /></div>";
 		div.appendChild(reserva);
 	} 
 	else{
