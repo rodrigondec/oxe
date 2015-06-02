@@ -5,6 +5,7 @@
 			<p>Organization & E-sports - OxE</p>
 			<p>E-mail.: contato@oxe.com.br. Tel.: (84) 9999-9999</p>
 			<p>CNPJ: 12.345.678/0001-99</p>
+			<div id="share-buttons">
 				<!-- Facebook -->
 				<a href="http://www.facebook.com/" target="_blank"><img src="http://static.viewbook.com/images/social_icons/facebook_32.png" alt="Facebook" /></a>
 				<!-- twitch -->
