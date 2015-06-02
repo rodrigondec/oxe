@@ -4,7 +4,7 @@
     	<meta charset="UTF-8">
             <link rel="icon" href="/oxe/estaticos/source/imgs/oxe.png">
 
-            <!--<link rel="stylesheet" type="text/css" href="/estaticos/estilo.css">-->
+            <link rel="stylesheet" type="text/css" href="/oxe/estaticos/estilo.css">
             <!-- Latest compiled and minified CSS -->
 			<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 
