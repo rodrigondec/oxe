@@ -21,43 +21,30 @@
 			</div>
 	    	<input type='text' name='nick_capitao' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
 	    	<input type='text' name='telefone_capitao' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-	    	<input type='text' name='email_capitao' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='cpf_capitao' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #2</label>
 	    	<input type='text' name='nome_integrante_2' class='form-control' id='input_' placeholder='nome' required />
-	    	<input type='text' name='email_integrante_2' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='nick_integrante_2' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='telefone_integrante_2' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-	    	<input type='text' name='email_integrante_2' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='cpf_integrante_2' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #3</label>
 	    	<input type='text' name='nome_integrante_3' class='form-control' id='input_' placeholder='nome' required />
-	    	<input type='text' name='email_integrante_3' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='nick_integrante_3' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='telefone_integrante_3' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-	    	<input type='text' name='email_integrante_3' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='cpf_integrante_3' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #4</label>
 	    	<input type='text' name='nome_integrante_4' class='form-control' id='input_' placeholder='nome' required />
-	    	<input type='text' name='email_integrante_4' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='nick_integrante_4' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='telefone_integrante_4' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-	    	<input type='text' name='email_integrante_4' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='cpf_integrante_4' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #5</label>
 	    	<input type='text' name='nome_integrante_5' class='form-control' placeholder='nome' required />
-	    	<input type='text' name='email_integrante_5' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='nick_integrante_5' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='telefone_integrante_5' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-	    	<input type='text' name='email_integrante_5' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<input type='text' name='cpf_integrante_5' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 	  	</div>
 	  	</div>
@@ -69,10 +56,7 @@
   					</a>
 				</label>
 				<input type='text' name='nome_reserva[]' class='form-control' id='input_reserva' placeholder='nome' required />
-				<input type='text' name='email_reserva[]' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 				<input type='text' name='nick_reserva[]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-				<input type='text' name='telefone_reserva[]' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-				<input type='text' name='email_reserva[]' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 				<input type='text' name='cpf_reserva[]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 			</div>
 		-->
