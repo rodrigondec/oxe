@@ -33,7 +33,7 @@
                                 echo "<a href='#' onclick='log_out()'>".$_SESSION['login']." (logout)</a>";
                             }
                             else{
-                                echo "<a href='/oxe/login.php'>Iniciar Sessão</a>";
+                                echo "<a href='/oxe/index.php/login'>Iniciar Sessão</a>";
                             }
                         ?>
                     </li>

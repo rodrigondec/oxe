@@ -2,6 +2,9 @@
     include_once('globais.php');
 
     function montar_include($pasta, $arquivo) {
+        if($arquivo == 'login'){
+            return LOGIN;
+        }
         return TEMPLATES.'/'.$pasta.'/'.$arquivo.'.php';
     }
 
