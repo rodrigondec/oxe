@@ -28,16 +28,14 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href='#' onclick='log()'>
-                            <?php  
-                                if(isset($_SESSION['login'])){
-                                    echo $_SESSION['login'].' (logout)';
-                                }
-                                else{
-                                    echo 'Iniciar Sessão';
-                                }
-                            ?>
-                        </a>
+                        <?php 
+                            if(isset($_SESSION['login'])){
+                                echo "<a href='#' onclick='log_out()'>".$_SESSION['login']." (logout)</a>";
+                            }
+                            else{
+                                echo "<a href='/oxe/login.php'>Iniciar Sessão</a>";
+                            }
+                        ?>
                     </li>
                 </ul>
         </div><!-- /.navbar-collapse -->

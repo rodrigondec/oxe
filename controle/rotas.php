@@ -1,8 +1,8 @@
 <?php
     include_once('globais.php');
 
-    function montar_include(/*$sistema, */$pasta, $arquivo) {
-        return TEMPLATES/*.'/'.$sistema*/.'/'.$pasta.'/'.$arquivo.'.php';
+    function montar_include($pasta, $arquivo) {
+        return TEMPLATES.'/'.$pasta.'/'.$arquivo.'.php';
     }
 
     function include_conteudo(){
@@ -18,18 +18,9 @@
         } 
         else {
             $pasta = 'oxe';
-            $arquivo = 'home';
-            /*if($_SESSION['sistema'] == 'cosplay'){
-                $pasta = 'concurso_desfile';
-                $arquivo = 'listar';
-            }
-            else if($_SESSION['sistema'] == 'animeke'){
-                $pasta = 'concurso_tradicional';
-                $arquivo = 'listar';
-            }*/
-            
+            $arquivo = 'home';            
         }
-        $caminho = montar_include(/*$_SESSION['sistema'],*/ $pasta, $arquivo);
+        $caminho = montar_include($pasta, $arquivo);
         include_once($caminho);   
     }
 ?>

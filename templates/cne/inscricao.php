@@ -1,7 +1,7 @@
 <script type="text/javascript">
 	var counter = 0;
 </script>
-<div class='form-boot'>
+<div class='form-boot-20'>
 	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
 		<div id='time'>
 	  	<div class='form-group'>

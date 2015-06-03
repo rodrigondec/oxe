@@ -1,16 +1,25 @@
 <?php
-    // conexão com banco
-    $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
-    if (!$link) {
+    // conexão com banco database oxe
+    $link_oxe = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    if (!$link_oxe) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
         echo '<p>Conectado ao banco com sucesso</p>';
     }
-    mysql_select_db(DB_NAME);
+    mysql_select_db(DB_NAME_OXE, $link_oxe);
+
+    // conexão com banco database cne
+    $link_cne = mysql_connect(DB_HOST, DB_USER, DB_PASS, true);
+    if (!$link_cne) {
+        die('Erro de conexão com o banco de dados: '.mysql_error());
+    } else if (isset($debug)) {
+        echo '<p>Conectado ao banco com sucesso</p>';
+    }
+    mysql_select_db(DB_NAME_CNE, $link_cne);
 
     // função que executa SQL para insert
     // INSERT INTO $tabela ($chaves,...) VALUES ($valores)
-    function insert($dados, $tabela) {
+    function insert($dados, $tabela, $link) {
         $sql = 'INSERT INTO '.$tabela;
         $chaves = array();
         $valores = array();
@@ -23,20 +32,20 @@
 
         $sql .= ' ('.$str_chaves.') VALUES ('.$str_valores.');';
         //var_dump($sql);
-        return mysql_query($sql);
+        return mysql_query($sql, $link);
     }
 
     // função que executa SQL para DELETE
     // DELETE FROM $tabela WHERE id=$id
-    function delete($id, $tabela) {
+    function delete($id, $tabela, $link) {
         $sql = 'DELETE FROM '.$tabela.' WHERE id='.$id.';';
-        return mysql_query($sql);
+        return mysql_query($sql, $link);
         // var_dump($sql);
     }
 
     // função que executa SQL para UPDATE
     // UPDATE $tabela SET $chave=$valor,... WHERE id=$id
-    function update($dados, $restricao, $id, $tabela) {
+    function update($dados, $restricao, $id, $tabela, $link) {
         $sql = 'UPDATE '.$tabela.' SET ';
         $alteracoes = array();
         foreach ($dados as $chave => $valor) {
@@ -45,14 +54,22 @@
         $sql .= implode(', ', $alteracoes);
         $sql .= ' WHERE '.$restricao.'='.$id.';';
         //var_dump($sql);
-        return mysql_query($sql);
+        return mysql_query($sql, $link);
+    }
+
+    // função que executa SQL para SELECT com WHERE
+    // SELECT $campo FROM $tabela WHERE ID = $id
+    function select($campo, $tabela, $restricao, $id, $link){
+        $sql = 'SELECT '.$campo.' from '.$tabela.' WHERE '.$restricao.'=\''.$id.'\' LIMIT 1;';
+        $resultado = mysql_query($sql, $link);
+        return mysql_fetch_assoc($resultado);        
     }
 
     // função que executa SQL para SELECT
-    // SELECT * FROM $tabela
-    function select($campo, $tabela, $where=''){
-        $sql = 'SELECT '.$campo.' from '.$tabela.' '.$where.';';
-        $resultado = mysql_query($sql);
+    // SELECT $campo FROM $tabela
+    function select_many($campo, $tabela, $link){
+        $sql = 'SELECT '.$campo.' from '.$tabela.';';
+        $resultado = mysql_query($sql, $link);
         if(!$resultado) return array();
         $objetos = array();
         while($row = mysql_fetch_assoc($resultado)){
@@ -60,13 +77,4 @@
         }
         return $objetos;
     }
-
-    // função que executa SQL para SELECT com WHERE
-    // SELECT * FROM $tabela WHERE ID = $id
-    function buscar_por_id($tabela, $id){
-        $sql = 'SELECT * from '.$tabela.' WHERE id=\''.$id.'\' LIMIT 1;';
-        $resultado = mysql_query($sql);
-        return mysql_fetch_assoc($resultado);        
-    }
-
 ?>

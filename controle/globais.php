@@ -13,14 +13,19 @@
 	define('DB_HOST', $mysql_config["hostname"]);
 	define('DB_PORT', $mysql_config["port"]);*/
 
-	//xampp MySQL
+
+	//XAMPP
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
 	define('BASE', 'OxE');
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'/templates/');
-	define('DB_NAME', 'oxe');
+	define('LOGIN', ARQUIVOS.'/'.BASE.'/login.php');
+	
+	define('DB_NAME_OXE', 'oxe');
+	define('DB_NAME_CNE', 'cne');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
 	define('DB_HOST', 'localhost'); //Windows
+
 
 	ob_start(); //Criando Buffer
 	session_start();
