@@ -1,9 +1,8 @@
-function log(){
-	/*var check = confirm('Deseja mesmo deslogar do sistema Saga?')
+function log_out(){
+	var check = confirm('Deseja mesmo deslogar do sistema OxE?')
 	if(check){
-		window.location = '/logout.php';
-	}*/
-	alert('Funcionalidade não pronta!');
+		window.location = '/oxe/logout.php';
+	}
 }
 
 function remove_reserva(link){
