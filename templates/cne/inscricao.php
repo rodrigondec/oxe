@@ -1,3 +1,6 @@
+<?php 
+    include_once(LINK);
+?>
 <script type="text/javascript">
 	var counter = 0;
 </script>
