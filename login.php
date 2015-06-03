@@ -33,7 +33,7 @@
 	</div>
 
 <?php 
-	if (count($_POST) > 0){
+	if(count($_POST) > 0){
 		$usuario = select('*', 'admins', 'login', $_POST['login'], $link_oxe);
 		if($usuario && $usuario['senha'] == md5($_POST['senha'])){
 			$_SESSION['login'] = $usuario['login'];

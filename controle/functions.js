@@ -24,7 +24,7 @@ function reserva(){
 		counter++;
 		var div = document.getElementById('time');
 		var reserva = document.createElement('div')
-		reserva.innerHTML = "<div class='form-group'><label id='reserva_"+counter+"' for='input_reserva'>Reserva #"+counter+" <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label><input type='text' name='nome_reserva[]' class='form-control' id='input_reserva' placeholder='nome' required /><input type='text' name='nick_reserva[]' class='form-control' placeholder='nick' style='margin-top: 10px;' required /><input type='text' name='cpf_reserva[]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required /></div>";
+		reserva.innerHTML = "<div class=\'form-group\'><label id=\'reserva_"+counter+"\' for=\'input_reserva\'>Reserva #"+counter+" <a class=\'btn btn-danger\' href=\'#\' onClick=\'remove_reserva(this);\'>remover</a></label><input type=\'text\' name=\'reserva_"+counter+"[nome]\' class=\'form-control\' id=\'input_reserva\' placeholder=\'nome\' required /><input type=\'text\' name=\'reserva_"+counter+"[nick]\' class=\'form-control\' placeholder=\'nick\' style=\'margin-top: 10px;\' required /><input type=\'text\' name=\'reserva_"+counter+"[cpf]\' class=\'form-control\' placeholder=\'CPF/Identidade\' style=\'margin-top: 10px;\' required /></div>";
 		div.appendChild(reserva);
 	} 
 	else{
