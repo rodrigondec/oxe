@@ -19,6 +19,7 @@ USE cne;
 
 CREATE TABLE capitaes(
 	id int NOT NULL auto_increment,
+	sigla_time varchar(10) NOT NULL,
 	nome varchar(35) NOT NULL,
 	login varchar(30) NOT NULL,
 	senha varchar(32) NOT NULL,

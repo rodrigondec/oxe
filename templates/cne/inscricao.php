@@ -31,15 +31,15 @@
 	  	<div class='form-group'>
 	    	<label for='input_capitao'>Capitão</label>
 	    	<input type='text' name='capitao[nome]' class='form-control' id='input_capitao' placeholder='nome' required />
-	    	<input type='text' name='capitao[email]' class='form-control' placeholder='email' style='margin-top: 10px;' required />
+	    	<input type='text' name='capitao[login]' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<div class="input-group">
-	    		<input type='password' name='capitao[password]' class='form-control' placeholder='password' style='margin-top: 10px;' required />
+	    		<input type='password' name='capitao[senha]' class='form-control' placeholder='senha' style='margin-top: 10px;' required />
       			<span class="input-group-btn">
         			<a href="#" class="btn btn-danger" data-toggle="tooltip" title="Ao realizar o cadastro do seu time, é criado um login para o capitão. Desse modo permitando realizar alterações em seu time." style='margin-top: 10px;'>?</a>
       			</span>
 			</div>
 	    	<input type='text' name='capitao[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='capitao["telefone"]' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
+	    	<input type='text' name='capitao[telefone]' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
 	    	<input type='text' name='capitao[cpf]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
@@ -87,6 +87,24 @@ $(document).ready(function(){
 </script>
 <?php 
     if(count($_POST) > 0){
-    	var_dump($_POST);
+    	$time = array();
+    	$capitao = array();
+    	$integrantes = array();
+    	foreach ($_POST as $variante => $bloco) {
+    		if($variante == 'time'){
+    			$time = $bloco;
+    		}
+    		else if($variante == 'capitao'){
+    			$capitao = $bloco;
+    			$capitao['sigla_time'] = $time['sigla'];
+    		}
+    		else{
+    			$integrantes[$variante] = $bloco;
+    		}
+    		
+    	}
+    	//var_dump($capitao);
+    	insert($capitao, 'capitaes', $link_cne);
+
     }
 ?>
