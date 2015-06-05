@@ -90,6 +90,7 @@ $(document).ready(function(){
     	$time = array();
     	$capitao = array();
     	$integrantes = array();
+    	$id_integrantes = array();
     	foreach ($_POST as $variante => $bloco) {
     		if($variante == 'time'){
     			$time = $bloco;
@@ -103,8 +104,25 @@ $(document).ready(function(){
     		}
     		
     	}
-    	//var_dump($capitao);
-    	insert($capitao, 'capitaes', $link_cne);
 
+    	insert($capitao, 'capitaes', $link_cne);
+    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
+    	
+    	foreach ($integrantes as $num_integrante => $integrante) {
+    		insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
+    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link_cne);
+    	}
+    	
+    	$time['id_capitao'] = $id_capitao['id'];
+
+    	foreach ($id_integrantes as $num_integrante => $integrante) {
+    		//var_dump($id_integrante);echo '<br><br>';
+    		$time['id_'.$num_integrante] = $integrante['id'];
+    	}
+
+    	insert($time, 'times', $link_cne);
+
+    	ob_clean();
+		header('LOCATION: /oxe/index.php/cne/success/');
     }
 ?>

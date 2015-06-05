@@ -16,7 +16,7 @@ function remove_reserva(link){
 	div_form_group = label.parentNode;
 	div = div_form_group.parentNode;
 	div.remove();
-	
+	swal("", "Reserva removido com sucesso!", "success");
 }
 
 function reserva(){
@@ -26,9 +26,10 @@ function reserva(){
 		var reserva = document.createElement('div')
 		reserva.innerHTML = "<div class=\'form-group\'><label id=\'reserva_"+counter+"\' for=\'input_reserva\'>Reserva #"+counter+" <a class=\'btn btn-danger\' href=\'#\' onClick=\'remove_reserva(this);\'>remover</a></label><input type=\'text\' name=\'reserva_"+counter+"[nome]\' class=\'form-control\' id=\'input_reserva\' placeholder=\'nome\' required /><input type=\'text\' name=\'reserva_"+counter+"[nick]\' class=\'form-control\' placeholder=\'nick\' style=\'margin-top: 10px;\' required /><input type=\'text\' name=\'reserva_"+counter+"[cpf]\' class=\'form-control\' placeholder=\'CPF/Identidade\' style=\'margin-top: 10px;\' required /></div>";
 		div.appendChild(reserva);
+		swal("", "Reserva adicionado com sucesso!", "success");
 	} 
 	else{
-		alert("Não é possível ter mais do que 2 reservas por time!");
+		swal("Não foi possível adicionar o reserva!", "Não pode ter mais do que 2 reservas por time", "error");
 	};
 }
 

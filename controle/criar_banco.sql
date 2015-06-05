@@ -26,17 +26,18 @@ CREATE TABLE capitaes(
 	nick varchar(35) NOT NULL,
 	telefone varchar(14) NOT NULL,
 	cpf varchar(14) NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (cpf),
+	UNIQUE (login)
 );
-
-insert into capitaes (nome, login, senha, nick, telefone, cpf) values ('tiago', 'tiago@email.com', md5('tiago'), 'Anoubys', '(84) 998184097', '016.887.454-75');
 
 CREATE TABLE jogadores(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
 	nick varchar(35) NOT NULL,
 	cpf varchar(14) NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (cpf)
 );
 
 CREATE TABLE times(
@@ -61,3 +62,5 @@ CREATE TABLE times(
 	FOREIGN KEY (id_reserva_1) REFERENCES jogadores(id),
 	FOREIGN KEY (id_reserva_2) REFERENCES jogadores(id)
 );
+
+insert into capitaes (nome, login, senha, nick, telefone, cpf) values ('tiago', 'tiago@email.com', md5('tiago'), 'Anoubys', '(84) 998184097', '016.887.454-75');
