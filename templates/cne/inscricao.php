@@ -31,7 +31,7 @@
 	  	<div class='form-group'>
 	    	<label for='input_capitao'>Capitão</label>
 	    	<input type='text' name='capitao[nome]' class='form-control' id='input_capitao' placeholder='nome' required />
-	    	<input type='text' name='capitao[login]' class='form-control' placeholder='email' style='margin-top: 10px;' required />
+	    	<input type='text' name='capitao[login]' onkeyup='lower(this);' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<div class="input-group">
 	    		<input type='password' name='capitao[senha]' class='form-control' placeholder='senha' style='margin-top: 10px;' required />
       			<span class="input-group-btn">
@@ -39,8 +39,13 @@
       			</span>
 			</div>
 	    	<input type='text' name='capitao[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='capitao[telefone]' class='form-control' placeholder='telefone' style='margin-top: 10px;' required />
-	    	<input type='text' name='capitao[cpf]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
+	    	<div class="input-group">
+	    		<input type='text' name='capitao[telefone]' onKeypress='mask(this,"telefone");' class='form-control' placeholder='telefone' maxlength='16' style='margin-top: 10px;' required />
+      			<span class="input-group-btn">
+        			<a href="#" class="btn btn-info" onclick="swal('','Digite seu número com o 9º dígito.\nExemplo: (84) 9 9818-4097', 'info');" style='margin-top: 10px;'>?</a>
+      			</span>
+			</div>
+	    	<input type='text' name='capitao[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #2</label>
@@ -82,10 +87,66 @@
 </div>
 <?php 
     if(count($_POST) > 0){
-    	if(count($_POST < 6 || $_POST > 8)){
-
+    	if(count($_POST) < 6 || count($_POST) > 8){
+?>
+<button hidden id='clickButton' onclick="form_breached();">teste</button>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById('clickButton').click();
+	}
+</script>
+<?php
     	}
-    	var_dump($_POST);
+    	else{
+    		/* VERIFICAÇÃO DOS DADOS. CHECAGEM PARA DUPLICATAS */
+    		$time = array();
+    		$capitao = array();
+    		$integrantes = array();
+    		foreach ($_POST as $variante => $bloco) {
+	    		if($variante == 'time'){
+	    			$time = $bloco;
+	    		}
+	    		else if($variante == 'capitao'){
+	    			$capitao = $bloco;
+	    			$capitao['sigla_time'] = $time['sigla'];
+	    		}
+	    		else{
+	    			$integrantes[$variante] = $bloco;
+	    		}
+	    	}
+
+	    	$check_time_nome = select('nome', 'times', 'nome', 'a', $link_cne);
+	    	//var_dump($check_time_nome);
+	    	if(isset($check_time_nome['nome'])){
+	    		$string = "O nome \"".$check_time_nome['nome']."\" já está cadastrada para um time!";
+	    		echo '<button hidden id=\'clickButton\' onclick=\'dado_duplicado();\'>teste</button>
+<script type=\'text/javascript\'>
+	window.onload = function(){
+		document.getElementById(\'clickButton\').click();
+	}
+</script>';
+?>
+
+<?php
+	    	}
+
+	    	$check_time_sigla = select('sigla', 'times', 'sigla', $time['sigla'], $link_cne);
+
+	    	var_dump($check_time_nome);echo '<br><br>';
+	    	var_dump($check_time_sigla);echo '<br><br>';
+
+	    	$check_capitao_login = 'teste_login';
+	    	$check_capitao_nick = 'teste_nick';
+	    	$check_capitao_cpf = 'teste_cpf';
+
+	    	$check_integrantes = array();
+	    	foreach ($integrantes as $key => $value) {
+	    		$check_integrantes[$key]['nick'] = 'teste_nick';
+	    		$check_integrantes[$key]['cpf'] = 'teste_cpf';
+	    	}
+
+    		//var_dump($check_integrantes);
+    	}
     	/*$time = array();
     	$capitao = array();
     	$integrantes = array();
@@ -101,7 +162,6 @@
     		else{
     			$integrantes[$variante] = $bloco;
     		}
-    		
     	}
 
     	insert($capitao, 'capitaes', $link_cne);

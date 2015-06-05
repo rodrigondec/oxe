@@ -18,8 +18,6 @@ function success(){
 		title: "",
 		text: "Seu time foi inscrito com sucesso!",
 		type: "success",
-		showCancelButton: false,
-		showConfirmeButton: false,
 		closeOnConfirm: false,
 		html: false
 	}, 
@@ -56,7 +54,42 @@ function reserva(){
 	};
 }
 
-function mask(str, textbox, tipo){
+function upper(textbox) {
+    textbox.value = textbox.value.toUpperCase();
+}
+
+function lower(textbox){
+	textbox.value = textbox.value.toLowerCase();
+}
+
+function form_breached(){
+	swal({
+		title: "Erro!",
+		text: "Ocorreu um comportamento inesperado no sistema!\nFavor tentar preencher novamente o formulário",
+		type: "error",
+		closeOnConfirm: false,
+		html: false
+	}, 
+	function(){
+		window.location = '/oxe/index.php/cne/inscricao';
+	});	
+}
+
+function dado_duplicado(){
+	swal({
+		title: "Cadastro duplicado!",
+		text: 'str',
+		type: "error",
+		closeOnConfirm: false,
+		html: false
+	}, 
+	function(){
+		window.location = '/oxe/index.php/cne/inscricao';
+	});
+}
+
+function mask(textbox, tipo){
+	str = textbox.value;
 	if (tipo == 'cpf'){
 		var loc = '3,7,11';
 		var delim = '.,.,-';
@@ -77,8 +110,8 @@ function mask(str, textbox, tipo){
 	}
 
 	if (tipo == 'telefone'){
-		var loc = '0,3,4,9';
-		var delim = '(,), ,-';
+		var loc = '0,3,4,6,11';
+		var delim = '(,), , ,-';
 
 		var locs = loc.split(',');
 		var delims = delim.split(',');
