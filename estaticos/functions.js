@@ -1,8 +1,31 @@
 function log_out(){
-	var check = confirm('Deseja mesmo deslogar do sistema OxE?')
-	if(check){
-		window.location = '/oxe/logout.php';
-	}
+	swal({
+  		title: "",
+  		text: "Quer mesmo deslogar?",
+  		type: "warning",
+  		showCancelButton: true,
+  		confirmButtonClass: "btn-danger",
+  		confirmButtonText: "logout!",
+  		closeOnConfirm: false
+	},
+	function(){
+	  window.location = '/oxe/logout.php';
+	});
+}
+
+function success(){
+	swal({
+		title: "",
+		text: "Seu time foi inscrito com sucesso!",
+		type: "success",
+		showCancelButton: false,
+		showConfirmeButton: false,
+		closeOnConfirm: false,
+		html: false
+	}, 
+	function(){
+		window.location = '/oxe/index.php/cne/home';
+	});	
 }
 
 function remove_reserva(link){
@@ -29,7 +52,7 @@ function reserva(){
 		swal("", "Reserva adicionado com sucesso!", "success");
 	} 
 	else{
-		swal("Não foi possível adicionar o reserva!", "Não pode ter mais do que 2 reservas por time", "error");
+		swal("", "Não é permitido ter mais do que 2 reservas por time", "error");
 	};
 }
 

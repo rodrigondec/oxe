@@ -35,7 +35,7 @@
 	    	<div class="input-group">
 	    		<input type='password' name='capitao[senha]' class='form-control' placeholder='senha' style='margin-top: 10px;' required />
       			<span class="input-group-btn">
-        			<a href="#" class="btn btn-danger" data-toggle="tooltip" title="Ao realizar o cadastro do seu time, é criado um login para o capitão. Desse modo permitando realizar alterações em seu time." style='margin-top: 10px;'>?</a>
+        			<a href="#" class="btn btn-warning" onclick="swal('Será criado um login para o capitão','Com esse login o capitão poderá alterar os dados de seu time. O login será o email do capitão', 'info');" style='margin-top: 10px;'>?</a>
       			</span>
 			</div>
 	    	<input type='text' name='capitao[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
@@ -80,14 +80,13 @@
 	  	</div>
 	</form>
 </div>
-<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
-</script>
 <?php 
     if(count($_POST) > 0){
-    	$time = array();
+    	if(count($_POST < 6 || $_POST > 8)){
+
+    	}
+    	var_dump($_POST);
+    	/*$time = array();
     	$capitao = array();
     	$integrantes = array();
     	$id_integrantes = array();
@@ -123,6 +122,6 @@ $(document).ready(function(){
     	insert($time, 'times', $link_cne);
 
     	ob_clean();
-		header('LOCATION: /oxe/index.php/cne/success/');
+		header('LOCATION: /oxe/index.php/cne/success/');*/
     }
 ?>
