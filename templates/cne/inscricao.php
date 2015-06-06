@@ -88,14 +88,12 @@
 <?php 
     if(count($_POST) > 0){
     	if(count($_POST) < 6 || count($_POST) > 8){
-?>
-<button hidden id='clickButton' onclick="form_breached();">teste</button>
-<script type="text/javascript">
-	window.onload = function(){
-		document.getElementById('clickButton').click();
-	}
-</script>
-<?php
+    		echo "<button hidden id='clickButton' onClick='form_breached();'>teste</buttom>
+    		<script type='text/javascript'>
+    		window.onload = function(){
+    			document.getElementById('clickButton').click();
+    		}
+    		</script>"; 
     	}
     	else{
     		/* VERIFICAÇÃO DOS DADOS. CHECAGEM PARA DUPLICATAS */
@@ -115,39 +113,81 @@
 	    		}
 	    	}
 
-	    	$check_time_nome = select('nome', 'times', 'nome', 'a', $link_cne);
-	    	//var_dump($check_time_nome);
+	    	$check_time_nome = select('nome', 'times', 'nome', $time['nome'], $link_cne);
 	    	if(isset($check_time_nome['nome'])){
-	    		$string = "O nome \"".$check_time_nome['nome']."\" já está cadastrada para um time!";
-	    		echo '<button hidden id=\'clickButton\' onclick=\'dado_duplicado();\'>teste</button>
-<script type=\'text/javascript\'>
-	window.onload = function(){
-		document.getElementById(\'clickButton\').click();
-	}
-</script>';
-?>
-
-<?php
+	    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"time\", \"O nome ".$check_time_nome['nome']." já está cadastrado!\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+	    			</script>";
 	    	}
 
 	    	$check_time_sigla = select('sigla', 'times', 'sigla', $time['sigla'], $link_cne);
+	    	if(isset($check_time_sigla['sigla'])){
+	    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"time\", \"A sigla ".$check_time_sigla['sigla']." já está cadastrada!\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+	    			</script>";
+	    	}
 
-	    	var_dump($check_time_nome);echo '<br><br>';
-	    	var_dump($check_time_sigla);echo '<br><br>';
+	    	$check_capitao_login = select('login', 'capitaes', 'login', $capitao['login'], $link_cne);
+			if(isset($check_capitao_login['login'])){
+	    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O email ".$check_capitao_login['login']." já está cadastrado!\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+	    			</script>";
+	    	}
 
-	    	$check_capitao_login = 'teste_login';
-	    	$check_capitao_nick = 'teste_nick';
-	    	$check_capitao_cpf = 'teste_cpf';
+	    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $capitao['nick'], $link_cne);
+	    	if(isset($check_capitao_nick['nick'])){
+	    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+	    			</script>";
+	    	}
+
+	    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
+	    	if(isset($check_capitao_cpf['cpf'])){
+	    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+	    			</script>";
+	    	}
 
 	    	$check_integrantes = array();
 	    	foreach ($integrantes as $key => $value) {
-	    		$check_integrantes[$key]['nick'] = 'teste_nick';
-	    		$check_integrantes[$key]['cpf'] = 'teste_cpf';
-	    	}
-
-    		//var_dump($check_integrantes);
+	    		$check_integrantes[$key] = select('nick', 'jogadores', 'nick', $integrantes[$key]['nick'], $link_cne);
+	    		if(isset($check_integrantes[$key]['nick'])){
+		    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O nick ".$integrantes[$key]['nick']." já está cadastrado!\");'>teste</button>
+		    		<script type='text/javascript'>
+		    			window.onload = function(){
+		    				document.getElementById('clickButton').click();
+		    			}
+		    			</script>";
+		    	}
+	    		$check_integrantes[$key] = select('cpf', 'jogadores', 'cpf', $integrantes[$key]['cpf'], $link_cne);
+	    		if(isset($check_integrantes[$key]['cpf'])){
+		    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O cpf ".$integrantes[$key]['cpf']." já está cadastrado!\");'>teste</button>
+		    		<script type='text/javascript'>
+		    			window.onload = function(){
+		    				document.getElementById('clickButton').click();
+		    			}
+		    			</script>";
+		    	}
+	    	}    
+	    	/* END VERIFICAÇÃO */
     	}
-    	/*$time = array();
+
+    	$time = array();
     	$capitao = array();
     	$integrantes = array();
     	$id_integrantes = array();
@@ -182,6 +222,6 @@
     	insert($time, 'times', $link_cne);
 
     	ob_clean();
-		header('LOCATION: /oxe/index.php/cne/success/');*/
+		header('LOCATION: /oxe/index.php/cne/success/');
     }
 ?>

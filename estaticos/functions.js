@@ -75,10 +75,10 @@ function form_breached(){
 	});	
 }
 
-function dado_duplicado(){
+function dado_duplicado(id, str){
 	swal({
-		title: "Cadastro duplicado!",
-		text: 'str',
+		title: "Cadastro do "+id+" duplicado!",
+		text: str,
 		type: "error",
 		closeOnConfirm: false,
 		html: false
