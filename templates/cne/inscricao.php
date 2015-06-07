@@ -226,4 +226,21 @@
     	//ob_clean();
 		//header('LOCATION: /oxe/index.php/cne/success/');
     }
+
+    $nome_cap = 'rodrigo';
+    $nome_time = 'Failboat';
+
+    $para = 'rodrigondec@gmail.com';
+    $assunto = 'Campeonato CNE';
+
+    $mensagem = 'Prezado '.$nome_cap.', ';
+    $mensagem .= 'seu time '.$nome_time.' foi inscrito com sucesso no campeonato CNE. ';
+    $mensagem .= 'Favor realizar o pagamento da taxa de isncrição através de uma transferência. ';
+    $mensagem .= 'Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ';
+    $mensagem .= 'até o término desse prazo, seu time perderá a preferência para as 64 vagas reservadas, podendo assim ';
+    $mensagem .= 'ficar de fora do campeonato. ';
+    $mensagem .= 'Os dados da conta bancária são: Agência 1668-3  //  Conta 40302-4 // Rodrigo Nunes de Castro ';
+    $mensagem .= 'Att, Equipe OxE';
+
+    send_mail($para, $assunto, $mensagem);
 ?>
