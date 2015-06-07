@@ -44,6 +44,8 @@ CREATE TABLE times(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
 	sigla varchar(10) NOT NULL,
+	posicao_time int NOT NULL,
+	pago boolean NOT NULL,
 	id_capitao int,
 	id_integrante_2 int,
 	id_integrante_3 int,

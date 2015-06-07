@@ -87,6 +87,7 @@
 </div>
 <?php 
     if(count($_POST) > 0){
+    	var_dump($_POST);
     	if(count($_POST) < 6 || count($_POST) > 8){
     		echo "<button hidden id='clickButton' onClick='form_breached();'>teste</buttom>
     		<script type='text/javascript'>
@@ -183,7 +184,7 @@
 		    			}
 		    			</script>";
 		    	}
-	    	}    
+	    	}
 	    	/* END VERIFICAÇÃO */
     	}
 
@@ -221,7 +222,8 @@
 
     	insert($time, 'times', $link_cne);
 
-    	ob_clean();
-		header('LOCATION: /oxe/index.php/cne/success/');
+    	echo 'verificar a inscrição do time';
+    	//ob_clean();
+		//header('LOCATION: /oxe/index.php/cne/success/');
     }
 ?>
