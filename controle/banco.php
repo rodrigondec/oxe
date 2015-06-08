@@ -45,15 +45,15 @@
 
     // função que executa SQL para UPDATE
     // UPDATE $tabela SET $chave=$valor,... WHERE id=$id
-    function update($dados, $restricao, $id, $tabela, $link) {
+    function update($dados, $tabela, $restricao, $id, $link) {
         $sql = 'UPDATE '.$tabela.' SET ';
         $alteracoes = array();
         foreach ($dados as $chave => $valor) {
             $alteracoes[] = $chave.'=\''.$valor.'\'';
         }
         $sql .= implode(', ', $alteracoes);
-        $sql .= ' WHERE '.$restricao.'='.$id.';';
-        //var_dump($sql);
+        $sql .= ' WHERE '.$restricao.'=\''.$id.'\';';
+        var_dump($sql);
         return mysql_query($sql, $link);
     }
 

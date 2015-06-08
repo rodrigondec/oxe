@@ -88,6 +88,26 @@ function dado_duplicado(id, str){
 	});
 }
 
+function validar_email(textbox){
+	usuario = textbox.value.substring(0, textbox.value.indexOf("@")); 
+	dominio = textbox.value.substring(textbox.value.indexOf("@")+ 1, textbox.value.length); 
+
+	if ((usuario.length >=1) && 
+		(dominio.length >=3) && 
+		(usuario.search("@")==-1) && 
+		(dominio.search("@")==-1) && 
+		(usuario.search(" ")==-1) && 
+		(dominio.search(" ")==-1) && 
+		(dominio.search(".")!=-1) && 
+		(dominio.indexOf(".") >=1) && 
+		(dominio.lastIndexOf(".") < dominio.length - 1)) { 
+		swal('Email válido!', '', 'success');
+	} 
+	else{ 
+		swal('Email inválido!', 'Favor digite um email válido no campo indicado', 'error');
+	}
+}
+
 function mask(textbox, tipo){
 	str = textbox.value;
 	if (tipo == 'cpf'){

@@ -31,7 +31,7 @@
 	  	<div class='form-group'>
 	    	<label for='input_capitao'>Capitão</label>
 	    	<input type='text' name='capitao[nome]' class='form-control' id='input_capitao' placeholder='nome' required />
-	    	<input type='text' name='capitao[login]' onkeyup='lower(this);' class='form-control' placeholder='email' style='margin-top: 10px;' required />
+	    	<input type='text' name='capitao[login]' onblur='lower(this);validar_email(this);' class='form-control' placeholder='email' style='margin-top: 10px;' required />
 	    	<div class="input-group">
 	    		<input type='password' name='capitao[senha]' class='form-control' placeholder='senha' style='margin-top: 10px;' required />
       			<span class="input-group-btn">
@@ -87,7 +87,7 @@
 </div>
 <?php 
     if(count($_POST) > 0){
-    	var_dump($_POST);
+    	//var_dump($_POST);
     	if(count($_POST) < 6 || count($_POST) > 8){
     		echo "<button hidden id='clickButton' onClick='form_breached();'>teste</buttom>
     		<script type='text/javascript'>
@@ -188,6 +188,7 @@
 	    	/* END VERIFICAÇÃO */
     	}
 
+    	/* INSERT DADOS */
     	$time = array();
     	$capitao = array();
     	$integrantes = array();
@@ -222,25 +223,71 @@
 
     	insert($time, 'times', $link_cne);
 
-    	echo 'verificar a inscrição do time';
-    	//ob_clean();
-		//header('LOCATION: /oxe/index.php/cne/success/');
+    	$id_time = select('id', 'times', 'sigla', $time['sigla'], $link_cne);
+
+    	$update_time = array();
+    	$update_time['posicao_time'] = $id_time['id'];
+    	$update_time['pago'] = 0;
+    	update($update_time, 'times', 'id', $id_time['id'], $link_cne);
+    	
+    	/* END INSERT */
+    	/* SEND MAIL */
+
+    	if(intval($id_time['id']) <= 64){
+    		$para = $capitao['login'];
+    		$assunto = 'Campeonato CNE';
+
+    		$nome_cap = $capitao['nome'];
+		    $nome_time = $time['nome'];
+
+
+		    $mensagem = "Prezado ".$nome_cap.",\n\n";
+		    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE. ";
+		    $mensagem .= "Favor realizar o pagamento da taxa de inscrição através de uma transferência.\n\n";
+		    $mensagem .= "Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ";
+		    $mensagem .= "até o término desse prazo, seu time perderá a preferência para as 64 vagas reservadas, podendo assim ";
+		    $mensagem .= "ficar de fora do campeonato.\n\n";
+		    $mensagem .= "Os dados da conta bancária são:\n\tAgência 1668-3\n\tConta 40302-4\n\tRodrigo Nunes de Castro \n\n";
+		    $mensagem .= "Atenciosamente, \nEquipe OxE";
+
+		    send_mail($para, $assunto, $mensagem);
+
+		    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+		    send_mail('darlanbx@gmail.com', $assunto, $mensagem);
+		    send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
+		    send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
+		    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);
+    	}
+    	else if(intval($id_time['id']) > 64){
+    		$para = $capitao['login'];
+    		$assunto = 'Campeonato CNE';
+
+    		$nome_cap = $capitao['nome'];
+		    $nome_time = $time['nome'];
+
+		    $mensagem = "Prezado ".$nome_cap.",\n\n";
+		    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE. ";
+		    $mensagem .= "Atualmente, todas as 64 vagas estão reservadas e seu time encontra-se na lista de espera.\n\n";
+		    $mensagem .= "Caso algum time que está ocupando a vaga não pague a taxa de inscrição, os times na lista de ";
+		    $mensagem .= "espera irão ter direito a essa vaga. Caso a quantidade de times na lista de espera chegue a 64 times, ";
+		    $mensagem .= "iremos abrir as 64 vagas extras. Caso todos os times paguem as inscrições, o CNE ";
+		    $mensagem .= "passará a ocorrer com 128 times.\n\n";
+		    $mensagem .= "Assim que for liberada alguma vaga, entraremos em contato com o time na lista de espera enviando as ";
+		    $mensagem .= "instruções para realizar o pagamento.\n\n";
+		    $mensagem .= "Atenciosamente, \nEquipe OxE";
+
+		    send_mail($para, $assunto, $mensagem);
+
+		    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+		    send_mail('darlanbx@gmail.com', $assunto, $mensagem);
+		    send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
+		    send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
+		    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);
+    	}
+
+    	/* END SEND MAIL */
+
+    	ob_clean();
+		header('LOCATION: /oxe/index.php/cne/success/');
     }
-
-    $nome_cap = 'rodrigo';
-    $nome_time = 'Failboat';
-
-    $para = 'rodrigondec@gmail.com';
-    $assunto = 'Campeonato CNE';
-
-    $mensagem = 'Prezado '.$nome_cap.', ';
-    $mensagem .= 'seu time '.$nome_time.' foi inscrito com sucesso no campeonato CNE. ';
-    $mensagem .= 'Favor realizar o pagamento da taxa de isncrição através de uma transferência. ';
-    $mensagem .= 'Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ';
-    $mensagem .= 'até o término desse prazo, seu time perderá a preferência para as 64 vagas reservadas, podendo assim ';
-    $mensagem .= 'ficar de fora do campeonato. ';
-    $mensagem .= 'Os dados da conta bancária são: Agência 1668-3  //  Conta 40302-4 // Rodrigo Nunes de Castro ';
-    $mensagem .= 'Att, Equipe OxE';
-
-    send_mail($para, $assunto, $mensagem);
 ?>
