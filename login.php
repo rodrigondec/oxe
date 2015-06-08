@@ -35,7 +35,7 @@
 <?php 
 	if(count($_POST) > 0){
 		$usuario = select('*', 'admins', 'login', $_POST['login'], $link_oxe);
-		if($usuario && $usuario['senha'] == md5($_POST['senha'])){
+		if($usuario && $usuario['senha'] == $_POST['senha']){
 			$_SESSION['login'] = $usuario['login'];
 			$_SESSION['privilegio'] = 'admin';
 			ob_clean();
@@ -43,7 +43,7 @@
 		}
 		else{
 			$usuario = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
-			if($usuario && $usuario['senha'] == md5($_POST['senha'])){
+			if($usuario && $usuario['senha'] == $_POST['senha']){
 				$_SESSION['login'] = $usuario['login'];
 				$_SESSION['privilegio'] = 'capitao';
 				ob_clean();

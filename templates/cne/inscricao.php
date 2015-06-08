@@ -51,31 +51,31 @@
 	    	<label for='input_'>Integrante #2</label>
 	    	<input type='text' name='integrante_2[nome]' class='form-control' id='input_' placeholder='nome' required />
 	    	<input type='text' name='integrante_2[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='integrante_2[cpf]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
+	    	<input type='text' name='integrante_2[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #3</label>
 	    	<input type='text' name='integrante_3[nome]' class='form-control' id='input_' placeholder='nome' required />
 	    	<input type='text' name='integrante_3[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='integrante_3[cpf]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
+	    	<input type='text' name='integrante_3[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #4</label>
 	    	<input type='text' name='integrante_4[nome]' class='form-control' id='input_' placeholder='nome' required />
 	    	<input type='text' name='integrante_4[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='integrante_4[cpf]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
+	    	<input type='text' name='integrante_4[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #5</label>
 	    	<input type='text' name='integrante_5[nome]' class='form-control' placeholder='nome' required />
 	    	<input type='text' name='integrante_5[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	    	<input type='text' name='integrante_5[cpf]' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
+	    	<input type='text' name='integrante_5[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
 	  	</div>
 	  	<!-- <div class='form-group'>
 	  		<label id='reserva_"+counter+"' for='input_reserva'>Reserva #"+counter+" <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label>
 	 		<input type='text' name='reserva_"+counter+"['nome']' class='form-control' id='input_reserva' placeholder='nome' required />
 	 		<input type='text' name='reserva_"+counter+"['nick']' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	 		<input type='text' name='reserva_"+counter+"['cpf']' class='form-control' placeholder='CPF/Identidade' style='margin-top: 10px;' required />
+	 		<input type='text' name='reserva_"+counter+"['cpf']' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
  		</div> -->
 
 	  	</div>
@@ -98,6 +98,8 @@
     	}
     	else{
     		/* VERIFICAÇÃO DOS DADOS. CHECAGEM PARA DUPLICATAS */
+    		$_POST['capitao']['senha'] = md5($_POST['capitao']['senha']);
+
     		$time = array();
     		$capitao = array();
     		$integrantes = array();
@@ -205,6 +207,8 @@
     			$integrantes[$variante] = $bloco;
     		}
     	}
+
+
 
     	insert($capitao, 'capitaes', $link_cne);
     	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
