@@ -13,6 +13,16 @@ function log_out(){
 	});
 }
 
+function login_errado(){
+	swal({
+		title: "Login inválido!",
+		text: "Verifique e insira novamente seu login e senha",
+		type: "error",
+		closeOnConfirm: false,
+		html: false
+	});	
+}
+
 function success(){
 	swal({
 		title: "",
