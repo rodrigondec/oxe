@@ -15,7 +15,7 @@
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/oxe/index.php/oxe/sobre">Sobre</a></li>
-                <li><a href="/oxe/index.php/cne/home">Torneio</a></li>
+                <li><a href="/oxe/index.php/cne/home">CNE</a></li>
                 <!-- <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Torneios<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
@@ -25,6 +25,27 @@
                         </li>
                     </ul>
                 </li> -->
+                <?php 
+                    if($_SESSION['privilegio'] == 'capitao'){
+                ?>
+                <li><a href="/oxe/index.php/cne/time">Meu Time</a></li>
+                <?php
+                    }
+                    else{
+                ?>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <a href="/oxe/index.php/admin/times">Times</a>
+                            <a href="/oxe/index.php/admin/capitaes">Capitaes</a>
+                            <a href="/oxe/index.php/admin/jogadores">Jogadores</a>
+                        </li>
+                    </ul>
+                </li>
+                <?php
+                    }
+                ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                     <li>
