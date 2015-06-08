@@ -240,15 +240,29 @@
     		$nome_cap = $capitao['nome'];
 		    $nome_time = $time['nome'];
 
+		    $mensagem = "Prezado ".$nome_cap.",";
+		    $mensagem .= "\n\n";
+			$mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE – Sua inscrição é a de número ".$id_time['id'].". ";
+			$mensagem .= "Favor realizar o pagamento da taxa de inscrição através de transferência ou depósito bancário.";
+			$mensagem .= "\n\n";
 
-		    $mensagem = "Prezado ".$nome_cap.",\n\n";
-		    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE. ";
-		    $mensagem .= "Favor realizar o pagamento da taxa de inscrição através de uma transferência.\n\n";
-		    $mensagem .= "Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ";
-		    $mensagem .= "até o término desse prazo, seu time perderá a preferência para as 64 vagas reservadas, podendo assim ";
-		    $mensagem .= "ficar de fora do campeonato.\n\n";
-		    $mensagem .= "Os dados da conta bancária são:\n\tAgência 1668-3\n\tConta 40302-4\n\tRodrigo Nunes de Castro \n\n";
-		    $mensagem .= "Atenciosamente, \nEquipe OxE";
+			$mensagem .= "Os dados da conta (Banco do Brasil) são:";
+			$mensagem .= "\n\t";
+			$mensagem .= "Agência 1668-3";
+			$mensagem .= "\n\t";
+			$mensagem .= "Conta 40302-4";
+			$mensagem .= "\n\t";
+			$mensagem .= "Rodrigo Nunes de Castro";
+			$mensagem .= "\n\n";
+
+			$mensagem .= "Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ";
+			$mensagem .= "até o término desse prazo, sua equipe será reposicionada para o final da lista ";
+			$mensagem .= "de inscrições, podendo assim ficar de fora do campeonato.";
+        	$mensagem .= "\n\n";
+        
+			$mensagem .= "Atenciosamente,";
+		    $mensagem .= "\n";
+		    $mensagem .= "Equipe OxE";
 
 		    send_mail($para, $assunto, $mensagem);
 
@@ -265,16 +279,29 @@
     		$nome_cap = $capitao['nome'];
 		    $nome_time = $time['nome'];
 
-		    $mensagem = "Prezado ".$nome_cap.",\n\n";
-		    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE. ";
-		    $mensagem .= "Atualmente, todas as 64 vagas estão reservadas e seu time encontra-se na lista de espera.\n\n";
-		    $mensagem .= "Caso algum time que está ocupando a vaga não pague a taxa de inscrição, os times na lista de ";
-		    $mensagem .= "espera irão ter direito a essa vaga. Caso a quantidade de times na lista de espera chegue a 64 times, ";
-		    $mensagem .= "iremos abrir as 64 vagas extras. Caso todos os times paguem as inscrições, o CNE ";
-		    $mensagem .= "passará a ocorrer com 128 times.\n\n";
-		    $mensagem .= "Assim que for liberada alguma vaga, entraremos em contato com o time na lista de espera enviando as ";
-		    $mensagem .= "instruções para realizar o pagamento.\n\n";
-		    $mensagem .= "Atenciosamente, \nEquipe OxE";
+		    $mensagem = "Prezado ".$nome_cap.",";
+		    $mensagem .= "\n\n";
+		    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE – Sua inscrição é a de número ".$id_time['id'].". ";
+		    $mensagem .= "Atualmente, todas as 64 vagas estão reservadas e seu time encontra-se na lista de espera.";
+		    $mensagem .= "\n\n";
+		    
+		    $mensagem .= "Sua equipe poderá participar do CNE em 2 casos:";
+		    $mensagem .= "\n\n\t";
+		    $mensagem .= "1º - Caso algum dos primeiros 64 times inscritos não pague a taxa de inscrição, desista da ";
+		    $mensagem .= "inscrição ou esteja com algum tipo de irregularidade comprovada, este será excluído ou recolocado ";
+		    $mensagem .= "para o final da lista de inscrições, tendo sua vaga ocupada pelos times da lista de espera.";
+		    $mensagem .= "\n\n\t";
+		    $mensagem .= "2º - Se a lista de espera alcançar o nº de 64 equipes, iremos abrir as 64 vagas extras e se ";
+		    $mensagem .= "esses times realizarem o pagamento da taxa de inscrição no prazo previsto o CNE ocorrerá com 128 times.";
+		    $mensagem .= "\n\n";
+
+		    $mensagem .= "Se sua equipe for selecionada para as vagas residuais entraremos em contato com os ";
+		    $mensagem .= "dados bancários para a realização do pagamento da taxa de inscrição no prazo previsto.";
+		    $mensagem .= "\n\n";
+
+		    $mensagem .= "Atenciosamente,";
+		    $mensagem .= "\n";
+		    $mensagem .= "Equipe OxE";
 
 		    send_mail($para, $assunto, $mensagem);
 
@@ -290,4 +317,44 @@
     	ob_clean();
 		header('LOCATION: /oxe/index.php/cne/success/');
     }
+
+
+    /*$assunto = 'Campeonato CNE';
+
+	$nome_cap = 'Rodrigo';
+    $nome_time = 'Failboat';
+
+    $id_time['id'] = 64;
+
+    $mensagem = "Prezado ".$nome_cap.",";
+    $mensagem .= "\n\n";
+    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE – Sua inscrição é a de número ".$id_time['id'].". ";
+    $mensagem .= "Favor realizar o pagamento da taxa de inscrição através de transferência ou depósito bancário.";
+	$mensagem .= "\n\n";
+
+	$mensagem .= "Os dados da conta (Banco do Brasil) são:";
+	$mensagem .= "\n\t";
+	$mensagem .= "Agência 1668-3";
+	$mensagem .= "\n\t";
+	$mensagem .= "Conta 40302-4";
+	$mensagem .= "\n\t";
+	$mensagem .= "Rodrigo Nunes de Castro";
+	$mensagem .= "\n\n";
+
+	$mensagem .= "Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ";
+	$mensagem .= "até o término desse prazo, sua equipe será reposicionada para o final da lista ";
+	$mensagem .= "de inscrições, podendo assim ficar de fora do campeonato.";
+	$mensagem .= "\n\n";
+
+	$mensagem .= "Atenciosamente,";
+    $mensagem .= "\n";
+    $mensagem .= "Equipe OxE";
+
+    //send_mail($para, $assunto, $mensagem);
+
+    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+    send_mail('darlanbx@gmail.com', $assunto, $mensagem);
+    send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
+    send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
+    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);*/
 ?>
