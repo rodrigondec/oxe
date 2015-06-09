@@ -354,8 +354,11 @@
     	}
 
     	/* END SEND MAIL */
-
-    	ob_clean();
-		header('LOCATION: /oxe/index.php/cne/success/');
+    	echo "<button hidden id='clickButton' onclick='success();'>teste</button>
+		<script type='text/javascript'>
+			window.onload = function(){
+				document.getElementById('clickButton').click();
+			}
+		</script>";
     }
 ?>

@@ -36,6 +36,19 @@ function success(){
 	});	
 }
 
+function success_alt(){
+	swal({
+		title: "",
+		text: "Dados alterados com sucesso!",
+		type: "success",
+		closeOnConfirm: false,
+		html: false
+	}, 
+	function(){
+		window.location = '/oxe/index.php/cne/time';
+	});	
+}
+
 function remove_reserva(link){
 	label = link.parentNode;
 	counter = true;

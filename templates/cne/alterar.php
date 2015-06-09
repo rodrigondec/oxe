@@ -73,7 +73,7 @@
     	if($_GET['type'] == '1'){
     		$check_time_nome = select('*', 'times', 'nome', $_POST['nome'], $link_cne);
 	    	if(isset($check_time_nome['nome'])){
-	    		if($check_time_nome['id'] != $_GET['id']){
+	    		if($check_time_nome['id'] != $time['id']){
 	    			echo "<button hidden id='clickButton' onClick='dado_alt(\"time\", \"O nome ".$check_time_nome['nome']." já está cadastrado!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -85,7 +85,7 @@
 
 	    	$check_time_sigla = select('*', 'times', 'sigla', $time['sigla'], $link_cne);
 	    	if(isset($check_time_sigla['sigla'])){
-	    		if($check_time_nome['id'] != $_GET['id']){
+	    		if($check_time_sigla['id'] != $time['id']){
 		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"time\", \"A sigla ".$check_time_sigla['sigla']." já está cadastrada!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -95,12 +95,21 @@
 	    		}
 	    	}
 
-	    	echo "ALTERAR TIME";
+	    	update($_POST, 'times', 'id', $time['id'], $link_cne);
+	    	$time_sigla['sigla_time'] = $_POST['sigla'];
+	    	update($time_sigla, 'capitaes', 'id', $time['id_capitao'], $link_cne);
+
+	    	echo "<button hidden id='clickButton' onclick='success_alt();'>teste</button>
+			<script type='text/javascript'>
+				window.onload = function(){
+					document.getElementById('clickButton').click();
+				}
+			</script>";
     	}
     	else if($_GET['type'] == '2'){
     		$check_capitao_login = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
 			if(isset($check_capitao_login['login'])){
-				if($check_capitao_login['id'] != $_GET['id']){
+				if($check_capitao_login['id'] != $capitao['id']){
 		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O email ".$check_capitao_login['login']." já está cadastrado!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -112,7 +121,7 @@
 
 	    	$check_capitao_nick = select('*', 'capitaes', 'nick', $_POST['nick'], $link_cne);
 	    	if(isset($check_capitao_nick['nick'])){
-	    		if($check_capitao_nick['id'] != $_GET['id']){
+	    		if($check_capitao_nick['id'] != $capitao['id']){
 		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -124,7 +133,7 @@
 
 	    	$check_capitao_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link_cne);
 	    	if(isset($check_capitao_cpf['cpf'])){
-	    		if($check_capitao_cpf['id'] != $_GET['id']){
+	    		if($check_capitao_cpf['id'] != $capitao['id']){
 		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -134,12 +143,19 @@
 	    		}
 	    	}
 
-	    	echo "ALTERAR CAPITAO";
+	    	update($_POST, 'capitaes', 'id', $capitao['id'], $link_cne);
+
+	    	echo "<button hidden id='clickButton' onclick='success_alt();'>teste</button>
+			<script type='text/javascript'>
+				window.onload = function(){
+					document.getElementById('clickButton').click();
+				}
+			</script>";
     	}
     	else if($_GET['type'] == '3'){
     		$check_jogador_nick = select('*', 'jogadores', 'nick', $_POST['nick'], $link_cne);
 	    	if(isset($check_jogador_nick['nick'])){
-	    		if($check_jogador_nick['id'] != $_GET['id']){
+	    		if($check_jogador_nick['id'] != $jogador['id']){
 		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"jogador\", \"O nick ".$check_jogador_nick['nick']." já está cadastrado!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -151,7 +167,7 @@
 
 	    	$check_jogador_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link_cne);
 	    	if(isset($check_jogador_cpf['cpf'])){
-	    		if($check_jogador_cpf['id'] != $_GET['id']){
+	    		if($check_jogador_cpf['id'] != $jogador['id']){
 		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"jogador\", \"O cpf ".$check_jogador_cpf['cpf']." já está cadastrado!\");'>teste</button>
 		    		<script type='text/javascript'>
 		    			window.onload = function(){
@@ -161,8 +177,14 @@
 	    		}
 	    	}
 
-	    	echo "ALTERAR JOGADOR";
+	    	update($_POST, 'jogadores', 'id', $jogador['id'], $link_cne);
+
+	    	echo "<button hidden id='clickButton' onclick='success_alt();'>teste</button>
+			<script type='text/javascript'>
+				window.onload = function(){
+					document.getElementById('clickButton').click();
+				}
+			</script>";
     	}
-    	var_dump($_POST);
     }
 ?>
