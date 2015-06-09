@@ -38,12 +38,7 @@ function success(){
 
 function remove_reserva(link){
 	label = link.parentNode;
-	if(counter == 2 && label.id == 'reserva_1'){
-		label_input_2 = document.getElementById('reserva_2');
-		label_input_2.id = 'reserva_1';
-		label_input_2.innerHTML = "Reserva #"+1+" <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a>"
-	};
-	counter--;
+	counter = true;
 	div_form_group = label.parentNode;
 	div = div_form_group.parentNode;
 	div.remove();
@@ -51,16 +46,16 @@ function remove_reserva(link){
 }
 
 function reserva(){
-	if (counter <= 1) {
-		counter++;
+	if (counter) {
+		counter = false;
 		var div = document.getElementById('time');
 		var reserva = document.createElement('div')
-		reserva.innerHTML = "<div class=\'form-group\'><label id=\'reserva_"+counter+"\' for=\'input_reserva\'>Reserva #"+counter+" <a class=\'btn btn-danger\' href=\'#\' onClick=\'remove_reserva(this);\'>remover</a></label><input type=\'text\' name=\'reserva_"+counter+"[nome]\' class=\'form-control\' id=\'input_reserva\' placeholder=\'nome\' required /><input type=\'text\' name=\'reserva_"+counter+"[nick]\' class=\'form-control\' placeholder=\'nick\' style=\'margin-top: 10px;\' required /><input type=\'text\' name=\'reserva_"+counter+"[cpf]\' onKeypress=\'mask(this,\"cpf\");\' class=\'form-control\' placeholder=\'CPF\' maxlength=\'14\' style=\'margin-top: 10px;\' required /></div>";
+		reserva.innerHTML = "<div class='form-group'><label id=\'reserva\' for=\'input_reserva\'>Reserva <a class=\'btn btn-danger\' href=\'#\' onClick=\'remove_reserva(this);\'>remover</a></label><input type=\'text\' name=\'reserva[nome]\' class=\'form-control\' id=\'input_reserva\' placeholder=\'nome\' required /><input type=\'text\' name=\'reserva[nick]\' class=\'form-control\' placeholder=\'nick\' style=\'margin-top: 10px;\' required /><input type=\'text'\ name=\'reserva[cpf]\' onKeypress='mask(this,\"cpf\");' class=\'form-control\' placeholder=\'CPF\' maxlength=\'14\' style=\'margin-top: 10px;\' required /></div>";
 		div.appendChild(reserva);
 		swal("", "Reserva adicionado com sucesso!", "success");
 	} 
 	else{
-		swal("", "Não é permitido ter mais do que 2 reservas por time", "error");
+		swal("", "Não é permitido ter mais do que 1 reserva por time", "error");
 	};
 }
 
@@ -102,7 +97,7 @@ function validar_email(textbox){
 	usuario = textbox.value.substring(0, textbox.value.indexOf("@")); 
 	dominio = textbox.value.substring(textbox.value.indexOf("@")+ 1, textbox.value.length); 
 
-	if ((usuario.length >=1) && 
+	if(!((usuario.length >=1) && 
 		(dominio.length >=3) && 
 		(usuario.search("@")==-1) && 
 		(dominio.search("@")==-1) && 
@@ -110,12 +105,9 @@ function validar_email(textbox){
 		(dominio.search(" ")==-1) && 
 		(dominio.search(".")!=-1) && 
 		(dominio.indexOf(".") >=1) && 
-		(dominio.lastIndexOf(".") < dominio.length - 1)) { 
-		swal('Email válido!', '', 'success');
-	} 
-	else{ 
+		(dominio.lastIndexOf(".") < dominio.length - 1))) { 
 		swal('Email inválido!', 'Favor digite um email válido no campo indicado', 'error');
-	}
+	} 
 }
 
 function mask(textbox, tipo){

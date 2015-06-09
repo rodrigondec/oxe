@@ -8,7 +8,6 @@
 				<!-- Logo 1º torneio -->
 				<div class='col-md1'>
 					<img src="/oxe/estaticos/source/imgs/oxe.png" width='300' height='300'>
-
 				</div>
 				<!-- descrição 1º torneio -->
 				<div class='col-md1'>

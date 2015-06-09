@@ -26,12 +26,15 @@
                     </ul>
                 </li> -->
                 <?php 
-                    if($_SESSION['privilegio'] == 'capitao'){
+                    if(isset($_SESSION['privilegio'])){
+                        if($_SESSION['privilegio'] == 'capitao'){
+
+
                 ?>
                 <li><a href="/oxe/index.php/cne/time">Meu Time</a></li>
                 <?php
-                    }
-                    else{
+                        }
+                        else if($_SESSION['privilegio'] == 'admin'){
                 ?>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
@@ -44,6 +47,7 @@
                     </ul>
                 </li>
                 <?php
+                        }
                     }
                 ?>
             </ul>

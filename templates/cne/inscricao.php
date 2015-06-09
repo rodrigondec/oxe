@@ -1,13 +1,4 @@
 <?php 
-    // conexão com banco database oxe
-    $link_oxe = mysql_connect(DB_HOST, DB_USER, DB_PASS);
-    if (!$link_oxe) {
-        die('Erro de conexão com o banco de dados: '.mysql_error());
-    } else if (isset($debug)) {
-        echo '<p>Conectado ao banco com sucesso</p>';
-    }
-    mysql_select_db(DB_NAME_OXE, $link_oxe);
-
     // conexão com banco database cne
     $link_cne = mysql_connect(DB_HOST, DB_USER, DB_PASS, true);
     if (!$link_cne) {
@@ -18,7 +9,7 @@
     mysql_select_db(DB_NAME_CNE, $link_cne);
 ?>
 <script type="text/javascript">
-	var counter = 0;
+	var counter = true;
 </script>
 <div class='form-boot-20'>
 	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
@@ -26,7 +17,7 @@
 	  	<div class='form-group'>
 	    	<label for='input_nome_time'>Time</label>
 	    	<input type='text' name='time[nome]' class='form-control' id='input_nome_time' placeholder='Nome do time' required />
-	    	<input type='text' name='time[sigla]' class='form-control' id='input_sigla_time' placeholder='Sigla do time' style='margin-top: 10px;' required />
+	    	<input type='text' name='time[sigla]' class='form-control' id='input_sigla_time' placeholder='Sigla do time' maxlength="3" style='margin-top: 10px;' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_capitao'>Capitão</label>
@@ -72,28 +63,28 @@
 	    	<input type='text' name='integrante_5[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
 	  	</div>
 	  	<!-- <div class='form-group'>
-	  		<label id='reserva_"+counter+"' for='input_reserva'>Reserva #"+counter+" <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label>
-	 		<input type='text' name='reserva_"+counter+"['nome']' class='form-control' id='input_reserva' placeholder='nome' required />
-	 		<input type='text' name='reserva_"+counter+"['nick']' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	 		<input type='text' name='reserva_"+counter+"['cpf']' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
+	  		<label id='reserva' for='input_reserva'>Reserva <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label>
+	 		<input type='text' name='reserva[nome]' class='form-control' id='input_reserva' placeholder='nome' required />
+	 		<input type='text' name='reserva[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
+	 		<input type='text' name='reserva[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
  		</div> -->
 
 	  	</div>
 	  	<div id='buttons'>
-	  	<button type='submit' class='btn btn-default'>Submit</button>
-	  	<a class='btn btn-info' href='#' onClick='reserva();'>Adicionar reserva</a>
+		  	<button type='submit' class='btn btn-default'>Submit</button>
+		  	<a class='btn btn-info' href='#' onClick='reserva();'>Adicionar reserva</a>
 	  	</div>
 	</form>
 </div>
 <?php 
     if(count($_POST) > 0){
     	//var_dump($_POST);
-    	if(count($_POST) < 6 || count($_POST) > 8){
+    	if(count($_POST) < 6 || count($_POST) > 7){
     		echo "<button hidden id='clickButton' onClick='form_breached();'>teste</buttom>
     		<script type='text/javascript'>
-    		window.onload = function(){
-    			document.getElementById('clickButton').click();
-    		}
+	    		window.onload = function(){
+	    			document.getElementById('clickButton').click();
+	    		}
     		</script>"; 
     	}
     	else{
@@ -123,7 +114,7 @@
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();
 	    			}
-	    			</script>";
+    			</script>";
 	    	}
 
 	    	$check_time_sigla = select('sigla', 'times', 'sigla', $time['sigla'], $link_cne);
@@ -133,7 +124,7 @@
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();
 	    			}
-	    			</script>";
+    			</script>";
 	    	}
 
 	    	$check_capitao_login = select('login', 'capitaes', 'login', $capitao['login'], $link_cne);
@@ -143,7 +134,7 @@
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();
 	    			}
-	    			</script>";
+    			</script>";
 	    	}
 
 	    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $capitao['nick'], $link_cne);
@@ -153,7 +144,7 @@
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();
 	    			}
-	    			</script>";
+    			</script>";
 	    	}
 
 	    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
@@ -163,7 +154,7 @@
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();
 	    			}
-	    			</script>";
+    			</script>";
 	    	}
 
 	    	$check_integrantes = array();
@@ -175,7 +166,7 @@
 		    			window.onload = function(){
 		    				document.getElementById('clickButton').click();
 		    			}
-		    			</script>";
+	    			</script>";
 		    	}
 	    		$check_integrantes[$key] = select('cpf', 'jogadores', 'cpf', $integrantes[$key]['cpf'], $link_cne);
 	    		if(isset($check_integrantes[$key]['cpf'])){
@@ -184,8 +175,54 @@
 		    			window.onload = function(){
 		    				document.getElementById('clickButton').click();
 		    			}
-		    			</script>";
+	    			</script>";
 		    	}
+	    	}
+	    	/* END VEFICICAÇÃO PARA DUPLICATAS NO BANCO */
+	    	/* INICIANDO VERIFICAÇÃO PARA DUPLICATAS NO PRÓPRIO FORM */
+
+	    	foreach ($integrantes as $key => $value) {
+	    		if($capitao['nick'] == $integrantes[$key]['nick']){
+	    			echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
+		    		<script type='text/javascript'>
+		    			window.onload = function(){
+		    				document.getElementById('clickButton').click();
+		    			}
+	    			</script>";
+	    		}
+
+	    		if($capitao['cpf'] == $integrantes[$key]['cpf']){
+	    			echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
+		    		<script type='text/javascript'>
+		    			window.onload = function(){
+		    				document.getElementById('clickButton').click();
+		    			}
+	    			</script>";
+	    		}
+	    	}
+
+	    	foreach ($integrantes as $key => $value) {
+	    		foreach ($integrantes as $key2 => $value2) {
+	    			if($key != $key2){
+	    				if($integrantes[$key]['nick'] == $integrantes[$key2]['nick']){
+	    					echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O nick ".$integrantes[$key]['nick']." já está cadastrado!\");'>teste</button>
+				    		<script type='text/javascript'>
+				    			window.onload = function(){
+				    				document.getElementById('clickButton').click();
+				    			}
+			    			</script>";
+	    				}
+	    				if($integrantes[$key]['cpf'] == $integrantes[$key2]['cpf']){
+	    					echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O cpf ".$integrantes[$key]['cpf']." já está cadastrado!\");'>teste</button>
+				    		<script type='text/javascript'>
+				    			window.onload = function(){
+				    				document.getElementById('clickButton').click();
+				    			}
+			    			</script>";
+	    				}
+
+	    			}
+	    		}
 	    	}
 	    	/* END VERIFICAÇÃO */
     	}
@@ -270,11 +307,11 @@
 
 		    send_mail($para, $assunto, $mensagem);
 
-		    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+		    /*send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
 		    send_mail('darlanbx@gmail.com', $assunto, $mensagem);
 		    send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
 		    send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
-		    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);
+		    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);*/
     	}
     	else if(intval($id_time['id']) > 64){
     		$para = $capitao['login'];
@@ -309,11 +346,11 @@
 
 		    send_mail($para, $assunto, $mensagem);
 
-		    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+		    /*send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
 		    send_mail('darlanbx@gmail.com', $assunto, $mensagem);
 		    send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
 		    send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
-		    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);
+		    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);*/
     	}
 
     	/* END SEND MAIL */
@@ -321,44 +358,4 @@
     	ob_clean();
 		header('LOCATION: /oxe/index.php/cne/success/');
     }
-
-
-    /*$assunto = 'Campeonato CNE';
-
-	$nome_cap = 'Rodrigo';
-    $nome_time = 'Failboat';
-
-    $id_time['id'] = 64;
-
-    $mensagem = "Prezado ".$nome_cap.",";
-    $mensagem .= "\n\n";
-    $mensagem .= "Seu time ".$nome_time." foi inscrito com sucesso no CNE – Sua inscrição é a de número ".$id_time['id'].". ";
-    $mensagem .= "Favor realizar o pagamento da taxa de inscrição através de transferência ou depósito bancário.";
-	$mensagem .= "\n\n";
-
-	$mensagem .= "Os dados da conta (Banco do Brasil) são:";
-	$mensagem .= "\n\t";
-	$mensagem .= "Agência 1668-3";
-	$mensagem .= "\n\t";
-	$mensagem .= "Conta 40302-4";
-	$mensagem .= "\n\t";
-	$mensagem .= "Rodrigo Nunes de Castro";
-	$mensagem .= "\n\n";
-
-	$mensagem .= "Seu time terá a vaga reservada durante 2 dias úteis. Caso a transferência não seja realizada ";
-	$mensagem .= "até o término desse prazo, sua equipe será reposicionada para o final da lista ";
-	$mensagem .= "de inscrições, podendo assim ficar de fora do campeonato.";
-	$mensagem .= "\n\n";
-
-	$mensagem .= "Atenciosamente,";
-    $mensagem .= "\n";
-    $mensagem .= "Equipe OxE";
-
-    //send_mail($para, $assunto, $mensagem);
-
-    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
-    send_mail('darlanbx@gmail.com', $assunto, $mensagem);
-    send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
-    send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
-    send_mail('tiagofcap@gmail.com', $assunto, $mensagem);*/
 ?>

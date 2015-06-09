@@ -43,7 +43,7 @@ CREATE TABLE jogadores(
 CREATE TABLE times(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
-	sigla varchar(10) NOT NULL,
+	sigla varchar(3) NOT NULL,
 	posicao_time int NOT NULL,
 	pago boolean NOT NULL,
 	id_capitao int,
@@ -51,8 +51,7 @@ CREATE TABLE times(
 	id_integrante_3 int,
 	id_integrante_4 int,
 	id_integrante_5 int,
-	id_reserva_1 int,
-	id_reserva_2 int,
+	id_reserva int,
 	PRIMARY KEY (id),
 	UNIQUE (nome),
 	UNIQUE (sigla),
@@ -61,8 +60,7 @@ CREATE TABLE times(
 	FOREIGN KEY (id_integrante_3) REFERENCES jogadores(id),
 	FOREIGN KEY (id_integrante_4) REFERENCES jogadores(id),
 	FOREIGN KEY (id_integrante_5) REFERENCES jogadores(id),
-	FOREIGN KEY (id_reserva_1) REFERENCES jogadores(id),
-	FOREIGN KEY (id_reserva_2) REFERENCES jogadores(id)
+	FOREIGN KEY (id_reserva) REFERENCES jogadores(id)
 );
 
 insert into capitaes (nome, login, senha, nick, telefone, cpf) values ('tiago', 'tiago@email.com', md5('tiago'), 'Anoubys', '(84) 998184097', '016.887.454-75');
