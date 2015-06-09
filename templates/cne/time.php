@@ -16,7 +16,7 @@
     $integrantes['integrante_4'] = select('*', 'jogadores', 'id', $time['id_integrante_4'], $link_cne);
     $integrantes['integrante_5'] = select('*', 'jogadores', 'id', $time['id_integrante_5'], $link_cne);
     $integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link_cne);
-    var_dump($capitao);
+    //var_dump($capitao);
 ?>
 <div class='text-center'><h2>Time</h2></div>
 <table class="table table-striped">

@@ -18,7 +18,7 @@
 
     if($_GET['type'] == '1'){
     	$time = select('*', 'times', 'id', $_GET['id'], $link_cne);
-    	var_dump($time);
+    	//var_dump($time);
 ?>
 
 <!-- FORMULÁRIO TIME -->
