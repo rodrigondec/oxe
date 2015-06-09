@@ -93,6 +93,19 @@ function dado_duplicado(id, str){
 	});
 }
 
+function dado_alt(id, str){
+	swal({
+		title: "Cadastro do "+id+" duplicado!",
+		text: str,
+		type: "error",
+		closeOnConfirm: false,
+		html: false
+	}, 
+	function(){
+		window.location = '/oxe/index.php/cne/time';
+	});
+}
+
 function validar_email(textbox){
 	usuario = textbox.value.substring(0, textbox.value.indexOf("@")); 
 	dominio = textbox.value.substring(textbox.value.indexOf("@")+ 1, textbox.value.length); 
