@@ -11,7 +11,7 @@
 <script type="text/javascript">
 	var counter = true;
 </script>
-<div class='form-boot-20'>
+<div class='margins-20'>
 	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
 		<div id='time'>
 	  	<div class='form-group'>

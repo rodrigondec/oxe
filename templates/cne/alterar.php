@@ -10,7 +10,7 @@
 ?>
 
 <div class='text-center'><h2>Alterar</h2></div>
-<div class='form-boot-20'>
+<div class='margins-20'>
 	<form action='<?php echo $_SERVER['PHP_SELF'].'?type='.$_GET['type'].'&id='.$_GET['id']; ?>' method='post'>
 	  	<div class='form-group'>
 
