@@ -39,7 +39,7 @@
 			$_SESSION['login'] = $usuario['login'];
 			$_SESSION['privilegio'] = 'admin';
 			ob_clean();
-			header('LOCATION: /oxe/index.php/admin/times');
+			header('LOCATION: /oxe/index.php/admin/listar_times');
 		}
 		else{
 			$usuario = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);

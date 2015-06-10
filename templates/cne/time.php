@@ -94,10 +94,8 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>";
+				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>Alterar</a>";
 				?>
-					Alterar
-				</a>
 			</td>
 		</tr>
 	</tbody>

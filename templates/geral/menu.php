@@ -28,8 +28,6 @@
                 <?php 
                     if(isset($_SESSION['privilegio'])){
                         if($_SESSION['privilegio'] == 'capitao'){
-
-
                 ?>
                 <li><a href="/oxe/index.php/cne/time">Meu Time</a></li>
                 <?php
@@ -40,9 +38,9 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/oxe/index.php/admin/times">Times</a>
-                            <a href="/oxe/index.php/admin/capitaes">Capitaes</a>
-                            <a href="/oxe/index.php/admin/jogadores">Jogadores</a>
+                            <a href="/oxe/index.php/admin/listar_times">Times</a>
+                            <a href="/oxe/index.php/admin/listar_capitaes">Capitaes</a>
+                            <a href="/oxe/index.php/admin/listar_jogadores">Jogadores</a>
                         </li>
                     </ul>
                 </li>
@@ -52,17 +50,27 @@
                 ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <?php 
-                            if(isset($_SESSION['login'])){
-                                echo "<a href='#' onclick='log_out()'>".$_SESSION['login']." (logout)</a>";
-                            }
-                            else{
-                                echo "<a href='/oxe/index.php/login'>Iniciar Sessão</a>";
-                            }
-                        ?>
-                    </li>
-                </ul>
+                <?php 
+                    if(isset($_SESSION['privilegio'])){
+                        if($_SESSION['privilegio'] == 'admin'){
+                ?>
+                <li><a href="/oxe/index.php/configs">Configs</a></li>
+                <li><a href="/oxe/admin/index.php">PHPMyAdmin</a></li>
+                <?php
+                        }
+                    }
+                ?>
+                <li>
+                    <?php 
+                        if(isset($_SESSION['login'])){
+                            echo "<a href='#' onclick='log_out()'>".$_SESSION['login']." (logout)</a>";
+                        }
+                        else{
+                            echo "<a href='/oxe/index.php/login'>Iniciar Sessão</a>";
+                        }
+                    ?>
+                </li>
+            </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
