@@ -5,6 +5,9 @@
         if($arquivo == 'login'){
             return LOGIN;
         }
+        else if($arquivo == 'configs'){
+            return CONFIGS;
+        }
         return TEMPLATES.'/'.$pasta.'/'.$arquivo.'.php';
     }
 

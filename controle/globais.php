@@ -19,6 +19,8 @@
 	define('BASE', 'OxE');
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'/templates/');
 	define('LOGIN', ARQUIVOS.'/'.BASE.'/login.php');
+	define('CONFIGS', ARQUIVOS.'/'.BASE.'/configs/index.php');
+	define('PHPMYADMIN', ARQUIVOS.'/'.BASE.'/admin/index.php');
 	
 	define('DB_NAME_OXE', 'oxe');
 	define('DB_NAME_CNE', 'cne');
