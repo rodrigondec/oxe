@@ -18,7 +18,7 @@
     $integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link_cne);
     //var_dump($capitao);
 ?>
-<div class='text-center'><h2>Time</h2></div>
+<div class='text-center header-3'><h2>Time</h2></div>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -63,7 +63,7 @@
 	</tbody>
 </table>
 
-<br /><div class='text-center'><h2>Capitão</h2></div>
+<div class='text-center header-3'><h2>Capitão</h2></div>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -101,7 +101,7 @@
 	</tbody>
 </table>
 
-<br /><div class='text-center'><h2>Jogadores</h2></div>
+<div class='text-center header-3'><h2>Jogadores</h2></div>
 <table class="table table-striped">
 	<thead>
 		<tr>

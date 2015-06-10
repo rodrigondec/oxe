@@ -9,8 +9,8 @@
     mysql_select_db(DB_NAME_CNE, $link_cne);
 ?>
 
-<div class='text-center'><h2>Alterar</h2></div>
-<div class='margins-20'>
+<div class='text-center header-3'><h2>Alterar</h2></div>
+<div class='centered-20'>
 	<form action='<?php echo $_SERVER['PHP_SELF'].'?type='.$_GET['type'].'&id='.$_GET['id']; ?>' method='post'>
 	  	<div class='form-group'>
 
