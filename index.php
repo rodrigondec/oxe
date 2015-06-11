@@ -2,6 +2,9 @@
 <html>
     <head>
     	<meta charset="UTF-8">
+            <meta property="og:image" content="http://oxe.aws.af.cm/estaticos/source/imgs/cne.png" />
+            <meta property="og:title" content="OxE" />
+            <meta property="og:description" content="Organization & Sports" />
             <link rel="icon" href="/oxe/estaticos/source/imgs/oxe.png">
 
             <link rel="stylesheet" href="/oxe/estaticos/estilo.css">
