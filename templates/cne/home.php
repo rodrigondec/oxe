@@ -1,6 +1,6 @@
 <div align='center' class='centered-20'>
 	<div class='header-2'>
-		<h1 style='font-family:fireye; color:#005C83;'><b>OXE</b></h1>
+		<h1 style='font-family:fireye; color:#005C83;'><b>CNE</b></h1>
 	</div>
 	<p class="text-justify ident">
 		O primeiro Campeonato de League of Legends organizado pela OxE é o Campeonato do Nordeste – CNE e será uma 
