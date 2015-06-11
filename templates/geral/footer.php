@@ -1,9 +1,16 @@
 <!-- <div id="footer">
 	<div class="container"> -->
     	<div align='center'>
-			<p>Organization & E-sports - OxE</p>
-			<p>organizationxesports@gmail.com - (84) 9 9818-4097</p>
-			<p>CNPJ/CPF: 016.887.454-75</p>
+			<p>
+				<font style='font-family:fireye; color:#005C83;'>OXE</font>
+				<br />
+				<font style='font-family:bitsumishi; color:#898987;'>Organization & E-sports</font>
+				<br />
+				organizationxesports@gmail.com - (84) 9 9818-4097
+				<br />
+				CNPJ/CPF: 016.887.454-75
+			</p>
+			
 			<div class='share-buttons'>
 				<!-- Facebook -->
 				<a href="https://www.facebook.com/OrgXEsprt" target="_blank"><img src="http://static.viewbook.com/images/social_icons/facebook_32.png" alt="Facebook" /></a>
