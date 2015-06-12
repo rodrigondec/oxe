@@ -70,121 +70,168 @@
 
 <?php
     if(count($_POST) > 0){
+
+    	$inserir = true;
+
     	if($_GET['type'] == '1'){
-    		$check_time_nome = select('*', 'times', 'nome', $_POST['nome'], $link_cne);
-	    	if(isset($check_time_nome['nome'])){
-	    		if($check_time_nome['id'] != $time['id']){
-	    			echo "<button hidden id='clickButton' onClick='dado_alt(\"time\", \"O nome ".$check_time_nome['nome']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
-	    	}
+    		// VERIFICAÇÃO DO TIME
+    		try{
+    			$check_time_nome = select('*', 'times', 'nome', $_POST['nome'], $link_cne);
+		    	if(isset($check_time_nome['nome'])){
+		    		if($check_time_nome['id'] != $time['id']){
+		    			throw new Exception("O nome ".$check_time_nome['nome']." já está cadastrado!");
+		    		}
+		    	}
 
-	    	$check_time_sigla = select('*', 'times', 'sigla', $time['sigla'], $link_cne);
-	    	if(isset($check_time_sigla['sigla'])){
-	    		if($check_time_sigla['id'] != $time['id']){
-		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"time\", \"A sigla ".$check_time_sigla['sigla']." já está cadastrada!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
-	    	}
+		    	$check_time_sigla = select('*', 'times', 'sigla', $_POST['sigla'], $link_cne);
+		    	if(isset($check_time_sigla['sigla'])){
+		    		if($check_time_sigla['id'] != $time['id']){
+		    			throw new Exception("O nome ".$check_time_sigla['sigla']." já está cadastrado!");
+		    		}
+		    	}
+    		} catch (Exception $e){
+    			$inserir = false;
+    			$mensagem = $e->getMessage();
+    			echo "<button hidden id='clickButton' onClick='sa(\"Cadastro do time duplicado!\", \"".$mensagem[1]."\", \"error\", \"/oxe/index.php/cne/time\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+    			</script>";
+    		}
+    		// END VERIFICAÇÃO
 
-	    	update($_POST, 'times', 'id', $time['id'], $link_cne);
-	    	$time_sigla['sigla_time'] = $_POST['sigla'];
-	    	update($time_sigla, 'capitaes', 'id', $time['id_capitao'], $link_cne);
+    		if($inserir){
+    			update($_POST, 'times', 'id', $time['id'], $link_cne);
+		    	$time_sigla['sigla_time'] = $_POST['sigla'];
+		    	update($time_sigla, 'capitaes', 'id', $time['id_capitao'], $link_cne);
 
-	    	echo "<button hidden id='clickButton' onclick='success_alt();'>teste</button>
-			<script type='text/javascript'>
-				window.onload = function(){
-					document.getElementById('clickButton').click();
-				}
-			</script>";
+		    	echo "<button hidden id='clickButton' onclick='sa(\"\", \"Dados alterados com sucesso!\", \"success\", \"/oxe/index.php/cne/time\");'>teste</button>
+				<script type='text/javascript'>
+					window.onload = function(){
+						document.getElementById('clickButton').click();
+					}
+				</script>";
+    		}
+
+	    	
     	}
     	else if($_GET['type'] == '2'){
-    		$check_capitao_login = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
-			if(isset($check_capitao_login['login'])){
-				if($check_capitao_login['id'] != $capitao['id']){
-		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O email ".$check_capitao_login['login']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
-	    	}
+    		// VERIFICAÇÃO DO CAPITÃO
+    		try {
+    			$check_capitao_login = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
+				if(isset($check_capitao_login['login'])){
+					if($check_capitao_login['id'] != $capitao['id']){
+			    		throw new Exception("O email ".$check_capitao_login['login']." já está cadastrado!");
+			    		/*echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"\");'>teste</button>
+			    		<script type='text/javascript'>
+			    			window.onload = function(){
+			    				document.getElementById('clickButton').click();
+			    			}
+		    			</script>";*/
+		    		}
+		    	}
 
-	    	$check_capitao_nick = select('*', 'capitaes', 'nick', $_POST['nick'], $link_cne);
-	    	if(isset($check_capitao_nick['nick'])){
-	    		if($check_capitao_nick['id'] != $capitao['id']){
-		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
-	    	}
+		    	$check_capitao_nick = select('*', 'capitaes', 'nick', $_POST['nick'], $link_cne);
+		    	if(isset($check_capitao_nick['nick'])){
+		    		if($check_capitao_nick['id'] != $capitao['id']){
+			    		throw new Exception("O nick ".$check_capitao_nick['nick']." já está cadastrado!");
+			    		/*echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
+			    		<script type='text/javascript'>
+			    			window.onload = function(){
+			    				document.getElementById('clickButton').click();
+			    			}
+		    			</script>";*/
+		    		}
+		    	}
 
-	    	$check_capitao_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link_cne);
-	    	if(isset($check_capitao_cpf['cpf'])){
-	    		if($check_capitao_cpf['id'] != $capitao['id']){
-		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
-	    	}
+		    	$check_capitao_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link_cne);
+		    	if(isset($check_capitao_cpf['cpf'])){
+		    		if($check_capitao_cpf['id'] != $capitao['id']){
+			    		throw new Exception("O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!");
+			    		/*echo "<button hidden id='clickButton' onClick='dado_alt(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
+			    		<script type='text/javascript'>
+			    			window.onload = function(){
+			    				document.getElementById('clickButton').click();
+			    			}
+		    			</script>";*/
+		    		}
+		    	}
+    		} catch (Exception $e) {
+    			$inserir = false;
+    			$mensagem = $e->getMessage();
+    			echo "<button hidden id='clickButton' onClick='sa(\"Cadastro do capitão duplicado!\", \"".$mensagem[1]."\", \"error\", \"/oxe/index.php/cne/time\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+    			</script>";
+    		}
+    		// END VERIFICAÇÃO
 
-	    	update($_POST, 'capitaes', 'id', $capitao['id'], $link_cne);
+    		if($inserir){
+    			update($_POST, 'capitaes', 'id', $capitao['id'], $link_cne);
 
-	    	echo "<button hidden id='clickButton' onclick='success_alt();'>teste</button>
-			<script type='text/javascript'>
-				window.onload = function(){
-					document.getElementById('clickButton').click();
-				}
-			</script>";
+		    	echo "<button hidden id='clickButton' onclick='sa(\"\", \"Dados alterados com sucesso!\", \"success\", \"/oxe/index.php/cne/time\");'>teste</button>
+				<script type='text/javascript'>
+					window.onload = function(){
+						document.getElementById('clickButton').click();
+					}
+				</script>";
+    		}
+	    	
     	}
     	else if($_GET['type'] == '3'){
-    		$check_jogador_nick = select('*', 'jogadores', 'nick', $_POST['nick'], $link_cne);
-	    	if(isset($check_jogador_nick['nick'])){
-	    		if($check_jogador_nick['id'] != $jogador['id']){
-		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"jogador\", \"O nick ".$check_jogador_nick['nick']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
+    		// VERIFICAÇÃO DO JOGADOR
+    		try {
+    			$check_jogador_nick = select('*', 'jogadores', 'nick', $_POST['nick'], $link_cne);
+		    	if(isset($check_jogador_nick['nick'])){
+		    		if($check_jogador_nick['id'] != $jogador['id']){
+			    		throw new Exception("O nick ".$check_jogador_nick['nick']." já está cadastrado!");
+			    		/*echo "<button hidden id='clickButton' onClick='dado_alt(\"jogador\", \"O nick ".$check_jogador_nick['nick']." já está cadastrado!\");'>teste</button>
+			    		<script type='text/javascript'>
+			    			window.onload = function(){
+			    				document.getElementById('clickButton').click();
+			    			}
+		    			</script>";*/
+		    		}
+		    	}
+
+		    	$check_jogador_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link_cne);
+		    	if(isset($check_jogador_cpf['cpf'])){
+		    		if($check_jogador_cpf['id'] != $jogador['id']){
+			    		throw new Exception("O cpf ".$check_jogador_cpf['cpf']." já está cadastrado!");
+			    		/*echo "<button hidden id='clickButton' onClick='dado_alt(\"jogador\", \"O cpf ".$check_jogador_cpf['cpf']." já está cadastrado!\");'>teste</button>
+			    		<script type='text/javascript'>
+			    			window.onload = function(){
+			    				document.getElementById('clickButton').click();
+			    			}
+		    			</script>";*/
+		    		}
+		    	}
+    		} catch (Exception $e) {
+    			$inserir = false;
+    			$mensagem = $e->getMessage();
+    			echo "<button hidden id='clickButton' onClick='sa(\"Cadastro do jogador duplicado!\", \"".$mensagem[1]."\", \"error\", \"/oxe/index.php/cne/time\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+    			</script>";
+    		}
+    		// END VERIFICAÇÃO
+
+	    	if($inserir){
+	    		update($_POST, 'jogadores', 'id', $jogador['id'], $link_cne);
+
+	    		echo "<button hidden id='clickButton' onclick='sa(\"\", \"Dados alterados com sucesso!\", \"success\", \"/oxe/index.php/cne/time\");'>teste</button>
+				<script type='text/javascript'>
+					window.onload = function(){
+						document.getElementById('clickButton').click();
+					}
+				</script>";
 	    	}
 
-	    	$check_jogador_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link_cne);
-	    	if(isset($check_jogador_cpf['cpf'])){
-	    		if($check_jogador_cpf['id'] != $jogador['id']){
-		    		echo "<button hidden id='clickButton' onClick='dado_alt(\"jogador\", \"O cpf ".$check_jogador_cpf['cpf']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";
-	    		}
-	    	}
-
-	    	update($_POST, 'jogadores', 'id', $jogador['id'], $link_cne);
-
-	    	echo "<button hidden id='clickButton' onclick='success_alt();'>teste</button>
-			<script type='text/javascript'>
-				window.onload = function(){
-					document.getElementById('clickButton').click();
-				}
-			</script>";
     	}
     }
 ?>

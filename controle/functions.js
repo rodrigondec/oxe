@@ -31,19 +31,6 @@ function sa(head, body, tipo, loc){
 	}
 }
 
-function success_alt(){
-	swal({
-		title: "",
-		text: "Dados alterados com sucesso!",
-		type: "success",
-		closeOnConfirm: false,
-		html: false
-	}, 
-	function(){
-		window.location = '/oxe/index.php/cne/time';
-	});	
-}
-
 function accept_regras(){
 	var check = document.getElementById('check_input');
 	if(check.checked == false){
@@ -81,19 +68,6 @@ function upper(textbox) {
 
 function lower(textbox){
 	textbox.value = textbox.value.toLowerCase();
-}
-
-function dado_alt(id, str){
-	swal({
-		title: "Cadastro do "+id+" duplicado!",
-		text: str,
-		type: "error",
-		closeOnConfirm: false,
-		html: false
-	}, 
-	function(){
-		window.location = '/oxe/index.php/cne/time';
-	});
 }
 
 function validar_email(textbox){
