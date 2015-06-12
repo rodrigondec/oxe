@@ -21,7 +21,7 @@
 					<strong>Eu li e concordo com as regras do CNE</strong>
 				</div>
 				<br />
-				<button class='btn' type='button' onclick="swal('', 'É necessário aceitar as regras do CNE para se inscrever!');">Recuso!</button>
+				<button class='btn' type='button' onclick="sa('', 'É necessário aceitar as regras do CNE para se inscrever!', '', '');">Recuso!</button>
 				<button class='btn btn-info' type'submit' onclick="accept_regras();">Aceito!</button>
 			</form>
 		</div>
@@ -30,7 +30,7 @@
 <?php  
 	if(count($_POST) > 0) {
 		if(isset($_SESSION['privilegio'])){
-			echo "<button hidden id='clickButton' onClick='session_regras();'>teste</button>
+			echo "<button hidden id='clickButton' onClick='sa(\"\",\"Seu time já está inscrito no CNE!\",\"\",\"\");'>teste</button>
     		<script type='text/javascript'>
     			window.onload = function(){
     				document.getElementById('clickButton').click();

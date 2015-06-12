@@ -13,27 +13,22 @@ function log_out(){
 	});
 }
 
-function login_errado(){
-	swal({
-		title: "Login inválido!",
-		text: "Verifique e insira novamente seu login e senha",
-		type: "error",
-		closeOnConfirm: false,
-		html: false
-	});	
-}
-
-function success(){
-	swal({
-		title: "",
-		text: "Seu time foi inscrito com sucesso!",
-		type: "success",
-		closeOnConfirm: false,
-		html: false
-	}, 
-	function(){
-		window.location = '/oxe/index.php/cne/home';
-	});	
+function sa(head, body, tipo, loc){
+	if(loc == ''){
+		swal(head, body, tipo);
+	}
+	else{
+		swal({
+			title: head,
+			text: body,
+			type: tipo,
+			closeOnConfirm: false,
+			html: false
+		}, 
+		function(){
+			window.location = loc;
+		});
+	}
 }
 
 function success_alt(){
@@ -56,9 +51,6 @@ function accept_regras(){
 	}
 }
 
-function session_regras(){
-	swal('', 'Seu time já está inscrito no CNE!');
-}
 
 function remove_reserva(link){
 	label = link.parentNode;
@@ -89,32 +81,6 @@ function upper(textbox) {
 
 function lower(textbox){
 	textbox.value = textbox.value.toLowerCase();
-}
-
-function form_breached(){
-	swal({
-		title: "Erro!",
-		text: "Ocorreu um comportamento inesperado no sistema!\nFavor tentar preencher novamente o formulário",
-		type: "error",
-		closeOnConfirm: false,
-		html: false
-	}, 
-	function(){
-		window.location = '/oxe/index.php/cne/inscricao';
-	});	
-}
-
-function dado_duplicado(id, str){
-	swal({
-		title: "Cadastro do "+id+" duplicado!",
-		text: str,
-		type: "error",
-		closeOnConfirm: false,
-		html: false
-	}, 
-	function(){
-		window.location = '/oxe/index.php/cne/inscricao';
-	});
 }
 
 function dado_alt(id, str){

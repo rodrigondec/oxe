@@ -80,7 +80,7 @@
     if(count($_POST) > 0){
     	//var_dump($_POST);
     	if(count($_POST) < 6 || count($_POST) > 7){
-    		echo "<button hidden id='clickButton' onClick='form_breached();'>teste</buttom>
+    		echo "<button hidden id='clickButton' onClick='sa(\"Erro!\", \"Ocorreu um comportamento inesperado no sistema! Favor tentar preencher novamente o formulário\", \"error\", \"/oxe/index.php/cne/inscricao\")'>teste</buttom>
     		<script type='text/javascript'>
 	    		window.onload = function(){
 	    			document.getElementById('clickButton').click();
@@ -113,56 +113,26 @@
 	    		$check_time_nome = select('nome', 'times', 'nome', $time['nome'], $link_cne);
 		    	if(isset($check_time_nome['nome'])){
 		    		throw new Exception("time;O nome ".$check_time_nome['nome']." já está cadastrado!");
-		    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"time\", \"O nome ".$check_time_nome['nome']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";*/
 		    	}
 
 		    	$check_time_sigla = select('sigla', 'times', 'sigla', $time['sigla'], $link_cne);
 		    	if(isset($check_time_sigla['sigla'])){
 		    		throw new Exception("time;A sigla ".$check_time_sigla['sigla']." já está cadastrado!");
-		    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"time\", \"A sigla ".$check_time_sigla['sigla']." já está cadastrada!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";*/
 		    	}
 
 		    	$check_capitao_login = select('login', 'capitaes', 'login', $capitao['login'], $link_cne);
 				if(isset($check_capitao_login['login'])){
 					throw new Exception("capitão;O email ".$check_capitao_login['login']." já está cadastro!");
-		    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O email ".$check_capitao_login['login']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";*/
 		    	}
 
 		    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $capitao['nick'], $link_cne);
 		    	if(isset($check_capitao_nick['nick'])){
 		    		throw new Exception("capitão;O nick ".$check_capitao_nick['nick']." já está cadastrado!");
-		    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";*/
 		    	}
 
 		    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
 		    	if(isset($check_capitao_cpf['cpf'])){
 		    		throw new Exception("capitão;O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!");
-		    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
-		    		<script type='text/javascript'>
-		    			window.onload = function(){
-		    				document.getElementById('clickButton').click();
-		    			}
-	    			</script>";*/
 		    	}
 
 		    	$check_integrantes = array();
@@ -170,22 +140,10 @@
 		    		$check_integrantes[$key] = select('nick', 'jogadores', 'nick', $integrantes[$key]['nick'], $link_cne);
 		    		if(isset($check_integrantes[$key]['nick'])){
 		    			throw new Exception("jogador ".$integrantes[$key]['nome'].";O nick ".$integrantes[$key]['nick']." já está cadastrado!");
-			    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O nick ".$integrantes[$key]['nick']." já está cadastrado!\");'>teste</button>
-			    		<script type='text/javascript'>
-			    			window.onload = function(){
-			    				document.getElementById('clickButton').click();
-			    			}
-		    			</script>";*/
 			    	}
 		    		$check_integrantes[$key] = select('cpf', 'jogadores', 'cpf', $integrantes[$key]['cpf'], $link_cne);
 		    		if(isset($check_integrantes[$key]['cpf'])){
 		    			throw new Exception("jogador ".$integrantes[$key]['nome'].";O cpf ".$integrantes[$key]['cpf']." já está cadastrado!");
-			    		/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O cpf ".$integrantes[$key]['cpf']." já está cadastrado!\");'>teste</button>
-			    		<script type='text/javascript'>
-			    			window.onload = function(){
-			    				document.getElementById('clickButton').click();
-			    			}
-		    			</script>";*/
 			    	}
 		    	}
 		    	/* END VEFICICAÇÃO PARA DUPLICATAS NO BANCO */
@@ -193,23 +151,11 @@
 
 		    	foreach ($integrantes as $key => $value) {
 		    		if($capitao['nick'] == $integrantes[$key]['nick']){
-		    			throw new Exception("capitão;O nick ".$check_capitao_nick['nick']." já está cadastrado!");
-		    			/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O nick ".$check_capitao_nick['nick']." já está cadastrado!\");'>teste</button>
-			    		<script type='text/javascript'>
-			    			window.onload = function(){
-			    				document.getElementById('clickButton').click();
-			    			}
-		    			</script>";*/
+		    			throw new Exception("capitão;O nick ".$capitao['nick']." já está cadastrado!");
 		    		}
 
 		    		if($capitao['cpf'] == $integrantes[$key]['cpf']){
-		    			throw new Exception("capitão;O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!");
-		    			/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"capitão\", \"O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!\");'>teste</button>
-			    		<script type='text/javascript'>
-			    			window.onload = function(){
-			    				document.getElementById('clickButton').click();
-			    			}
-		    			</script>";*/
+		    			throw new Exception("capitão;O cpf ".$capitao['cpf']." já está cadastrado!");
 		    		}
 		    	}
 
@@ -218,21 +164,9 @@
 		    			if($key != $key2){
 		    				if($integrantes[$key]['nick'] == $integrantes[$key2]['nick']){
 		    					throw new Exception("jogador ".$integrantes[$key]['nome'].";O nick ".$integrantes[$key]['nick']." já está cadastrado!");
-		    					/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O nick ".$integrantes[$key]['nick']." já está cadastrado!\");'>teste</button>
-					    		<script type='text/javascript'>
-					    			window.onload = function(){
-					    				document.getElementById('clickButton').click();
-					    			}
-				    			</script>";*/
 		    				}
 		    				if($integrantes[$key]['cpf'] == $integrantes[$key2]['cpf']){
 		    					throw new Exception("jogador ".$integrantes[$key]['nome'].";O cpf ".$integrantes[$key]['cpf']." já está cadastrado!");
-		    					/*echo "<button hidden id='clickButton' onClick='dado_duplicado(\"jogador ".$integrantes[$key]['nome']."\", \"O cpf ".$integrantes[$key]['cpf']." já está cadastrado!\");'>teste</button>
-					    		<script type='text/javascript'>
-					    			window.onload = function(){
-					    				document.getElementById('clickButton').click();
-					    			}
-				    			</script>";*/
 		    				}
 
 		    			}
@@ -242,7 +176,7 @@
 	    		$inserir = false;
 	    		$mensagem = explode(';', $e->getMessage());
 	    		//var_dump($mensagem);
-	    		echo "<button hidden id='clickButton' onClick='dado_duplicado(\"".$mensagem[0]."\", \"".$mensagem[1]."\");'>teste</button>
+	    		echo "<button hidden id='clickButton' onClick='sa(\"Cadastro do ".$mensagem[0]." duplicado!\", \"".$mensagem[1]."\", \"error\", \"/oxe/index.php/cne/inscricao\");'>teste</button>
 	    		<script type='text/javascript'>
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();
@@ -382,7 +316,7 @@
 	    	}
 
 	    	// END SEND MAIL 
-	    	echo "<button hidden id='clickButton' onclick='success();'>teste</button>
+	    	echo "<button hidden id='clickButton' onclick='sa(\"\", \"Seu time foi inscrito com sucesso!\", \"success\", \"/oxe/index.php/cne/home\");'>teste</button>
 			<script type='text/javascript'>
 				window.onload = function(){
 					document.getElementById('clickButton').click();
