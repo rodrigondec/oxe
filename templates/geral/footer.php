@@ -1,6 +1,6 @@
 <!-- <div id="footer">
 	<div class="container"> -->
-    	<div align='center'>
+    	<div class='text-center'>
 			<p>
 				<font style='font-family:fireye; color:#005C83;'>OXE</font>
 				<br />

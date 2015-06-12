@@ -1,7 +1,9 @@
-<div align='center' class='centered-20'>
-	<div class='header-2'>
+<div class='text-center centered-20'>
+<img style='width: 35%;margin-bottom:4%;' src="/oxe/estaticos/source/imgs/cne_orig.png">
+
+	<!-- <div>
 		<h1 style='font-family:fireye; color:#005C83;'><b>CNE</b></h1>
-	</div>
+	</div> -->
 	<p class="text-justify ident">
 		O primeiro Campeonato de League of Legends organizado pela OxE é o Campeonato do Nordeste – CNE e será uma 
 		competição a nível Nordeste. Sua primeira edição será online e contará com até 64 equipes* que contenham pelo 
@@ -11,8 +13,23 @@
 		a competitividade do evento e dará uma visibilidade imensamente superior que a de um campeonato que se restringisse 
 		exclusivamente a uma única região.
 		Suas partidas serão exibidas na página www.twitch.tv/oxetv.
-		*O campeonato poderá ocorrer com 128 equipes conforme explicitado nas regras do CNE disponível no site oxe.aws.af.cm.
 	</p>
+	<div style="background-color:white">
+		<h3 style='color: black'>Regras</h3>	 
+		<embed style="border:2px solid gray" src="/oxe/estaticos/source/docs/cne_regras.pdf" width='100%;' height='300px;'>
+		<div>
+			<form>
+				<br />
+				<div align='left' style='margin-left:2%;color:black'>
+					<input type='checkbox' name='accept' required />Eu li e concordo com as regras do CNE.
+				</div>
+				<br /><button class='btn'>Recuso!</button>
+				<button class='btn btn-info' type'submit'>Aceito!</button>
+			</form>
+			
+		</div>
+		
+	</div>
 </div>
 <?php  
     if(!isset($_SESSION['privilegio'])){

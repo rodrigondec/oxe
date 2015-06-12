@@ -52,5 +52,9 @@ display: inline;
 	text-indent: 3em;
 }
 
+.cne {
+	margin-left: 4%;
+}
+
 @font-face { font-family: fireye; src: url('/oxe/estaticos/source/font/fireye.ttf'); } 
 @font-face { font-family: bitsumishi; src: url('/oxe/estaticos/source/font/bitsumishi.ttf'); }

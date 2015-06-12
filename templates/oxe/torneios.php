@@ -1,5 +1,5 @@
 <!-- Torneios -->
-<div class='container-fluid' align="center">
+<div class='container-fluid '>
 	<!-- 1ª linha com 4 torneios -->
 	<div class='row'>
 		<!-- 1º torneio -->
