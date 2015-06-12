@@ -2,9 +2,9 @@
 	<div class="container"> -->
     	<div class='text-center'>
 			<p>
-				<font style='font-family:fireye; color:#005C83;'>OXE</font>
+				<font class='fonte-oxe'>OXE</font>
 				<br />
-				<font style='font-family:bitsumishi; color:#898987;'>Organization & E-sports</font>
+				<font class='fonte-nome'>Organization & E-sports</font>
 				<br />
 				organizationxesports@gmail.com - (84) 9 9818-4097
 				<br />

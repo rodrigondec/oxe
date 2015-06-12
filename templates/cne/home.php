@@ -1,9 +1,5 @@
 <div class='text-center centered-20'>
 <img style='width: 35%;margin-bottom:4%;' src="/oxe/estaticos/source/imgs/cne_orig.png">
-
-	<!-- <div>
-		<h1 style='font-family:fireye; color:#005C83;'><b>CNE</b></h1>
-	</div> -->
 	<p class="text-justify ident">
 		O primeiro Campeonato de League of Legends organizado pela OxE é o Campeonato do Nordeste – CNE e será uma 
 		competição a nível Nordeste. Sua primeira edição será online e contará com até 64 equipes* que contenham pelo 
@@ -14,29 +10,37 @@
 		exclusivamente a uma única região.
 		Suas partidas serão exibidas na página www.twitch.tv/oxetv.
 	</p>
-	<div style="background-color:white">
-		<h3 style='color: black'>Regras</h3>	 
-		<embed style="border:2px solid gray" src="/oxe/estaticos/source/docs/cne_regras.pdf" width='100%;' height='300px;'>
+	<div class='regras'>
+		<h3>Regras</h3>	 
+		<embed src="/oxe/estaticos/source/docs/cne_regras.pdf">
 		<div>
-			<form>
+			<form method='post'>
 				<br />
-				<div align='left' style='margin-left:2%;color:black'>
-					<input type='checkbox' name='accept' required />Eu li e concordo com as regras do CNE.
+				<div align='left'>
+					<input id='check_input' type='checkbox' name='accept' value='true' required />
+					<strong>Eu li e concordo com as regras do CNE</strong>
 				</div>
-				<br /><button class='btn'>Recuso!</button>
-				<button class='btn btn-info' type'submit'>Aceito!</button>
+				<br />
+				<button class='btn' type='button' onclick="swal('', 'É necessário aceitar as regras do CNE para se inscrever!');">Recuso!</button>
+				<button class='btn btn-info' type'submit' onclick="accept_regras();">Aceito!</button>
 			</form>
-			
 		</div>
-		
 	</div>
 </div>
 <?php  
-    if(!isset($_SESSION['privilegio'])){
+	if(count($_POST) > 0) {
+		if(isset($_SESSION['privilegio'])){
+			echo "<button hidden id='clickButton' onClick='session_regras();'>teste</button>
+    		<script type='text/javascript'>
+    			window.onload = function(){
+    				document.getElementById('clickButton').click();
+    			}
+			</script>";
+    	}
+    	else{
+    		ob_clean();
+    		header('LOCATION: /oxe/index.php/cne/inscricao');
+    	}
+	}
+    
 ?>
-	<a href="/oxe/index.php/cne/inscricao">CNE</a>!@#$"
-<?php
-
-    }
-?>
-

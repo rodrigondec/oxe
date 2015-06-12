@@ -49,6 +49,17 @@ function success_alt(){
 	});	
 }
 
+function accept_regras(){
+	var check = document.getElementById('check_input');
+	if(check.checked == false){
+		swal('', 'É necessário aceitar as regras do CNE para se inscrever!');
+	}
+}
+
+function session_regras(){
+	swal('', 'Seu time já está inscrito no CNE!');
+}
+
 function remove_reserva(link){
 	label = link.parentNode;
 	counter = true;
