@@ -101,15 +101,15 @@
 	    		}
 	    		else if($variante == 'capitao'){
 	    			$capitao = $bloco;
-	    			$capitao['sigla_time'] = $time['sigla'];
+	    			$capitao['sigla'] = $time['sigla'];
 	    		}
 	    		else{
 	    			$integrantes[$variante] = $bloco;
 	    		}
 	    	}
 
-
 	    	// VERIFICAÇÃO DAS CIDADES
+
 	    	$counter_cidades = 0;
 	    	if($capitao['cidade'] != ''){
 	    		$counter_cidades++;
@@ -124,15 +124,12 @@
 	    		php_form('Dados incompletos!', 'É necessário ter pelo menos 3 jogadores inscritos pertencentes a uma cidade do nordeste.');
 	    	}
 
-	    	//php_form();
-	    	//swal('Erro!', 'Ocorreu um comportamento inesperado no sistema! \nFavor tentar preencher novamente o formulário', 'error', '/oxe/index.php/cne/inscricao?rt=1');
-
 	    	// END VERIFICAÇÃO DAS CIDADES
     		// VERIFICAÇÃO DOS DADOS. CHECAGEM PARA DUPLICATAS 
 
 	    	$inserir = true;
 
-	    	/*try {
+	    	try {
 	    		$check_time_nome = select('nome', 'times', 'nome', $time['nome'], $link_cne);
 		    	if(isset($check_time_nome['nome'])){
 		    		throw new Exception("time;O nome ".$check_time_nome['nome']." já está cadastrado!");
@@ -199,9 +196,9 @@
 	    		$inserir = false;
 	    		$mensagem = explode(';', $e->getMessage());
 	    		//var_dump($mensagem);
-	    		swal('Cadastro do '.$mensagem[0].' duplicado!', $mensagem[1], 'error', '/oxe/index.php/cne/inscricao');
+	    		php_form('Cadastro do '.$mensagem[0].' duplicado!', $mensagem[1]);
+	      	}
 
-	    	}*/
 	    	// END VERIFICAÇÃO
 
 	    	
@@ -209,7 +206,7 @@
     	if($inserir){
     		//echo "<br><br>INSERIR DADOS";
     		// INSERT DADOS
-	    	/*$time = array();
+	    	$time = array();
 	    	$capitao = array();
 	    	$integrantes = array();
 	    	$id_integrantes = array();
@@ -219,20 +216,21 @@
 	    		}
 	    		else if($variante == 'capitao'){
 	    			$capitao = $bloco;
-	    			$capitao['sigla_time'] = $time['sigla'];
+	    			$capitao['sigla'] = $time['sigla'];
 	    		}
 	    		else{
 	    			$integrantes[$variante] = $bloco;
+	    			$integrantes[$variante]['sigla'] = $time['sigla'];
 	    		}
 	    	}
 
 
-	    	//insert($capitao, 'capitaes', $link_cne);
+	    	insert($capitao, 'capitaes', $link_cne);
 	    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
 	    	
 	    	foreach ($integrantes as $num_integrante => $integrante) {
 	    		var_dump($integrante);
-	    		//insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
+	    		insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
 	    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link_cne);
 	    	}
 	    	
@@ -243,14 +241,14 @@
 	    		$time['id_'.$num_integrante] = $integrante['id'];
 	    	}
 
-	    	//insert($time, 'times', $link_cne);
+	    	insert($time, 'times', $link_cne);
 
 	    	$id_time = select('id', 'times', 'sigla', $time['sigla'], $link_cne);
 
 	    	$update_time = array();
 	    	$update_time['posicao_time'] = $id_time['id'];
 	    	$update_time['pago'] = 0;*/
-	    	//update($update_time, 'times', 'id', $id_time['id'], $link_cne);
+	    	update($update_time, 'times', 'id', $id_time['id'], $link_cne);
 	    	
 	    	// END INSERT
 	    	// SEND MAIL 

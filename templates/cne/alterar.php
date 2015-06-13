@@ -96,7 +96,7 @@
 
     		if($inserir){
     			update($_POST, 'times', 'id', $time['id'], $link_cne);
-		    	$time_sigla['sigla_time'] = $_POST['sigla'];
+		    	$time_sigla['sigla'] = $_POST['sigla'];
 		    	update($time_sigla, 'capitaes', 'id', $time['id_capitao'], $link_cne);
 		    	swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
     		}

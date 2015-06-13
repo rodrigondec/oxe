@@ -39,7 +39,7 @@
 				<?php echo $capitaes[$key]['nome']; ?>
 			</td>
 			<td>
-				<?php echo $capitaes[$key]['sigla_time']; ?>
+				<?php echo $capitaes[$key]['sigla']; ?>
 			</td>
 			<td>
 				<?php echo $capitaes[$key]['login']; ?>

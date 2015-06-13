@@ -9,7 +9,7 @@
     mysql_select_db(DB_NAME_CNE, $link_cne);
 
     $capitao = select('*', 'capitaes', 'login', $_SESSION['login'], $link_cne);
-    $time = select('*', 'times', 'sigla', $capitao['sigla_time'], $link_cne);
+    $time = select('*', 'times', 'sigla', $capitao['sigla'], $link_cne);
 
     $integrantes['integrante_2'] = select('*', 'jogadores', 'id', $time['id_integrante_2'], $link_cne);
     $integrantes['integrante_3'] = select('*', 'jogadores', 'id', $time['id_integrante_3'], $link_cne);
@@ -43,7 +43,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo $time['posicao_time'];
+				    echo $time['posicao'];
 				?>
 			</td>
 			<td>

@@ -48,7 +48,7 @@
 				<?php echo $times[$key]['sigla']; ?>
 			</td>
 			<td>
-				<?php echo $times[$key]['posicao_time']; ?>
+				<?php echo $times[$key]['posicao']; ?>
 			</td>
 			<td>
 				<?php 
