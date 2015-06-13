@@ -31,7 +31,7 @@
         $str_valores = implode(',', $valores);
 
         $sql .= ' ('.$str_chaves.') VALUES ('.$str_valores.');';
-        var_dump($sql);
+        //var_dump($sql);
         return mysql_query($sql, $link);
     }
 

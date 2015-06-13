@@ -1,5 +1,15 @@
 <?php 
 	
+	function swal($title, $text, $type = '', $location = ''){
+		echo "<button hidden id='clickButton' onClick='sa(\"".$title."\", \"".$text."\", \"".$type."\", \"".$location."\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+    			</script>";
+	}
+
+
 	function send_mail($to, $subject, $body){
 		$mail = new PHPMailer;
 

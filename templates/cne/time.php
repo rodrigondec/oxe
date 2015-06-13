@@ -16,6 +16,11 @@
     $integrantes['integrante_4'] = select('*', 'jogadores', 'id', $time['id_integrante_4'], $link_cne);
     $integrantes['integrante_5'] = select('*', 'jogadores', 'id', $time['id_integrante_5'], $link_cne);
     $integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link_cne);
+    //var_dump($integrantes);
+    if(!$integrantes['reserva']){
+    	//echo 'entrou!';
+    	swal('titulo', 'texto');
+    }
     //var_dump($capitao);
 ?>
 <div class='text-center header-3'><h2>Time</h2></div>

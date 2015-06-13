@@ -8,7 +8,7 @@
 		(tolerância igual a de campeonatos oficiais organizados pela Riot Games, empresa criadora do jogo). Isso aumentará 
 		a competitividade do evento e dará uma visibilidade imensamente superior que a de um campeonato que se restringisse 
 		exclusivamente a uma única região.
-		Suas partidas serão exibidas na página www.twitch.tv/oxetv.
+		Para se inscrever no campeonato CNE, basta aceitar as regras demostradas abaixo. 
 	</p>
 	<div class='regras'>
 		<h3>Regras</h3>	 

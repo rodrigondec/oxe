@@ -189,9 +189,9 @@
 	    	
     	}
     	if($inserir){
-    		echo "<br><br>INSERIR DADOS";
+    		//echo "<br><br>INSERIR DADOS";
     		// INSERT DADOS
-	    	/*$time = array();
+	    	$time = array();
 	    	$capitao = array();
 	    	$integrantes = array();
 	    	$id_integrantes = array();
@@ -209,11 +209,12 @@
 	    	}
 
 
-	    	insert($capitao, 'capitaes', $link_cne);
+	    	//insert($capitao, 'capitaes', $link_cne);
 	    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
 	    	
 	    	foreach ($integrantes as $num_integrante => $integrante) {
-	    		insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
+	    		var_dump($integrante);
+	    		//insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
 	    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link_cne);
 	    	}
 	    	
@@ -224,19 +225,19 @@
 	    		$time['id_'.$num_integrante] = $integrante['id'];
 	    	}
 
-	    	insert($time, 'times', $link_cne);
+	    	//insert($time, 'times', $link_cne);
 
 	    	$id_time = select('id', 'times', 'sigla', $time['sigla'], $link_cne);
 
 	    	$update_time = array();
 	    	$update_time['posicao_time'] = $id_time['id'];
 	    	$update_time['pago'] = 0;
-	    	update($update_time, 'times', 'id', $id_time['id'], $link_cne);
+	    	//update($update_time, 'times', 'id', $id_time['id'], $link_cne);
 	    	
 	    	// END INSERT
 	    	// SEND MAIL 
 
-	    	if(intval($id_time['id']) <= 64){
+	    	/*if(intval($id_time['id']) <= 64){
 	    		$para = $capitao['login'];
 	    		$assunto = 'Campeonato CNE';
 
