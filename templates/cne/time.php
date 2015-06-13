@@ -78,9 +78,9 @@
 			<th>Nome</th>
 			<th>Email</th>
 			<th>Nick</th>
+			<th>Cidade</th>
 			<th>Telefone</th>
 			<th>CPF</th>
-			<th>Cidade</th>
 			<th>Alterar</th>
 		</tr>
 	</thead>
@@ -96,13 +96,13 @@
 				<?php echo $capitao['nick']; ?>
 			</td>
 			<td>
+				<?php echo $capitao['cidade']; ?>
+			</td>
+			<td>
 				<?php echo $capitao['telefone']; ?>
 			</td>
 			<td>
 				<?php echo $capitao['cpf']; ?>
-			</td>
-			<td>
-				<?php echo $capitao['cidade']; ?>
 			</td>
 			<td>
 				<?php 
@@ -119,8 +119,8 @@
 		<tr>
 			<th>Nome</th>
 			<th>Nick</th>
-			<th>CPF</th>
 			<th>Cidade</th>
+			<th>CPF</th>
 			<th>Alterar</th>
 		</tr>
 	</thead>
@@ -136,10 +136,10 @@
 				<?php echo $integrantes[$key]['nick']; ?>
 			</td>
 			<td>
-				<?php echo $integrantes[$key]['cpf']; ?>
+				<?php echo $integrantes[$key]['cidade']; ?>
 			</td>
 			<td>
-				<?php echo $integrantes[$key]['cidade']; ?>
+				<?php echo $integrantes[$key]['cpf']; ?>
 			</td>
 			<td>
 				<?php 

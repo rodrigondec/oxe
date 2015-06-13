@@ -11,7 +11,7 @@
 
 <div class='text-center header-3'><h2>Alterar</h2></div>
 <div class='centered-20'>
-	<form action='<?php echo $_SERVER['PHP_SELF'].'?type='.$_GET['type'].'&id='.$_GET['id']; ?>' method='post'>
+	<form id='myForm' action='<?php echo $_SERVER['PHP_SELF'].'?type='.$_GET['type'].'&id='.$_GET['id']; ?>' method='post'>
 	  	<div class='form-group'>
 
 <?php
@@ -26,7 +26,7 @@
 <label for='input_nome_time'>Time</label>
 <input type='text' name='nome' class='form-control' id='input_nome_time' placeholder='Nome do time' value='<?php echo $time["nome"]; ?>' required />
 <input type='text' name='sigla' class='form-control' placeholder='Sigla do time' maxlength="3" style='margin-top: 10px;' value='<?php echo $time["sigla"]; ?>' required />
-<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $time["cidade"]; ?>' />
+<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $time["cidade"]; ?>' required />
 
 <?php
     elseif($_GET['type'] == '2'):
@@ -39,13 +39,18 @@
 <input type='text' name='login' onblur='lower(this);validar_email(this);' class='form-control' placeholder='email' style='margin-top: 10px;' value='<?php echo $capitao["login"]; ?>' required />
 <input type='text' name='nick' class='form-control' placeholder='nick' style='margin-top: 10px;' required value='<?php echo $capitao["nick"]; ?>' />
 <div class="input-group">
+	<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $capitao["cidade"]; ?>' />
+	<span class="input-group-btn">
+	<a href="#" class="btn btn-warning" onclick="swal('Restrição para o campo cidade nos jogadores!','O time deverá ter pelo menos 3 jogadores com o campo cidade preenchido.\nApenas preencher esse campo se a cidade pertencer ao nordeste.', 'info');" style='margin-top: 10px;'>?</a>
+	</span>
+</div>
+<div class="input-group">
 	<input type='text' name='telefone' onKeypress='mask(this,"telefone");' class='form-control' placeholder='telefone' maxlength='16' style='margin-top: 10px;' required value='<?php echo $capitao["telefone"]; ?>' />
 		<span class="input-group-btn">
 		<a href="#" class="btn btn-info" onclick="swal('','Digite seu número com o 9º dígito.\nExemplo: (84) 9 9818-4097', 'info');" style='margin-top: 10px;'>?</a>
 		</span>
 </div>
 <input type='text' name='cpf' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $capitao["cpf"]; ?>' required />
-<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $capitao["cidade"]; ?>' />
 
 <?php
     elseif($_GET['type'] == '3'):
@@ -56,8 +61,14 @@
 <label for='input_nome_jogador'>Jogador</label>
 <input type='text' name='nome' class='form-control' id='input_nome_jogador' placeholder='Nome do jogador' value='<?php echo $jogador["nome"]; ?>' required />
 <input type='text' name='nick' class='form-control' placeholder='nick' style='margin-top: 10px;' value='<?php echo $jogador["nick"]; ?>' required />
+<div class="input-group">
+	<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $jogador["cidade"]; ?>' />
+	<span class="input-group-btn">
+	<a href="#" class="btn btn-warning" onclick="swal('Restrição para o campo cidade nos jogadores!','O time deverá ter pelo menos 3 jogadores com o campo cidade preenchido.\nApenas preencher esse campo se a cidade pertencer ao nordeste.', 'info');" style='margin-top: 10px;'>?</a>
+	</span>
+</div>
 <input type='text' name='cpf' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $jogador["cpf"]; ?>' required />
-<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $jogador["cidade"]; ?>' />
+
 	  		  	
 <?php
     endif;
@@ -70,7 +81,7 @@
 </div>
 
 <?php
-    if(count($_POST) > 0){
+    if(count($_POST) > 0 && !isset($_GET['rt'])){
 
     	$inserir = true;
 
@@ -124,7 +135,48 @@
 	    	
     	}
     	else if($_GET['type'] == '2'){
+    		// VERIFICAÇÃO CIDADE
+
+    		$check_cidades = true;
+    		$counter_cidades = 0;
+    		if($_POST['cidade'] != ''){
+    			$counter_cidades++;
+    		}
+
+    		$time = select('*', 'times', 'sigla', $capitao['sigla'], $link_cne);
+
+    		$integrantes['integrante_2'] = select('*', 'jogadores', 'id', $time['id_integrante_2'], $link_cne);
+    		$integrantes['integrante_3'] = select('*', 'jogadores', 'id', $time['id_integrante_3'], $link_cne);
+    		$integrantes['integrante_4'] = select('*', 'jogadores', 'id', $time['id_integrante_4'], $link_cne);
+    		$integrantes['integrante_5'] = select('*', 'jogadores', 'id', $time['id_integrante_5'], $link_cne);
+    		$integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link_cne);
+
+    		if(!$integrantes['reserva']){
+    			unset($integrantes['reserva']);
+    		}
+
+    		foreach ($integrantes as $key => $value) {
+    			if($integrantes[$key]['cidade'] != ''){
+	    			$counter_cidades++;
+	    		}
+	   		}
+
+    		try {
+	    		if($counter_cidades < 3){
+	    			throw new Exception("Exception cidades!");
+		    	}
+	    	} catch (Exception $e) {
+	    		$check_cidades = false;
+	    		php_form('Dados incompletos!', 'É necessário ter pelo menos 3 jogadores inscritos pertencentes à cidades nodestinas.', true);
+	    	}
+
+    		if(!$check_cidades){
+	    		$inserir = false;
+	    	}
+
+	    	// END VERIFICAÇÃO DAS CIDADES
     		// VERIFICAÇÃO DO CAPITÃO
+
     		try {
     			$jog = false;
     			$check_capitao_login = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
@@ -160,16 +212,64 @@
     			$mensagem = $e->getMessage();
     			swal('Dado duplicado!', $mensagem, 'error', '/oxe/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
     		}
+
     		// END VERIFICAÇÃO
 
     		if($inserir){
     			update($_POST, 'capitaes', 'id', $capitao['id'], $link_cne);
 		    	swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
     		}
-	    	
     	}
     	else if($_GET['type'] == '3'){
+    		// VERIFICAÇÃO CIDADE
+
+    		$check_cidades = true;
+    		$counter_cidades = 0;
+
+    		$time = select('*', 'times', 'sigla', $jogador['sigla'], $link_cne);
+
+    		$integrantes['capitao'] = select('*', 'capitaes', 'id', $time['id_capitao'], $link_cne);
+    		$integrantes['integrante_2'] = select('*', 'jogadores', 'id', $time['id_integrante_2'], $link_cne);
+    		$integrantes['integrante_3'] = select('*', 'jogadores', 'id', $time['id_integrante_3'], $link_cne);
+    		$integrantes['integrante_4'] = select('*', 'jogadores', 'id', $time['id_integrante_4'], $link_cne);
+    		$integrantes['integrante_5'] = select('*', 'jogadores', 'id', $time['id_integrante_5'], $link_cne);
+    		$integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link_cne);
+
+    		foreach ($integrantes as $key => $value) {
+    			if($key != 'capitao' && $integrantes[$key]['id'] == $jogador['id']){
+    				unset($integrantes[$key]);
+    			}
+    			if($key == 'reserva' && !$integrantes['reserva']){
+	    			unset($integrantes['reserva']);
+    			}
+    		}
+
+    		if($_POST['cidade'] != ''){
+    			$counter_cidades++;
+    		}
+
+    		foreach ($integrantes as $key => $value) {
+    			if($integrantes[$key]['cidade'] != ''){
+	    			$counter_cidades++;
+	    		}
+	   		}
+
+    		try {
+	    		if($counter_cidades < 3){
+	    			throw new Exception("Exception cidades!");
+		    	}
+	    	} catch (Exception $e) {
+	    		$check_cidades = false;
+	    		php_form('Dados incompletos!', 'É necessário ter pelo menos 3 jogadores inscritos pertencentes à cidades nodestinas.', true);
+	    	}
+
+    		if(!$check_cidades){
+	    		$inserir = false;
+	    	}
+
+	    	// END VERIFICAÇÃO DAS CIDADES
     		// VERIFICAÇÃO DO JOGADOR
+
     		try {
     			$cap = false;
     			$check_jogador_nick = select('*', 'jogadores', 'nick', $_POST['nick'], $link_cne);
@@ -199,8 +299,8 @@
     			$mensagem = $e->getMessage();
     			swal('Dado duplicado!', $mensagem, 'error', '/oxe/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
     		}
+    		
     		// END VERIFICAÇÃO
-    		$inserir = false;
 
 	    	if($inserir){
 	    		update($_POST, 'jogadores', 'id', $jogador['id'], $link_cne);
