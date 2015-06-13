@@ -19,7 +19,8 @@ USE cne;
 
 CREATE TABLE capitaes(
 	id int NOT NULL auto_increment,
-	sigla_time varchar(10) NOT NULL,
+	sigla varchar(3) NOT NULL,
+	cidade varchar(35) NOT NULL,
 	nome varchar(35) NOT NULL,
 	login varchar(30) NOT NULL,
 	senha varchar(32) NOT NULL,
@@ -33,6 +34,8 @@ CREATE TABLE capitaes(
 
 CREATE TABLE jogadores(
 	id int NOT NULL auto_increment,
+	sigla varchar(3) NOT NULL,
+	cidade varchar(35) NOT NULL,
 	nome varchar(35) NOT NULL,
 	nick varchar(35) NOT NULL,
 	cpf varchar(14) NOT NULL,
@@ -44,7 +47,8 @@ CREATE TABLE times(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
 	sigla varchar(3) NOT NULL,
-	posicao_time int NOT NULL,
+	cidade varchar(35) NOT NULL,
+	posicao int NOT NULL,
 	pago boolean NOT NULL,
 	id_capitao int,
 	id_integrante_2 int,
