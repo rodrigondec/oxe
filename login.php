@@ -1,6 +1,6 @@
 <?php 
     // conexão com banco database oxe
-    $link_oxe = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    $link_oxe = mysql_connect(DB_HOST_OXE, DB_USER_OXE, DB_PASS_OXE);
     if (!$link_oxe) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
@@ -9,7 +9,7 @@
     mysql_select_db(DB_NAME_OXE, $link_oxe);
 
     // conexão com banco database cne
-    $link_cne = mysql_connect(DB_HOST, DB_USER, DB_PASS, true);
+    $link_cne = mysql_connect(DB_HOST_CNE, DB_USER_CNE, DB_PASS_CNE, true);
     if (!$link_cne) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
@@ -39,7 +39,7 @@
 			$_SESSION['login'] = $usuario['login'];
 			$_SESSION['privilegio'] = 'admin';
 			ob_clean();
-			header('LOCATION: /oxe/index.php/admin/listar_times');
+			header('LOCATION: /index.php/admin/listar_times');
 		}
 		else{
 			$usuario = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
@@ -47,7 +47,7 @@
 				$_SESSION['login'] = $usuario['login'];
 				$_SESSION['privilegio'] = 'capitao';
 				ob_clean();
-				header('LOCATION: /oxe/index.php/cne/time');
+				header('LOCATION: /index.php/cne/time');
 			}
 			else{
 				swal('Login inválido!', 'Verifique e insira novamente seu login e senha', 'error', '');

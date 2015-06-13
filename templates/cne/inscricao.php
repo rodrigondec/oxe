@@ -1,6 +1,6 @@
 <?php 
     // conexão com banco database cne
-    $link_cne = mysql_connect(DB_HOST, DB_USER, DB_PASS, true);
+    $link_cne = mysql_connect(DB_HOST_CNE, DB_USER_CNE, DB_PASS_CNE, true);
     if (!$link_cne) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
@@ -111,7 +111,7 @@
     if(count($_POST) > 0 && !isset($_GET['rt'])){
     	//var_dump($_POST);
     	if(count($_POST) < 6 || count($_POST) > 7){
-    		swal('Erro!', 'Ocorreu um comportamento inesperado no sistema! \nFavor tentar preencher novamente o formulário', 'error', '/oxe/index.php/cne/inscricao');
+    		swal('Erro!', 'Ocorreu um comportamento inesperado no sistema! \nFavor tentar preencher novamente o formulário', 'error', '/index.php/cne/inscricao');
     	}
     	else{
     		// TRATAMENTO DOS DADOS
@@ -321,7 +321,7 @@
 
 			    send_mail($para, $assunto, $mensagem);
 
-			    //send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+			    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
 			    //send_mail('darlanbx@gmail.com', $assunto, $mensagem);
 			    //send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
 			    //send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
@@ -360,7 +360,7 @@
 
 			    send_mail($para, $assunto, $mensagem);
 
-			    //send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+			    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
 			    //send_mail('darlanbx@gmail.com', $assunto, $mensagem);
 			    //send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
 			    //send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
@@ -369,7 +369,7 @@
 
 	    	// END SEND MAIL 
 
-	    	swal('', 'Seu time foi inscrito com sucesso!', 'sucess', '/oxe/index.php/cne/home');
+	    	swal('', 'Seu time foi inscrito com sucesso!', 'sucess', '/index.php/cne/home');
     	}
     }
 ?>

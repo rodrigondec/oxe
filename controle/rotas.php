@@ -18,7 +18,7 @@
         $uri = rtrim($uri, '/'); //Removendo última barra da URI
         $partes = explode('/', $uri);
 
-        if(count($partes) >= 4) { //Tenha mais de 4 partes
+        if(count($partes) >= 3) { //Tenha mais de 4 partes
             $arquivo = array_pop($partes); //Último elemento
             $pasta = array_pop($partes); //Penúltimo elemento
         } 

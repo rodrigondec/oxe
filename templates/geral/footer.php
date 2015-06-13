@@ -16,7 +16,7 @@
 				<!-- twitch -->
 				<a href="http://www.twitch.tv/tvoxe" target="_blank"><img src="http://s.jtvnw.net/jtv_user_pictures/hosted_images/GlitchIcon_white.png" alt="twitch"></a>
 				<!-- Email -->
-				<a href="mailto:organizationxesports@gmail.com" target="_blank"><img src="/oxe/estaticos/source/imgs/mail.png" alt="Email" /></a>
+				<a href="mailto:organizationxesports@gmail.com" target="_blank"><img src="/estaticos/source/imgs/mail.png" alt="Email" /></a>
 			</div>
 		</div>
 <!-- 	</div>
