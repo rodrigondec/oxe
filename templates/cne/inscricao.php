@@ -323,14 +323,6 @@
 					document.getElementById('clickButton').click();
 				}
 			</script>";*/
-
-
-
-
-
-
-
-
     	}
     }
 ?>

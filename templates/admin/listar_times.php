@@ -35,7 +35,7 @@
 	</thead>
 	<tbody>
 	<?php 
-	    foreach ($times as $key => $value) {
+	    foreach ($times as $key => $value):
 	?>
 		<tr>
 			<td>
@@ -104,7 +104,7 @@
 			</td>
 		</tr>
 	<?php
-	    }
+	    endforeach;
 	?>
 	</tbody>
 </table>

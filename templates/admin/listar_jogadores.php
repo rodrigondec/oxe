@@ -26,7 +26,7 @@
 	</thead>
 	<tbody>
 	<?php 
-	    foreach ($jogadores as $key => $value) {
+	    foreach ($jogadores as $key => $value):
 	?>
 		<tr>
 			<td>
@@ -48,7 +48,7 @@
 			</td>
 		</tr>
 	<?php
-	    }
+	    endforeach;
 	?>
 	</tbody>
 </table>

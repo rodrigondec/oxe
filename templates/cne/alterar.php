@@ -16,7 +16,7 @@
 
 <?php
 
-    if($_GET['type'] == '1'){
+    if($_GET['type'] == '1'):
     	$time = select('*', 'times', 'id', $_GET['id'], $link_cne);
     	//var_dump($time);
 ?>
@@ -28,8 +28,7 @@
 <input type='text' name='sigla' class='form-control' placeholder='Sigla do time' maxlength="3" style='margin-top: 10px;' value='<?php echo $time["sigla"]; ?>' required />
 
 <?php
-    }
-    else if($_GET['type'] == '2'){
+    elseif($_GET['type'] == '2'):
     	$capitao = select('*', 'capitaes', 'id', $_GET['id'], $link_cne);
 ?>
 
@@ -47,8 +46,7 @@
 <input type='text' name='cpf' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $capitao["cpf"]; ?>' required />
 
 <?php
-    }
-    else if($_GET['type'] == '3'){
+    elseif($_GET['type'] == '3'):
     	$jogador = select('*', 'jogadores', 'id', $_GET['id'], $link_cne);
 ?>
 
@@ -59,7 +57,7 @@
 <input type='text' name='cpf' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $jogador["cpf"]; ?>' required />
 	  		  	
 <?php
-    }
+    endif;
 ?>
     	</div>
 	  	<div id='buttons'>

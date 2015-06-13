@@ -29,7 +29,7 @@
 	</thead>
 	<tbody>
 	<?php 
-	    foreach ($capitaes as $key => $value) {
+	    foreach ($capitaes as $key => $value):
 	?>
 		<tr>
 			<td>
@@ -60,7 +60,7 @@
 			</td>
 		</tr>
 	<?php
-	    }
+	    endforeach;
 	?>
 	</tbody>
 </table>
