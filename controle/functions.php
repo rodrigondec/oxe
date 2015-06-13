@@ -9,6 +9,15 @@
     			</script>";
 	}
 
+	function php_form($title, $text){
+		echo "<button hidden id='clickButton' onClick='js_form(\"".$title."\", \"".$text."\");'>teste</button>
+	    		<script type='text/javascript'>
+	    			window.onload = function(){
+	    				document.getElementById('clickButton').click();
+	    			}
+    			</script>";
+	}
+
 
 	function send_mail($to, $subject, $body){
 		$mail = new PHPMailer;

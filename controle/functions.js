@@ -31,6 +31,21 @@ function sa(head, body, tipo, loc){
 	}
 }
 
+function js_form(head, body){
+	swal({
+		title: head,
+		text: body,
+		type: 'error',
+		closeOnConfirm: false,
+		html: false
+	}, 
+	function(){
+		var formu = document.getElementById('myForm');
+		formu.action = formu.action+'?rt=1';
+		formu.submit();
+	});
+}
+
 function accept_regras(){
 	var check = document.getElementById('check_input');
 	if(check.checked == false){
