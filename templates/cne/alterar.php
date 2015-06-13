@@ -44,6 +44,7 @@
 		</span>
 </div>
 <input type='text' name='cpf' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $capitao["cpf"]; ?>' required />
+<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $capitao["cidade"]; ?>' />
 
 <?php
     elseif($_GET['type'] == '3'):
@@ -55,6 +56,7 @@
 <input type='text' name='nome' class='form-control' id='input_nome_jogador' placeholder='Nome do jogador' value='<?php echo $jogador["nome"]; ?>' required />
 <input type='text' name='nick' class='form-control' placeholder='nick' style='margin-top: 10px;' value='<?php echo $jogador["nick"]; ?>' required />
 <input type='text' name='cpf' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $jogador["cpf"]; ?>' required />
+<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $jogador["cidade"]; ?>' />
 	  		  	
 <?php
     endif;
