@@ -50,14 +50,7 @@
 				header('LOCATION: /oxe/index.php/cne/time');
 			}
 			else{
-?>
-				<button hidden id='clickButton' onclick="sa('Login inválido!', 'Verifique e insira novamente seu login e senha', 'error', '');">teste</button>
-				<script type="text/javascript">
-					window.onload = function(){
-						document.getElementById('clickButton').click();
-					}
-				</script>
-<?php
+				swal('Login inválido!', 'Verifique e insira novamente seu login e senha', 'error', '');
 			}
 		}
 	}
