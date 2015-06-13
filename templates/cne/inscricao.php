@@ -260,7 +260,7 @@
 	    	$id_time = select('id', 'times', 'sigla', $time['sigla'], $link_cne);
 
 	    	$update_time = array();
-	    	$update_time['posicao_time'] = $id_time['id'];
+	    	$update_time['posicao'] = $id_time['id'];
 	    	$update_time['pago'] = 0;
 	    	update($update_time, 'times', 'id', $id_time['id'], $link_cne);
 	    	

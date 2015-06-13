@@ -20,6 +20,7 @@
 			<th>Id</th>
 			<th>Nome</th>
 			<th>Sigla</th>
+			<th>Cidade</th>
 			<th>Posição</th>
 			<th>Pago</th>
 			<th>Id capitão</th>
@@ -46,6 +47,9 @@
 			</td>
 			<td>
 				<?php echo $times[$key]['sigla']; ?>
+			</td>
+			<td>
+				<?php echo $times[$key]['cidade']; ?>
 			</td>
 			<td>
 				<?php echo $times[$key]['posicao']; ?>

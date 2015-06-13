@@ -24,6 +24,7 @@
 			<th>Nick</th>
 			<th>Telefone</th>
 			<th>CPF</th>
+			<th>Cidade</th>
 			<th>Alterar</th>
 		</tr>
 	</thead>
@@ -52,6 +53,9 @@
 			</td>
 			<td>
 				<?php echo $capitaes[$key]['cpf']; ?>
+			</td>
+			<td>
+				<?php echo $capitaes[$key]['cidade']; ?>
 			</td>
 			<td>
 				<?php 

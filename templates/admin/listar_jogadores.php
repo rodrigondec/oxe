@@ -19,8 +19,10 @@
 		<tr>
 			<th>Id</th>
 			<th>Nome</th>
+			<th>Sigla time</th>
 			<th>Nick</th>
 			<th>CPF</th>
+			<th>Cidade</th>
 			<th>Alterar</th>
 		</tr>
 	</thead>
@@ -36,10 +38,16 @@
 				<?php echo $jogadores[$key]['nome']; ?>
 			</td>
 			<td>
+				<?php echo $jogadores[$key]['sigla']; ?>
+			</td>
+			<td>
 				<?php echo $jogadores[$key]['nick']; ?>
 			</td>
 			<td>
 				<?php echo $jogadores[$key]['cpf']; ?>
+			</td>
+			<td>
+				<?php echo $jogadores[$key]['cidade']; ?>
 			</td>
 			<td>
 				<?php 
