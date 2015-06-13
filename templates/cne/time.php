@@ -76,6 +76,7 @@
 			<th>Nick</th>
 			<th>Telefone</th>
 			<th>CPF</th>
+			<th>Cidade</th>
 			<th>Alterar</th>
 		</tr>
 	</thead>
@@ -97,6 +98,9 @@
 				<?php echo $capitao['cpf']; ?>
 			</td>
 			<td>
+				<?php echo $capitao['cidade']; ?>
+			</td>
+			<td>
 				<?php 
 				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>Alterar</a>";
 				?>
@@ -112,6 +116,7 @@
 			<th>Nome</th>
 			<th>Nick</th>
 			<th>CPF</th>
+			<th>Cidade</th>
 			<th>Alterar</th>
 		</tr>
 	</thead>
@@ -128,6 +133,9 @@
 			</td>
 			<td>
 				<?php echo $integrantes[$key]['cpf']; ?>
+			</td>
+			<td>
+				<?php echo $integrantes[$key]['cidade']; ?>
 			</td>
 			<td>
 				<?php 

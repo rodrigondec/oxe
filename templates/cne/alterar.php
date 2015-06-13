@@ -95,9 +95,26 @@
     		// END VERIFICAÇÃO
 
     		if($inserir){
+    			// UPDATE TIME
     			update($_POST, 'times', 'id', $time['id'], $link_cne);
-		    	$time_sigla['sigla'] = $_POST['sigla'];
-		    	update($time_sigla, 'capitaes', 'id', $time['id_capitao'], $link_cne);
+
+    			// UPDATE SIGLA DO TIME NO INTEGRANTES
+		    	$capitao['sigla'] = $_POST['sigla'];
+		    	update($capitao, 'capitaes', 'id', $time['id_capitao'], $link_cne);
+
+		    	$integrantes['integrante_2']['sigla'] = $_POST['sigla'];
+		    	$integrantes['integrante_3']['sigla'] = $_POST['sigla'];
+		    	$integrantes['integrante_4']['sigla'] = $_POST['sigla'];
+		    	$integrantes['integrante_5']['sigla'] = $_POST['sigla'];
+
+		    	if($time['id_reserva']){
+		    		$integrantes['reserva']['sigla'] = $_POST['sigla'];
+		    	}
+
+		    	foreach ($integrantes as $key => $value) {
+		    		update($integrantes[$key], 'jogadores', 'id', $time['id_'.$key], $link_cne);
+		    	}
+
 		    	swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
     		}
 
