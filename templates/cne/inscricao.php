@@ -80,12 +80,7 @@
     if(count($_POST) > 0){
     	//var_dump($_POST);
     	if(count($_POST) < 6 || count($_POST) > 7){
-    		echo "<button hidden id='clickButton' onClick='sa(\"Erro!\", \"Ocorreu um comportamento inesperado no sistema! Favor tentar preencher novamente o formulário\", \"error\", \"/oxe/index.php/cne/inscricao\")'>teste</buttom>
-    		<script type='text/javascript'>
-	    		window.onload = function(){
-	    			document.getElementById('clickButton').click();
-	    		}
-    		</script>"; 
+    		swal('Erro!', 'Ocorreu um comportamento inesperado no sistema! \nFavor tentar preencher novamente o formulário', 'error', '/oxe/index.php/cne/inscricao');
     	}
     	else{
     		/* VERIFICAÇÃO DOS DADOS. CHECAGEM PARA DUPLICATAS */
@@ -176,12 +171,7 @@
 	    		$inserir = false;
 	    		$mensagem = explode(';', $e->getMessage());
 	    		//var_dump($mensagem);
-	    		echo "<button hidden id='clickButton' onClick='sa(\"Cadastro do ".$mensagem[0]." duplicado!\", \"".$mensagem[1]."\", \"error\", \"/oxe/index.php/cne/inscricao\");'>teste</button>
-	    		<script type='text/javascript'>
-	    			window.onload = function(){
-	    				document.getElementById('clickButton').click();
-	    			}
-    			</script>";
+	    		swal('Cadastro do '.$mensagem[0].' duplicado!', $mensagem[1], 'error', '/oxe/index.php/cne/inscricao');
 
 	    	}
 	    	// END VERIFICAÇÃO
@@ -317,12 +307,8 @@
 	    	}
 
 	    	// END SEND MAIL 
-	    	echo "<button hidden id='clickButton' onclick='sa(\"\", \"Seu time foi inscrito com sucesso!\", \"success\", \"/oxe/index.php/cne/home\");'>teste</button>
-			<script type='text/javascript'>
-				window.onload = function(){
-					document.getElementById('clickButton').click();
-				}
-			</script>";*/
+
+	    	swal('', 'Seu time foi inscrito com sucesso!', 'sucess', '/oxe/index.php/cne/home');*/
     	}
     }
 ?>
