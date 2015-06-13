@@ -27,7 +27,7 @@
 	    	<div class="input-group">
 	    		<input type='password' name='capitao[senha]' class='form-control' placeholder='senha' style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['capitao']['senha'];} ?>' required />
       			<span class="input-group-btn">
-        			<a href="#" class="btn btn-warning" onclick="swal('Será criado um login para o capitão','Com esse login o capitão poderá alterar os dados de seu time. O login será o email do capitão', 'info');" style='margin-top: 10px;'>?</a>
+        			<a href="#" class="btn btn-warning" onclick="swal('Será criado um login para o capitão','Com esse login o capitão poderá alterar os dados de seu time.\nO login será o email do capitão', 'info');" style='margin-top: 10px;'>?</a>
       			</span>
 			</div>
 	    	<input type='text' name='capitao[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['capitao']['nick'];} ?>' required />
@@ -38,7 +38,12 @@
       			</span>
 			</div>
 	    	<input type='text' name='capitao[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['capitao']['cpf'];} ?>' required />
-	  		<input type='text' name='capitao[cidade]' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['capitao']['cidade'];} ?>' />
+	  		<div class="input-group">
+				<input type='text' name='capitao[cidade]' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['capitao']['cidade'];} ?>' />
+	  			<span class="input-group-btn">
+        			<a href="#" class="btn btn-warning" onclick="swal('Restrição para o campo cidade nos jogadores!','O time deverá ter pelo menos 3 jogadores com o campo cidade preenchido.\nApenas preencher esses campos se a cidade pertencer ao nordeste.', 'info');" style='margin-top: 10px;'>?</a>
+      			</span>
+  			</div>
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_'>Integrante #2</label>
@@ -109,7 +114,7 @@
 	    	}
 
 	    	// VERIFICAÇÃO DAS CIDADES
-
+	    	$check_cidades = true;
 	    	$counter_cidades = 0;
 	    	if($capitao['cidade'] != ''){
 	    		$counter_cidades++;
@@ -120,14 +125,23 @@
 	    		}
 	    	}
 
-	    	if($counter_cidades < 3){
-	    		php_form('Dados incompletos!', 'É necessário ter pelo menos 3 jogadores inscritos pertencentes a uma cidade do nordeste.');
+	    	try {
+	    		if($counter_cidades < 3){
+	    			throw new Exception("Exception cidades!");
+		    	}
+	    	} catch (Exception $e) {
+	    		$check_cidades = false;
+	    		php_form('Dados incompletos!', 'É necessário ter pelo menos 3 jogadores inscritos pertencentes à cidades nodestinas.');
 	    	}
+	    	
 
 	    	// END VERIFICAÇÃO DAS CIDADES
     		// VERIFICAÇÃO DOS DADOS. CHECAGEM PARA DUPLICATAS 
 
 	    	$inserir = true;
+	    	if(!$check_cidades){
+	    		$inserir = false;
+	    	}
 
 	    	try {
 	    		$check_time_nome = select('nome', 'times', 'nome', $time['nome'], $link_cne);
@@ -229,7 +243,7 @@
 	    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
 	    	
 	    	foreach ($integrantes as $num_integrante => $integrante) {
-	    		var_dump($integrante);
+	    		//var_dump($integrante);
 	    		insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
 	    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link_cne);
 	    	}
@@ -247,13 +261,13 @@
 
 	    	$update_time = array();
 	    	$update_time['posicao_time'] = $id_time['id'];
-	    	$update_time['pago'] = 0;*/
+	    	$update_time['pago'] = 0;
 	    	update($update_time, 'times', 'id', $id_time['id'], $link_cne);
 	    	
 	    	// END INSERT
 	    	// SEND MAIL 
 
-	    	/*if(intval($id_time['id']) <= 64){
+	    	if(intval($id_time['id']) <= 64){
 	    		$para = $capitao['login'];
 	    		$assunto = 'Campeonato CNE';
 
@@ -334,7 +348,7 @@
 
 	    	// END SEND MAIL 
 
-	    	swal('', 'Seu time foi inscrito com sucesso!', 'sucess', '/oxe/index.php/cne/home');*/
+	    	swal('', 'Seu time foi inscrito com sucesso!', 'sucess', '/oxe/index.php/cne/home');
     	}
     }
 ?>
