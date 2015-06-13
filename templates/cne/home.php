@@ -14,6 +14,9 @@
 		<h3>Regras</h3>	 
 		<embed src="/oxe/estaticos/source/docs/cne_regras.pdf">
 		<div>
+		<?php 
+		    if(!isset($_SESSION['privilegio'])):
+		?>
 			<form method='post'>
 				<br />
 				<div align='left'>
@@ -24,23 +27,16 @@
 				<button class='btn' type='button' onclick="sa('', 'É necessário aceitar as regras do CNE para se inscrever!', '', '');">Recuso!</button>
 				<button class='btn btn-info' type'submit' onclick="accept_regras();">Aceito!</button>
 			</form>
+			<?php 
+			    endif;
+			?>
 		</div>
 	</div>
 </div>
 <?php  
 	if(count($_POST) > 0) {
-		if(isset($_SESSION['privilegio'])){
-			echo "<button hidden id='clickButton' onClick='sa(\"\",\"Seu time já está inscrito no CNE!\",\"\",\"\");'>teste</button>
-    		<script type='text/javascript'>
-    			window.onload = function(){
-    				document.getElementById('clickButton').click();
-    			}
-			</script>";
-    	}
-    	else{
-    		ob_clean();
-    		header('LOCATION: /oxe/index.php/cne/inscricao');
-    	}
+		ob_clean();
+		header('LOCATION: /oxe/index.php/cne/inscricao');
 	}
     
 ?>

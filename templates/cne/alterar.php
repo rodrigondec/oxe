@@ -146,7 +146,7 @@
 
     		if($inserir){
     			update($_POST, 'capitaes', 'id', $capitao['id'], $link_cne);
-		    	//swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
+		    	swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
     		}
 	    	
     	}
