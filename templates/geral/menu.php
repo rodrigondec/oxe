@@ -26,13 +26,12 @@
                     </ul>
                 </li> -->
                 <?php 
-                    if(isset($_SESSION['privilegio'])){
-                        if($_SESSION['privilegio'] == 'capitao'){
+                    if(isset($_SESSION['privilegio'])):
+                        if($_SESSION['privilegio'] == 'capitao'):
                 ?>
                 <li><a href="/oxe/index.php/cne/time">Meu Time</a></li>
                 <?php
-                        }
-                        else if($_SESSION['privilegio'] == 'admin'){
+                        elseif($_SESSION['privilegio'] == 'admin'):
                 ?>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
@@ -45,20 +44,20 @@
                     </ul>
                 </li>
                 <?php
-                        }
-                    }
+                        endif;
+                    endif;
                 ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <?php 
-                    if(isset($_SESSION['privilegio'])){
-                        if($_SESSION['privilegio'] == 'admin'){
+                    if(isset($_SESSION['privilegio'])):
+                        if($_SESSION['privilegio'] == 'admin'):
                 ?>
                 <li><a href="/oxe/index.php/configs">Configs</a></li>
                 <li><a href="/oxe/admin/index.php">PHPMyAdmin</a></li>
                 <?php
-                        }
-                    }
+                        endif;
+                    endif;
                 ?>
                 <li>
                     <?php 

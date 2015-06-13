@@ -10,7 +10,6 @@
 				<br />
 				CNPJ/CPF: 016.887.454-75
 			</p>
-			
 			<div class='share-buttons'>
 				<!-- Facebook -->
 				<a href="https://www.facebook.com/OrgXEsprt" target="_blank"><img src="http://static.viewbook.com/images/social_icons/facebook_32.png" alt="Facebook" /></a>
