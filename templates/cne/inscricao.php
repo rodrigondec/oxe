@@ -320,7 +320,21 @@
 
 			    send_mail($para, $assunto, $mensagem);
 
-			    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+			    $mensagem_admin = "O time ".$nome_time." foi inscrito no campeonato CNE.";
+			    $mensagem_admin .= "\n\n";
+			    $mensagem_admin .= "Dados:";
+			    $mensagem_admin .= "\n\t";
+			    $mensagem_admin .= "ID time: ".$id_time['id'];
+			    $mensagem_admin .= "\n\t";
+			    $mensagem_admin .= "Nome capitão: ".$nome_cap;
+			    $mensagem_admin .= "\n\t";
+			    $mensagem_admin .= "email do capitão: ".$capitao['login'];
+			    $mensagem_admin .= "\n\n";
+			    $mensagem_admin .= "Atenciosamente,";
+			    $mensagem_admin .= "\n";
+			    $mensagem_admin .= "Equipe OxE";
+
+			    send_mail('rodrigondec@gmail.com', 'Time inscrito no CNE', $mensagem_admin);
 			    //send_mail('darlanbx@gmail.com', $assunto, $mensagem);
 			    //send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
 			    //send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
@@ -359,16 +373,29 @@
 
 			    send_mail($para, $assunto, $mensagem);
 
-			    send_mail('rodrigondec@gmail.com', $assunto, $mensagem);
+			    $mensagem_admin = "O time ".$nome_time." foi inscrito no campeonato CNE.";
+			    $mensagem_admin .= "\n\n";
+			    $mensagem_admin .= "Dados:";
+			    $mensagem_admin .= "\n\t";
+			    $mensagem_admin .= "ID time: ".$id_time['id'];
+			    $mensagem_admin .= "\n\t";
+			    $mensagem_admin .= "Nome capitão: ".$nome_cap;
+			    $mensagem_admin .= "\n\t";
+			    $mensagem_admin .= "email do capitão: ".$capitao['login'];
+			    $mensagem_admin .= "\n\n";
+			    $mensagem_admin .= "Atenciosamente,";
+			    $mensagem_admin .= "\n";
+			    $mensagem_admin .= "Equipe OxE";
+
+			    send_mail('rodrigondec@gmail.com', 'Time inscrito no CNE', $mensagem_admin);
 			    //send_mail('darlanbx@gmail.com', $assunto, $mensagem);
 			    //send_mail('wanderson.bruno2@gmail.com', $assunto, $mensagem);
 			    //send_mail('thyagocmodesto@hotmail.com.br', $assunto, $mensagem);
 			    //send_mail('tiagofcap@gmail.com', $assunto, $mensagem);
 	    	}
-
 	    	// END SEND MAIL 
 
-	    	swal('', 'Seu time foi inscrito com sucesso!', 'sucess', '/index.php/cne/home');
+	    	swal('', 'Seu time foi inscrito com sucesso!', 'success', '/index.php/login');
     	}
     }
 ?>
