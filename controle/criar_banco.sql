@@ -22,6 +22,7 @@ CREATE TABLE admins(
 );
 
 insert into admins (nome, login, senha) values ('rodrigo', 'rodrigondec', md5('3c1a0l1a0n6g0o'));
+insert into admins (nome, login, senha) values ('Admin', 'admin', md5('oxente84'));
 
 CREATE TABLE capitaes(
 	id int NOT NULL auto_increment,
