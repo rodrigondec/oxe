@@ -133,7 +133,7 @@
 	    	}
 
 	    	// VERIFICAÇÃO DAS CIDADES
-
+	    	
 	    	$check_cidades = true;
 	    	$counter_cidades = 0;
 	    	if($capitao['cidade'] != ''){
@@ -233,12 +233,10 @@
 	    		php_form('Cadastro do '.$mensagem[0].' duplicado!', $mensagem[1]);
 	      	}
 
-	    	// END VERIFICAÇÃO
-
-	    	
+	    	// END VERIFICAÇÃO	
     	}
+    	$inserir = true;
     	if($inserir){
-    		//echo "<br><br>INSERIR DADOS";
     		// INSERT DADOS
 	    	$time = array();
 	    	$capitao = array();
@@ -257,14 +255,12 @@
 	    			$integrantes[$variante]['sigla'] = $time['sigla'];
 	    		}
 	    	}
-
-
+	    	
 	    	insert($capitao, 'capitaes', $link);
 	    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link);
 	    	
 	    	foreach ($integrantes as $num_integrante => $integrante) {
-	    		//var_dump($integrante);
-	    		insert($integrante, 'jogadores', $link);echo '<br><br>';
+	    		insert($integrante, 'jogadores', $link);
 	    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link);
 	    	}
 	    	

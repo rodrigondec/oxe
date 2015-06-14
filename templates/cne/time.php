@@ -109,7 +109,22 @@
 	</tbody>
 </table>
 
-<div class='text-center header-3'><h2>Jogadores</h2></div>
+<div class='text-center header-3'>
+	<h2>
+		Jogadores
+	<?php 
+		if(!isset($integrantes['reserva'])):
+	?>
+		<button class='btn btn-info' onclick="">Cadastrar reserva</button>
+	<?php		
+		elseif(isset($integrantes['reserva'])):
+	?>
+		<button class='btn btn-danger' onclick="">Remover reserva</button>
+	<?php
+		endif;
+	?>
+	</h2>
+</div>
 <table class="table table-striped">
 	<thead>
 		<tr>
