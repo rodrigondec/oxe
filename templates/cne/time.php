@@ -1,21 +1,21 @@
 <?php 
 	// conexão com banco database cne
-    $link_cne = mysql_connect(DB_HOST, DB_USER, DB_PASS, true);
-    if (!$link_cne) {
+    $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    if (!$link) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
         echo '<p>Conectado ao banco com sucesso</p>';
     }
-    mysql_select_db(DB_NAME_CNE, $link_cne);
+    mysql_select_db(DB_NAME, $link);
 
-    $capitao = select('*', 'capitaes', 'login', $_SESSION['login'], $link_cne);
-    $time = select('*', 'times', 'sigla', $capitao['sigla'], $link_cne);
+    $capitao = select('*', 'capitaes', 'login', $_SESSION['login'], $link);
+    $time = select('*', 'times', 'sigla', $capitao['sigla'], $link);
 
-    $integrantes['integrante_2'] = select('*', 'jogadores', 'id', $time['id_integrante_2'], $link_cne);
-    $integrantes['integrante_3'] = select('*', 'jogadores', 'id', $time['id_integrante_3'], $link_cne);
-    $integrantes['integrante_4'] = select('*', 'jogadores', 'id', $time['id_integrante_4'], $link_cne);
-    $integrantes['integrante_5'] = select('*', 'jogadores', 'id', $time['id_integrante_5'], $link_cne);
-    $integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link_cne);
+    $integrantes['integrante_2'] = select('*', 'jogadores', 'id', $time['id_integrante_2'], $link);
+    $integrantes['integrante_3'] = select('*', 'jogadores', 'id', $time['id_integrante_3'], $link);
+    $integrantes['integrante_4'] = select('*', 'jogadores', 'id', $time['id_integrante_4'], $link);
+    $integrantes['integrante_5'] = select('*', 'jogadores', 'id', $time['id_integrante_5'], $link);
+    $integrantes['reserva'] = select('*', 'jogadores', 'id', $time['id_reserva'], $link);
 
     if(!$integrantes['reserva']){
     	unset($integrantes['reserva']);

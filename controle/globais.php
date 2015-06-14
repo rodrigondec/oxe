@@ -1,29 +1,20 @@
 <?php
 	//AppFog MySQL
 	$services_json = json_decode(getenv("VCAP_SERVICES"),true);
-    $mysql_config_oxe = $services_json["mysql-5.1"][0]["credentials"];
+    $mysql_config = $services_json["mysql-5.1"][0]["credentials"];
 	// Configurações do Projeto
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
 	define('TEMPLATES', ARQUIVOS.'/templates');
 	define('LOGIN', ARQUIVOS.'/login.php');
-	define('CONFIGS', ARQUIVOS.'/configs/index.php');
+	define('CONFIGS', ARQUIVOS.'/configs/configs.php');
 	define('PHPMYADMIN', ARQUIVOS.'/admin/index.php');
 
 	// Configurações do Banco de Dados OxE
-	define('DB_NAME_OXE', $mysql_config_oxe["name"]);
-	define('DB_USER_OXE', $mysql_config_oxe["username"]);
-	define('DB_PASS_OXE', $mysql_config_oxe["password"]);
-	define('DB_HOST_OXE', $mysql_config_oxe["hostname"]);
-	define('DB_PORT_OXE', $mysql_config_oxe["port"]);
-
-	$mysql_config_cne = $services_json["mysql-5.1"][1]["credentials"];
-
-	// Configurações do Banco de Dados CNE
-	define('DB_NAME_CNE', $mysql_config_cne["name"]);
-	define('DB_USER_CNE', $mysql_config_cne["username"]);
-	define('DB_PASS_CNE', $mysql_config_cne["password"]);
-	define('DB_HOST_CNE', $mysql_config_cne["hostname"]);
-	define('DB_PORT_CNE', $mysql_config_cne["port"]);
+	define('DB_NAME', $mysql_config["name"]);
+	define('DB_USER', $mysql_config["username"]);
+	define('DB_PASS', $mysql_config["password"]);
+	define('DB_HOST', $mysql_config["hostname"]);
+	define('DB_PORT', $mysql_config["port"]);
 
 
 	/*//XAMPP

@@ -1,6 +1,7 @@
 drop database oxe;
 create database oxe;
 USE oxe;
+USE d77afd63eaba34a8b9811a269b7f4b3fd;
 
 CREATE TABLE admins(
 	id int NOT NULL auto_increment,
@@ -12,10 +13,6 @@ CREATE TABLE admins(
 );
 
 insert into admins (nome, login, senha) values ('rodrigo', 'rodrigondec', md5('3c1a0l1a0n6g0o'));
-
-drop database cne;
-create database cne;
-USE cne;
 
 CREATE TABLE capitaes(
 	id int NOT NULL auto_increment,

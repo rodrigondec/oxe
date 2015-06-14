@@ -1,21 +1,13 @@
 <?php 
     // conexão com banco database oxe
-    $link_oxe = mysql_connect(DB_HOST_OXE, DB_USER_OXE, DB_PASS_OXE);
-    if (!$link_oxe) {
+    $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    if (!$link) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
         echo '<p>Conectado ao banco com sucesso</p>';
     }
-    mysql_select_db(DB_NAME_OXE, $link_oxe);
+    mysql_select_db(DB_NAME, $link);
 
-    // conexão com banco database cne
-    $link_cne = mysql_connect(DB_HOST_CNE, DB_USER_CNE, DB_PASS_CNE, true);
-    if (!$link_cne) {
-        die('Erro de conexão com o banco de dados: '.mysql_error());
-    } else if (isset($debug)) {
-        echo '<p>Conectado ao banco com sucesso</p>';
-    }
-    mysql_select_db(DB_NAME_CNE, $link_cne);
 ?>
 <div align='center' style='margin-top:5%; margin-bottom:2%;'>
 	<h2>Login</h2>
@@ -34,7 +26,7 @@
 
 <?php 
 	if(count($_POST) > 0){
-		$usuario = select('*', 'admins', 'login', $_POST['login'], $link_oxe);
+		$usuario = select('*', 'admins', 'login', $_POST['login'], $link);
 		if($usuario && $usuario['senha'] == md5($_POST['senha'])){
 			$_SESSION['login'] = $usuario['login'];
 			$_SESSION['privilegio'] = 'admin';
@@ -42,7 +34,7 @@
 			header('LOCATION: /index.php/admin/listar_times');
 		}
 		else{
-			$usuario = select('*', 'capitaes', 'login', $_POST['login'], $link_cne);
+			$usuario = select('*', 'capitaes', 'login', $_POST['login'], $link);
 			if($usuario && $usuario['senha'] == md5($_POST['senha'])){
 				$_SESSION['login'] = $usuario['login'];
 				$_SESSION['privilegio'] = 'capitao';

@@ -1,14 +1,14 @@
 <?php 
 	// conexão com banco database cne
-    $link_cne = mysql_connect(DB_HOST, DB_USER, DB_PASS, true);
-    if (!$link_cne) {
+    $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    if (!$link) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
         echo '<p>Conectado ao banco com sucesso</p>';
     }
-    mysql_select_db(DB_NAME_CNE, $link_cne);
+    mysql_select_db(DB_NAME, $link);
 
-    $jogadores = select_many('*', 'jogadores', $link_cne);
+    $jogadores = select_many('*', 'jogadores', $link);
 
     //var_dump($jogadores);
 ?>

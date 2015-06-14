@@ -1,12 +1,12 @@
 <?php 
     // conexão com banco database cne
-    $link_cne = mysql_connect(DB_HOST_CNE, DB_USER_CNE, DB_PASS_CNE, true);
-    if (!$link_cne) {
+    $link = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+    if (!$link) {
         die('Erro de conexão com o banco de dados: '.mysql_error());
     } else if (isset($debug)) {
         echo '<p>Conectado ao banco com sucesso</p>';
     }
-    mysql_select_db(DB_NAME_CNE, $link_cne);
+    mysql_select_db(DB_NAME, $link);
 ?>
 <script type="text/javascript">
 	var counter = true;
@@ -165,38 +165,38 @@
 	    	}
 
 	    	try {
-	    		$check_time_nome = select('nome', 'times', 'nome', $time['nome'], $link_cne);
+	    		$check_time_nome = select('nome', 'times', 'nome', $time['nome'], $link);
 		    	if(isset($check_time_nome['nome'])){
 		    		throw new Exception("time;O nome ".$check_time_nome['nome']." já está cadastrado!");
 		    	}
 
-		    	$check_time_sigla = select('sigla', 'times', 'sigla', $time['sigla'], $link_cne);
+		    	$check_time_sigla = select('sigla', 'times', 'sigla', $time['sigla'], $link);
 		    	if(isset($check_time_sigla['sigla'])){
 		    		throw new Exception("time;A sigla ".$check_time_sigla['sigla']." já está cadastrado!");
 		    	}
 
-		    	$check_capitao_login = select('login', 'capitaes', 'login', $capitao['login'], $link_cne);
+		    	$check_capitao_login = select('login', 'capitaes', 'login', $capitao['login'], $link);
 				if(isset($check_capitao_login['login'])){
 					throw new Exception("capitão;O email ".$check_capitao_login['login']." já está cadastro!");
 		    	}
 
-		    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $capitao['nick'], $link_cne);
+		    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $capitao['nick'], $link);
 		    	if(isset($check_capitao_nick['nick'])){
 		    		throw new Exception("capitão;O nick ".$check_capitao_nick['nick']." já está cadastrado!");
 		    	}
 
-		    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
+		    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $capitao['cpf'], $link);
 		    	if(isset($check_capitao_cpf['cpf'])){
 		    		throw new Exception("capitão;O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!");
 		    	}
 
 		    	$check_integrantes = array();
 		    	foreach ($integrantes as $key => $value) {
-		    		$check_integrantes[$key] = select('nick', 'jogadores', 'nick', $integrantes[$key]['nick'], $link_cne);
+		    		$check_integrantes[$key] = select('nick', 'jogadores', 'nick', $integrantes[$key]['nick'], $link);
 		    		if(isset($check_integrantes[$key]['nick'])){
 		    			throw new Exception("jogador ".$integrantes[$key]['nome'].";O nick ".$integrantes[$key]['nick']." já está cadastrado!");
 			    	}
-		    		$check_integrantes[$key] = select('cpf', 'jogadores', 'cpf', $integrantes[$key]['cpf'], $link_cne);
+		    		$check_integrantes[$key] = select('cpf', 'jogadores', 'cpf', $integrantes[$key]['cpf'], $link);
 		    		if(isset($check_integrantes[$key]['cpf'])){
 		    			throw new Exception("jogador ".$integrantes[$key]['nome'].";O cpf ".$integrantes[$key]['cpf']." já está cadastrado!");
 			    	}
@@ -260,13 +260,13 @@
 	    	}
 
 
-	    	insert($capitao, 'capitaes', $link_cne);
-	    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link_cne);
+	    	insert($capitao, 'capitaes', $link);
+	    	$id_capitao = select('id', 'capitaes', 'cpf', $capitao['cpf'], $link);
 	    	
 	    	foreach ($integrantes as $num_integrante => $integrante) {
 	    		//var_dump($integrante);
-	    		insert($integrante, 'jogadores', $link_cne);echo '<br><br>';
-	    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link_cne);
+	    		insert($integrante, 'jogadores', $link);echo '<br><br>';
+	    		$id_integrantes[$num_integrante] = select('id', 'jogadores', 'cpf', $integrante['cpf'], $link);
 	    	}
 	    	
 	    	$time['id_capitao'] = $id_capitao['id'];
@@ -276,14 +276,14 @@
 	    		$time['id_'.$num_integrante] = $integrante['id'];
 	    	}
 
-	    	insert($time, 'times', $link_cne);
+	    	insert($time, 'times', $link);
 
-	    	$id_time = select('id', 'times', 'sigla', $time['sigla'], $link_cne);
+	    	$id_time = select('id', 'times', 'sigla', $time['sigla'], $link);
 
 	    	$update_time = array();
 	    	$update_time['posicao'] = $id_time['id'];
 	    	$update_time['pago'] = 0;
-	    	update($update_time, 'times', 'id', $id_time['id'], $link_cne);
+	    	update($update_time, 'times', 'id', $id_time['id'], $link);
 	    	
 	    	// END INSERT
 	    	// SEND MAIL 
