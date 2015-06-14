@@ -28,7 +28,6 @@
 		<tr>
 			<th>Nome</th>
 			<th>Sigla</th>
-			<th>Cidade</th>
 			<th>Posição</th>
 			<th>Pagamento</th>
 			<th>Alterar</th>
@@ -41,9 +40,6 @@
 			</td>
 			<td>
 				<?php echo $time['sigla']; ?>
-			</td>
-			<td>
-				<?php echo $time['cidade']; ?>
 			</td>
 			<td>
 				<?php 

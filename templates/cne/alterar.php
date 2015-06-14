@@ -26,7 +26,6 @@
 <label for='input_nome_time'>Time</label>
 <input type='text' name='nome' class='form-control' id='input_nome_time' placeholder='Nome do time' value='<?php echo $time["nome"]; ?>' required />
 <input type='text' name='sigla' class='form-control' placeholder='Sigla do time' maxlength="3" style='margin-top: 10px;' value='<?php echo $time["sigla"]; ?>' required />
-<input type='text' name='cidade' class='form-control' placeholder='Cidade' style='margin-top: 10px;' value='<?php echo $time["cidade"]; ?>' required />
 
 <?php
     elseif($_GET['type'] == '2'):

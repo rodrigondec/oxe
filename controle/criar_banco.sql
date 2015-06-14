@@ -1,7 +1,16 @@
 drop database oxe;
 create database oxe;
 USE oxe;
+
+drop database d77afd63eaba34a8b9811a269b7f4b3fd;
+create database d77afd63eaba34a8b9811a269b7f4b3fd;
 USE d77afd63eaba34a8b9811a269b7f4b3fd;
+
+
+drop table admins;
+drop table times;
+drop table jogadores;
+drop table capitaes;
 
 CREATE TABLE admins(
 	id int NOT NULL auto_increment,
@@ -44,7 +53,6 @@ CREATE TABLE times(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
 	sigla varchar(3) NOT NULL,
-	cidade varchar(35) NOT NULL,
 	posicao int NOT NULL,
 	pago boolean NOT NULL,
 	id_capitao int,
@@ -63,5 +71,3 @@ CREATE TABLE times(
 	FOREIGN KEY (id_integrante_5) REFERENCES jogadores(id),
 	FOREIGN KEY (id_reserva) REFERENCES jogadores(id)
 );
-
-insert into capitaes (nome, login, senha, nick, telefone, cpf) values ('tiago', 'tiago@email.com', md5('tiago'), 'Anoubys', '(84) 998184097', '016.887.454-75');
