@@ -26,7 +26,7 @@ insert into admins (nome, login, senha) values ('Admin', 'admin', md5('oxente84'
 
 CREATE TABLE capitaes(
 	id int NOT NULL auto_increment,
-	sigla varchar(3) NOT NULL,
+	sigla varchar(4) NOT NULL,
 	cidade varchar(35) NOT NULL,
 	nome varchar(35) NOT NULL,
 	login varchar(30) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE capitaes(
 
 CREATE TABLE jogadores(
 	id int NOT NULL auto_increment,
-	sigla varchar(3) NOT NULL,
+	sigla varchar(4) NOT NULL,
 	cidade varchar(35) NOT NULL,
 	nome varchar(35) NOT NULL,
 	nick varchar(35) NOT NULL,
@@ -55,7 +55,7 @@ CREATE TABLE jogadores(
 CREATE TABLE times(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
-	sigla varchar(3) NOT NULL,
+	sigla varchar(4) NOT NULL,
 	posicao int NOT NULL,
 	pago boolean NOT NULL,
 	id_capitao int,

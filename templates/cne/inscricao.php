@@ -17,7 +17,7 @@
 	  	<div class='form-group'>
 	    	<label for='input_nome_time'>Time</label>
 	    	<input type='text' name='time[nome]' class='form-control' id='input_nome_time' placeholder='Nome do time' value='<?php if(count($_POST) > 0){echo $_POST['time']['nome'];} ?>' required />
-	    	<input type='text' name='time[sigla]' class='form-control' id='input_sigla_time' placeholder='Sigla do time' maxlength="3" style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['time']['sigla'];} ?>' required />
+	    	<input type='text' name='time[sigla]' class='form-control' id='input_sigla_time' placeholder='Sigla do time' maxlength="4" style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['time']['sigla'];} ?>' required />
 	  	</div>
 	  	<div class='form-group'>
 	    	<label for='input_capitao'>Capitão</label>

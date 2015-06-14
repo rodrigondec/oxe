@@ -24,7 +24,7 @@
 
 <label for='input_nome_time'>Time</label>
 <input type='text' name='nome' class='form-control' id='input_nome_time' placeholder='Nome do time' value='<?php echo $time["nome"]; ?>' required />
-<input type='text' name='sigla' class='form-control' placeholder='Sigla do time' maxlength="3" style='margin-top: 10px;' value='<?php echo $time["sigla"]; ?>' required />
+<input type='text' name='sigla' class='form-control' placeholder='Sigla do time' maxlength="4" style='margin-top: 10px;' value='<?php echo $time["sigla"]; ?>' required />
 
 <?php
     elseif($_GET['type'] == '2'):
@@ -228,10 +228,8 @@
                 $jog = false;
 
 		    	$check_capitao_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link);
-                echo 'ANTES IF(!$CHECK)<br>';var_dump($check_capitao_cpf);echo '<br><br>';
 		    	if(!$check_capitao_cpf){
 		    		$check_capitao_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link);
-                    echo 'DENTRO IF(!CHECK)<br>';var_dump($check_capitao_cpf);echo '<br><br>';
 		    		$jog = true;
 		    	}
 		    	if(isset($check_capitao_cpf['cpf'])){
