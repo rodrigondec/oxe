@@ -225,9 +225,13 @@
 		    		}
 		    	}
 
+                $jog = false;
+
 		    	$check_capitao_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link);
+                echo 'ANTES IF(!$CHECK)<br>';var_dump($check_capitao_cpf);echo '<br><br>';
 		    	if(!$check_capitao_cpf){
 		    		$check_capitao_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link);
+                    echo 'DENTRO IF(!CHECK)<br>';var_dump($check_capitao_cpf);echo '<br><br>';
 		    		$jog = true;
 		    	}
 		    	if(isset($check_capitao_cpf['cpf'])){
@@ -310,6 +314,8 @@
 			    		throw new Exception("O nick ".$check_jogador_nick['nick']." já está cadastrado!");
 		    		}
 		    	}
+
+                $cap = false;
 
 		    	$check_jogador_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link);
 		    	if(!$check_jogador_cpf){
