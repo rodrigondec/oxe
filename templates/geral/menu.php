@@ -54,7 +54,7 @@
                         if($_SESSION['privilegio'] == 'admin'):
                 ?>
                 <li><a href="/index.php/configs">Configs</a></li>
-                <li><a href="/admin/index.php">PHPMyAdmin</a></li>
+                <li><a href="/admin/index.php" target="_blank">PHPMyAdmin</a></li>
                 <?php
                         endif;
                     endif;
