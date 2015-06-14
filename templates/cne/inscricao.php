@@ -11,6 +11,15 @@
 <script type="text/javascript">
 	var counter = true;
 </script>
+<?php 
+    if(count($_POST) > 0 && isset($_POST['reserva'])):
+?>
+<script type="text/javascript">
+	counter = false;
+</script>
+<?php 
+    endif;
+?>
 <div class='centered-20'>
 	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post' id='myForm'>
 		<div id='time'>
@@ -92,13 +101,25 @@
 			</div>
 	    	<input type='text' name='integrante_5[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php if(count($_POST) > 0){echo $_POST['integrante_5']['cpf'];} ?>' required />
 	  	</div>
-	  	<!-- <div class='form-group'>
-	  		<label id='reserva' for='input_reserva'>Reserva <a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>remover</a></label>
-	 		<input type='text' name='reserva[nome]' class='form-control' id='input_reserva' placeholder='nome' required />
-	 		<input type='text' name='reserva[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' required />
-	 		<input type='text' name='reserva[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' required />
- 		</div> -->
-
+	  	<?php 
+		    if(count($_POST) > 0 && isset($_POST['reserva'])):
+		?>
+		<div>
+		  	<div class='form-group'>
+	  			<label id='reserva' for='input_reserva'>
+	  				Reserva 
+	  				<a class='btn btn-danger' href='#' onClick='remove_reserva(this);'>
+	  					remover
+					</a>
+				</label>
+	  			<input type='text' name='reserva[nome]' class='form-control' id='input_reserva' placeholder='nome' value='<?php echo $_POST['reserva']['nome']; ?>' required />
+	  			<input type='text' name='reserva[nick]' class='form-control' placeholder='nick' style='margin-top: 10px;' value='<?php echo $_POST['reserva']['nick']; ?>' required />
+	  			<input type='text' name='reserva[cpf]' onKeypress='mask(this,"cpf");' class='form-control' placeholder='CPF' maxlength='14' style='margin-top: 10px;' value='<?php echo $_POST['reserva']['cpf']; ?>' required />
+			</div>
+		</div>
+		<?php 
+		    endif;
+		?>
 	  	</div>
 	  	<div id='buttons'>
 		  	<button type='submit' class='btn btn-default'>Submit</button>
@@ -235,7 +256,6 @@
 
 	    	// END VERIFICAÇÃO	
     	}
-    	$inserir = true;
     	if($inserir){
     		// INSERT DADOS
 	    	$time = array();

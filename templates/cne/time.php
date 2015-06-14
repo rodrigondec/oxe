@@ -115,11 +115,11 @@
 	<?php 
 		if(!isset($integrantes['reserva'])):
 	?>
-		<button class='btn btn-info' onclick="">Cadastrar reserva</button>
+		<a class='btn btn-info' href="/index.php/cne/add_reserva">Cadastrar reserva</a>
 	<?php		
 		elseif(isset($integrantes['reserva'])):
 	?>
-		<button class='btn btn-danger' onclick="">Remover reserva</button>
+		<a class='btn btn-danger' href="/index.php/cne/add_reserva">Remover reserva</a>
 	<?php
 		endif;
 	?>
