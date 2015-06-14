@@ -34,6 +34,7 @@ CREATE TABLE capitaes(
 	telefone varchar(14) NOT NULL,
 	cpf varchar(14) NOT NULL,
 	PRIMARY KEY (id),
+	UNIQUE (nick),
 	UNIQUE (cpf),
 	UNIQUE (login)
 );
@@ -46,6 +47,7 @@ CREATE TABLE jogadores(
 	nick varchar(35) NOT NULL,
 	cpf varchar(14) NOT NULL,
 	PRIMARY KEY (id),
+	UNIQUE (nick),
 	UNIQUE (cpf)
 );
 

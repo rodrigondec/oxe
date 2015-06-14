@@ -58,7 +58,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=1&id=".$time["id"]."'>";
+				    echo "<a class='btn btn-info' href='/index.php/cne/alterar?type=1&id=".$time["id"]."'>";
 				?>
 					Alterar
 				</a>
@@ -102,7 +102,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>Alterar</a>";
+				    echo "<a class='btn btn-info' href='/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>Alterar</a>";
 				?>
 			</td>
 		</tr>
@@ -139,7 +139,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=3&id=".$integrantes[$key]["id"]."'>";
+				    echo "<a class='btn btn-info' href='/index.php/cne/alterar?type=3&id=".$integrantes[$key]["id"]."'>";
 				?>
 					Alterar
 				</a>

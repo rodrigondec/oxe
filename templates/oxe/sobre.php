@@ -1,6 +1,10 @@
-<div align='center' class='centered-20'>
+<div class='text-center centered-20'>
 	<div class='header-2'>
-		<h1 style='font-family:fireye; color:#005C83;'><b>OXE</b></h1>
+		<img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/logo.png"><br>
+		<img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/texto.png">
+		<!-- <img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/texto_contorno.png"> -->
+		<!-- <h1 class='fonte-oxe'><b>OXE</b></h1>
+		<h3 class='fonte-nome'>Organization & E-sports</h3> -->
 	</div>
 	<p class="text-justify ident">
 		A Organization & E-sports - OxE é uma equipe de Natal/RN especializada em todos os âmbitos de campeonatos de 

@@ -15,7 +15,7 @@
 <div class='form-boot-40'>
 	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
 			<div class='form-group'>
-			<input type='text' name='login' class='form-control' id='input_login' placeholder='Login' required />
+			<input type='text' name='login' class='form-control' id='input_login' placeholder='Email' required />
 			<input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' style='margin-top: 10px;' required />
 			</div>
 			<div id='buttons'>
@@ -38,6 +38,7 @@
 			if($usuario && $usuario['senha'] == md5($_POST['senha'])){
 				$_SESSION['login'] = $usuario['login'];
 				$_SESSION['privilegio'] = 'capitao';
+				$_SESSION['time'] = $usuario['sigla'];
 				ob_clean();
 				header('LOCATION: /index.php/cne/time');
 			}

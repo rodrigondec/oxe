@@ -15,7 +15,6 @@
 	  	<div class='form-group'>
 
 <?php
-
     if($_GET['type'] == '1'):
     	$time = select('*', 'times', 'id', $_GET['id'], $link);
     	//var_dump($time);
@@ -80,7 +79,35 @@
 </div>
 
 <?php
-    if(count($_POST) > 0 && !isset($_GET['rt'])){
+	$permissao = true;
+	if(!isset($_SESSION['privilegio'])){
+        swal('Permissão negada!', 'Você não tem privilégios para acessar essa pagina!', 'error', '/');
+        $permissao = false;
+    }
+    else if(isset($_SESSION['privilegio'])){
+    	if($_SESSION['privilegio'] == 'capitao'){
+    		if($_GET['type'] == 1){
+    			if($_SESSION['time'] != $time['sigla']){
+    				swal('Permissão negada!', 'Você não tem privilégios para acessar essa pagina!', 'error', '/');
+    				$permissao = false;
+    			}
+    		}
+    		else if($_GET['type'] == 2){
+    			if($_SESSION['time'] != $capitao['sigla']){
+    				swal('Permissão negada!', 'Você não tem privilégios para acessar essa pagina!', 'error', '/');
+    				$permissao = false;
+    			}
+    		}
+    		else if($_GET['type'] == 3){
+    			if($_SESSION['time'] != $jogador['sigla']){
+    				swal('Permissão negada!', 'Você não tem privilégios para acessar essa pagina!', 'error', '/');
+    				$permissao = false;
+    			}
+    		}
+    	}
+    }
+
+    if(count($_POST) > 0 && !isset($_GET['rt']) && $permissao){
 
     	$inserir = true;
 
@@ -103,7 +130,7 @@
     		} catch (Exception $e){
     			$inserir = false;
     			$mensagem = $e->getMessage();
-    			swal('Dado duplicado!', $mensagem, 'error', '/oxe/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
+    			swal('Dado duplicado!', $mensagem, 'error', '/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
     		}
     		// END VERIFICAÇÃO
 
@@ -128,7 +155,9 @@
 		    		update($integrantes[$key], 'jogadores', 'id', $time['id_'.$key], $link);
 		    	}
 
-		    	swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
+		    	$_SESSION['time'] = $_POST['sigla'];
+
+		    	swal('', 'Dados alterados com sucesso!', 'success', '/index.php/cne/time');
     		}
 
 	    	
@@ -209,14 +238,14 @@
     		} catch (Exception $e) {
     			$inserir = false;
     			$mensagem = $e->getMessage();
-    			swal('Dado duplicado!', $mensagem, 'error', '/oxe/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
+    			swal('Dado duplicado!', $mensagem, 'error', '/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
     		}
 
     		// END VERIFICAÇÃO
 
     		if($inserir){
     			update($_POST, 'capitaes', 'id', $capitao['id'], $link);
-		    	swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
+		    	swal('', 'Dados alterados com sucesso!', 'success', '/index.php/cne/time');
     		}
     	}
     	else if($_GET['type'] == '3'){
@@ -296,14 +325,14 @@
     		} catch (Exception $e) {
     			$inserir = false;
     			$mensagem = $e->getMessage();
-    			swal('Dado duplicado!', $mensagem, 'error', '/oxe/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
+    			swal('Dado duplicado!', $mensagem, 'error', '/index.php/cne/alterar?type='.$_GET['type'].'&id='.$_GET['id']);
     		}
     		
     		// END VERIFICAÇÃO
 
 	    	if($inserir){
 	    		update($_POST, 'jogadores', 'id', $jogador['id'], $link);
-				swal('', 'Dados alterados com sucesso!', 'success', '/oxe/index.php/cne/time');
+				swal('', 'Dados alterados com sucesso!', 'success', '/index.php/cne/time');
 	    	}
 
     	}
