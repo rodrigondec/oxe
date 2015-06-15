@@ -44,7 +44,7 @@
         }
         $sql .= implode(', ', $alteracoes);
         $sql .= ' WHERE '.$restricao.'=\''.$id.'\';';
-        var_dump($sql);
+        //var_dump($sql);
         return mysql_query($sql, $link);
     }
 
