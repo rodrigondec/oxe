@@ -207,16 +207,16 @@
 
     		try {
     			$jog = false;
-    			$check_capitao_login = select('*', 'capitaes', 'login', $_POST['login'], $link);
+    			$check_capitao_login = select('login', 'capitaes', 'login', $_POST['login'], $link);
 				if(isset($check_capitao_login['login'])){
 					if($check_capitao_login['id'] != $capitao['id']){
 			    		throw new Exception("O email ".$check_capitao_login['login']." já está cadastrado!");
 		    		}
 		    	}
 
-		    	$check_capitao_nick = select('*', 'capitaes', 'nick', $_POST['nick'], $link);
+		    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $_POST['nick'], $link);
 		    	if(!$check_capitao_nick){
-		    		$check_capitao_nick = select('*', 'jogadores', 'nick', $_POST['nick'], $link);
+		    		$check_capitao_nick = select('nick', 'jogadores', 'nick', $_POST['nick'], $link);
 		    		$jog = true;
 		    	}
 		    	if(isset($check_capitao_nick['nick'])){
@@ -227,9 +227,9 @@
 
                 $jog = false;
 
-		    	$check_capitao_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link);
+		    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $_POST['cpf'], $link);
 		    	if(!$check_capitao_cpf){
-		    		$check_capitao_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link);
+		    		$check_capitao_cpf = select('cpf', 'jogadores', 'cpf', $_POST['cpf'], $link);
 		    		$jog = true;
 		    	}
 		    	if(isset($check_capitao_cpf['cpf'])){
@@ -302,9 +302,9 @@
 
     		try {
     			$cap = false;
-    			$check_jogador_nick = select('*', 'jogadores', 'nick', $_POST['nick'], $link);
+    			$check_jogador_nick = select('nick', 'jogadores', 'nick', $_POST['nick'], $link);
     			if(!$check_jogador_nick){
-		    		$check_jogador_nick = select('*', 'capitaes', 'nick', $_POST['nick'], $link);
+		    		$check_jogador_nick = select('nick', 'capitaes', 'nick', $_POST['nick'], $link);
 		    		$cap = true;
 		    	}
 		    	if(isset($check_jogador_nick['nick'])){
@@ -315,9 +315,9 @@
 
                 $cap = false;
 
-		    	$check_jogador_cpf = select('*', 'jogadores', 'cpf', $_POST['cpf'], $link);
+		    	$check_jogador_cpf = select('cpf', 'jogadores', 'cpf', $_POST['cpf'], $link);
 		    	if(!$check_jogador_cpf){
-		    		$check_jogador_cpf = select('*', 'capitaes', 'cpf', $_POST['cpf'], $link);
+		    		$check_jogador_cpf = select('cpf', 'capitaes', 'cpf', $_POST['cpf'], $link);
 		    		$cap = true;
 		    	}
 		    	//var_dump($check_jogador_cpf);

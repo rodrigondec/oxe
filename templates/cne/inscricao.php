@@ -201,11 +201,17 @@
 		    	}
 
 		    	$check_capitao_nick = select('nick', 'capitaes', 'nick', $capitao['nick'], $link);
+		    	if(!$check_jogador_nick){
+		    		$check_capitao_nick = select('nick', 'jogadores', 'nick', $capitao['nick'], $link);
+		    	}
 		    	if(isset($check_capitao_nick['nick'])){
 		    		throw new Exception("capitão;O nick ".$check_capitao_nick['nick']." já está cadastrado!");
 		    	}
 
 		    	$check_capitao_cpf = select('cpf', 'capitaes', 'cpf', $capitao['cpf'], $link);
+		    	if(!$check_jogador_cpf){
+		    		$check_capitao_cpf = select('cpf', 'jogadores', 'cpf', $capitao['cpf'], $link);
+		    	}
 		    	if(isset($check_capitao_cpf['cpf'])){
 		    		throw new Exception("capitão;O cpf ".$check_capitao_cpf['cpf']." já está cadastrado!");
 		    	}
@@ -213,10 +219,16 @@
 		    	$check_integrantes = array();
 		    	foreach ($integrantes as $key => $value) {
 		    		$check_integrantes[$key] = select('nick', 'jogadores', 'nick', $integrantes[$key]['nick'], $link);
+		    		if(!$check_jogador_nick){
+			    		$check_jogador_nick = select('nick', 'capitaes', 'nick', $integrantes[$key]['nick'], $link);
+			    	}
 		    		if(isset($check_integrantes[$key]['nick'])){
 		    			throw new Exception("jogador ".$integrantes[$key]['nome'].";O nick ".$integrantes[$key]['nick']." já está cadastrado!");
 			    	}
 		    		$check_integrantes[$key] = select('cpf', 'jogadores', 'cpf', $integrantes[$key]['cpf'], $link);
+		    		if(!$check_jogador_cpf){
+			    		$check_jogador_cpf = select('cpf', 'capitaes', 'cpf', $integrantes[$key]['cpf'], $link);
+			    	}
 		    		if(isset($check_integrantes[$key]['cpf'])){
 		    			throw new Exception("jogador ".$integrantes[$key]['nome'].";O cpf ".$integrantes[$key]['cpf']." já está cadastrado!");
 			    	}

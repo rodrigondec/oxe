@@ -119,7 +119,7 @@
 	<?php		
 		elseif(isset($integrantes['reserva'])):
 	?>
-		<a class='btn btn-danger' href="/index.php/cne/add_reserva">Remover reserva</a>
+		<a class='btn btn-danger' href="/index.php/cne/remove_reserva">Remover reserva</a>
 	<?php
 		endif;
 	?>

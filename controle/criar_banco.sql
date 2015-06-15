@@ -72,5 +72,5 @@ CREATE TABLE times(
 	FOREIGN KEY (id_integrante_3) REFERENCES jogadores(id),
 	FOREIGN KEY (id_integrante_4) REFERENCES jogadores(id),
 	FOREIGN KEY (id_integrante_5) REFERENCES jogadores(id),
-	FOREIGN KEY (id_reserva) REFERENCES jogadores(id)
+	FOREIGN KEY (id_reserva) REFERENCES jogadores(id) ON DELETE SET NULL
 );
