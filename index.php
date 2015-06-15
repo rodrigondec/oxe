@@ -2,9 +2,10 @@
 <html>
     <head>
     	<meta charset="UTF-8">
-            <!-- <meta property="og:image" content="http://oxe.aws.af.cm/estaticos/source/imgs/oxe.png" /> -->
+            <meta property="og:image" content="http://organization.aws.af.cm/estaticos/source/imgs/oxe.png" />
             <meta property="og:title" content="OxE" />
             <meta property="og:description" content="Organization & Sports" />
+            <meta property="og:url" content="http://organization.aws.af.cm/" />
             <link rel="icon" href="/estaticos/source/imgs/oxe.png">
 
             <link rel="stylesheet" href="/estaticos/estilo.css">
