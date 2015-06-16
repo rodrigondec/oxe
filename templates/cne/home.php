@@ -12,7 +12,7 @@
 	</p>
 	<div class='regras'>
 		<h3>Regras</h3>	 
-		<embed src="/oxe/estaticos/source/docs/cne_regras.pdf">
+		<embed src="/oxe/estaticos/source/docs/cne_regras_in.pdf">
 		<div>
 		<?php 
 		    if(!isset($_SESSION['privilegio'])):
@@ -32,7 +32,7 @@
 			?>
 		</div>
 	</div>
-	<p>Caso não consiga ver as regras a cima, clicke no botão ao lado => <a class='btn btn-info' href="/oxe/estaticos/source/docs/cne_regras.pdf" target="_blank">Regras</a></p>
+	<p>Caso não consiga ver as regras a cima, clicke no botão ao lado => <a class='btn btn-info' href="/oxe/estaticos/source/docs/cne_regras_in.pdf" target="_blank">Regras</a></p>
 </div>
 <?php  
 	if(count($_POST) > 0) {
