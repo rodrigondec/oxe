@@ -1,7 +1,7 @@
 <div class='text-center centered-20'>
 <img style='width: 35%;margin-bottom:4%;' src="/oxe/estaticos/source/imgs/cne_orig.png">
 	<p class="text-justify ident">
-		O primeiro Campeonato de League of Legends organizado pela OxE é o Campeonato do Nordeste – CNE e será uma 
+		O primeiro Campeonato de League of Legends organizado pela OxE é o Campeonato Nordeste – CNE e será uma 
 		competição a nível Nordeste. Sua primeira edição será online e contará com até 64 equipes* que contenham pelo 
 		menos 3 membros comprovadamente nordestinos em cada partida, ou seja, poderá ser jogado por times com membros 
 		residindo em qualquer lugar do mundo, desde que atenda a exigência de 3 jogadores nascidos na região nordeste 

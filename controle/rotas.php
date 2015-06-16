@@ -21,6 +21,12 @@
         if(count($partes) >= 3) { //Tenha mais de 4 partes
             $arquivo = array_pop($partes); //Último elemento
             $pasta = array_pop($partes); //Penúltimo elemento
+
+
+            // VERIFICAÇÃO DE PERMISSÃO
+            
+
+            // END VERIFICAÇÃO
         } 
         else {
             $pasta = 'cne';
