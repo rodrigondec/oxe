@@ -2,7 +2,7 @@
 <html>
     <head>
     	<meta charset="UTF-8">
-            <meta property="og:image" content="http://organization.aws.af.cm/estaticos/source/imgs/oxe.png" />
+            <meta property="og:image" content="http://organization.aws.af.cm/estaticos/source/imgs/oxe_fb.png" />
             <meta property="og:title" content="OxE" />
             <meta property="og:description" content="Organization & Sports" />
             <meta property="og:url" content="http://organization.aws.af.cm/" />
