@@ -32,6 +32,7 @@
 			?>
 		</div>
 	</div>
+	<p>Caso não consiga ver as regras a cima, clicke no botão ao lado => <a class='btn btn-info' href="/oxe/estaticos/source/docs/cne_regras.pdf" target="_blank">Regras</a></p>
 </div>
 <?php  
 	if(count($_POST) > 0) {

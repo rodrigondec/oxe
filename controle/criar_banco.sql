@@ -1,11 +1,10 @@
-drop database oxe;
-create database oxe;
-USE oxe;
-
 drop database d77afd63eaba34a8b9811a269b7f4b3fd;
 create database d77afd63eaba34a8b9811a269b7f4b3fd;
 USE d77afd63eaba34a8b9811a269b7f4b3fd;
 
+drop database oxe;
+create database oxe;
+USE oxe;
 
 drop table admins;
 drop table times;
