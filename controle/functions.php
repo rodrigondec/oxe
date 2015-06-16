@@ -41,12 +41,12 @@
 		$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		$mail->Port = 587;                                    // TCP port to connect to
 		
-		$mail->Username = 'rodrigondec@gmail.com';                 // SMTP username
-		$mail->Password = '3c1a0l1a0n6g0o';                        // SMTP password
+		$mail->Username = 'organizationxesports@gmail.com';                 // SMTP username
+		$mail->Password = 'oxente84';                        // SMTP password
 		
-		$mail->From = 'rodrigondec@gmail.com';
-		$mail->FromName = 'Rodrigo Castro';
-		$mail->addReplyTo('rodrigondec@gmail.com', 'Rodrigo Castro');
+		$mail->From = 'organizationxesports@gmail.com';
+		$mail->FromName = 'Organization & Esports';
+		$mail->addReplyTo('organizationxesports@gmail.com', 'Organization & Esports');
 
 		$mail->addAddress($to);               // Name is optional
 
