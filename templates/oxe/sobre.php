@@ -1,6 +1,6 @@
 <div class='text-center centered-20'>
 	<div class='header-2'>
-		<img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/oxe.png"><br>
+		<img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/oxe_in.png"><br>
 		<img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/texto.png">
 		<!-- <img style='width: 35%;margin-bottom:1%;' src="/estaticos/source/imgs/texto_contorno.png"> -->
 		<!-- <h1 class='fonte-oxe'><b>OXE</b></h1>
