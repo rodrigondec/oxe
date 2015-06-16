@@ -9,7 +9,7 @@ function log_out(){
   		closeOnConfirm: false
 	},
 	function(){
-	  window.location = '/logout.php';
+	  window.location = '/oxe/logout.php';
 	});
 }
 
