@@ -9,6 +9,7 @@
 		a competitividade do evento e dará uma visibilidade imensamente superior que a de um campeonato que se restringisse 
 		exclusivamente a uma única região.
 		<strong>Para se inscrever no campeonato CNE, basta aceitar as regras demostradas abaixo.</strong>
+		<p>Caso não consiga ver as regras a baixo, clicke no link ao lado <a href="/oxe/estaticos/source/docs/cne_regras_in.pdf" target="_blank"><strong><u>Regras</u></strong></a></p>
 	</p>
 	<div class='regras'>
 		<h3>Regras</h3>	 
@@ -32,7 +33,6 @@
 			?>
 		</div>
 	</div>
-	<p>Caso não consiga ver as regras a cima, clicke no botão ao lado => <a class='btn btn-info' href="/oxe/estaticos/source/docs/cne_regras_in.pdf" target="_blank">Regras</a></p>
 </div>
 <?php  
 	if(count($_POST) > 0) {
