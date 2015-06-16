@@ -131,7 +131,7 @@
     if(count($_POST) > 0 && !isset($_GET['rt'])){
     	//var_dump($_POST);
     	if(count($_POST) < 6 || count($_POST) > 7){
-    		swal('Erro!', 'Ocorreu um comportamento inesperado no sistema! \nFavor tentar preencher novamente o formulário', 'error', '/index.php/cne/inscricao');
+    		swal('Erro!', 'Ocorreu um comportamento inesperado no sistema! \nFavor tentar preencher novamente o formulário', 'error', '/oxe/index.php/cne/inscricao');
     	}
     	else{
     		// TRATAMENTO DOS DADOS
@@ -423,7 +423,7 @@
 	    	}
 	    	// END SEND MAIL 
 
-	    	swal('', 'Seu time foi inscrito com sucesso!', 'success', '/index.php/login');
+	    	swal('', 'Seu time foi inscrito com sucesso!', 'success', '/oxe/index.php/login');
     	}
     }
 ?>

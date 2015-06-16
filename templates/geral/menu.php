@@ -8,14 +8,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/oxe/">Home</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/index.php/oxe/sobre">Sobre</a></li>
-                <li><a href="/index.php/cne/home">CNE</a></li>
+                <li><a href="/oxe/index.php/oxe/sobre">Sobre</a></li>
+                <li><a href="/oxe/index.php/cne/home">CNE</a></li>
                 <!-- <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Torneios<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
@@ -29,7 +29,7 @@
                     if(isset($_SESSION['privilegio'])):
                         if($_SESSION['privilegio'] == 'capitao'):
                 ?>
-                <li><a href="/index.php/cne/time">Meu Time</a></li>
+                <li><a href="/oxe/index.php/cne/time">Meu Time</a></li>
                 <?php
                         elseif($_SESSION['privilegio'] == 'admin'):
                 ?>
@@ -37,9 +37,9 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/index.php/admin/listar_times">Times</a>
-                            <a href="/index.php/admin/listar_capitaes">Capitaes</a>
-                            <a href="/index.php/admin/listar_jogadores">Jogadores</a>
+                            <a href="/oxe/index.php/admin/listar_times">Times</a>
+                            <a href="/oxe/index.php/admin/listar_capitaes">Capitaes</a>
+                            <a href="/oxe/index.php/admin/listar_jogadores">Jogadores</a>
                         </li>
                     </ul>
                 </li>
@@ -53,8 +53,8 @@
                     if(isset($_SESSION['privilegio'])):
                         if($_SESSION['privilegio'] == 'admin'):
                 ?>
-                <li><a href="/index.php/configs">Configs</a></li>
-                <li><a href="/admin/index.php" target="_blank">PHPMyAdmin</a></li>
+                <li><a href="/oxe/index.php/configs">Configs</a></li>
+                <li><a href="/oxe/admin/index.php" target="_blank">PHPMyAdmin</a></li>
                 <?php
                         endif;
                     endif;
@@ -65,7 +65,7 @@
                             echo "<a href='#' onclick='log_out()'>".$_SESSION['login']." (logout)</a>";
                         }
                         else{
-                            echo "<a href='/index.php/login'>Iniciar Sessão</a>";
+                            echo "<a href='/oxe/index.php/login'>Iniciar Sessão</a>";
                         }
                     ?>
                 </li>

@@ -11,5 +11,5 @@
     $time = select('*', 'times', 'sigla', $_SESSION['time'], $link);
 
     delete($time['id_reserva'], 'jogadores', $link);
-    swal('', 'Reserva removido com sucesso!', 'success', '/index.php/cne/time');
+    swal('', 'Reserva removido com sucesso!', 'success', '/oxe/index.php/cne/time');
 ?>
