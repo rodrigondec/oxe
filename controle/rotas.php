@@ -23,7 +23,7 @@
             $pasta = array_pop($partes); //Penúltimo elemento
         } 
         else {
-            $pasta = 'cne';
+            $pasta = 'oxe';
             $arquivo = 'home';            
         }
         $caminho = montar_include($pasta, $arquivo);
