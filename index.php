@@ -6,9 +6,12 @@
             <meta property="og:title" content="OxE" />
             <meta property="og:description" content="Organization & Sports" />
             <meta property="og:url" content="http://organization.aws.af.cm/" />
-            <link rel="icon" href="/oxe/estaticos/source/imgs/oxe.png">
 
-            <link rel="stylesheet" href="/oxe/estaticos/estilo.css">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+            <link rel="icon" href="/estaticos/source/imgs/oxe.png">
+
+            <link rel="stylesheet" href="/estaticos/estilo.css">
             <!-- Latest compiled and minified CSS -->
 			<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
 
@@ -24,35 +27,35 @@
             <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/simplex/bootstrap.min.css"> -->
             <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.4/yeti/bootstrap.min.css"> -->
 
-            <link rel="stylesheet" href="/oxe/estaticos/bootstrap-sweetalert/lib/sweet-alert.css">
+            <link rel="stylesheet" href="/estaticos/bootstrap-sweetalert/lib/sweet-alert.css">
             
         <title>OxE</title>
     </head>
     <body>
-        <!-- <div class='wrapper'>
+        <div class='wrapper'>
             <div class='header'>
         <?php  
-            //include_once(TEMPLATES.'/geral/menu.php');
+            include_once(TEMPLATES.'/geral/menu.php');
         ?>
             </div>
-            <div class='content'> -->
+            <div class='content'>
         <?php  
             include_conteudo(); //mostrar o template incluído
         ?>
-        	<!-- </div>
+        	</div>
             <div class='footer'>
         <?php  
-            //include_once(TEMPLATES.'/geral/footer.php');
+            include_once(TEMPLATES.'/geral/footer.php');
         ?>
             </div>
         <?php
-            //include_once(TEMPLATES.'/oxe/preview.php');
+            //include_once(TEMPLATES.'/preview.php');
         ?>
-        </div> -->
+        </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<!--<script type="text/javascript" src="/estaticos/functions.js"></script>-->
-    <script src="/oxe/controle/functions.js"></script>
-    <script src="/oxe/estaticos/bootstrap-sweetalert/lib/sweet-alert.min.js"></script> 
+    <script src="/controle/functions.js"></script>
+    <script src="/estaticos/bootstrap-sweetalert/lib/sweet-alert.min.js"></script> 
 </html>
