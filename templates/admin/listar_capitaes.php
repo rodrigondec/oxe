@@ -59,7 +59,7 @@
 			</td>
 			<td>
 				<?php 
-					echo "<a class='btn btn-info' href='/oxe/index.php/admin/alterar?type=2&id=".$capitaes[$key]["id"]."'>Alterar</a>";
+					echo "<a class='btn btn-info' href='/index.php/admin/alterar?type=2&id=".$capitaes[$key]["id"]."'>Alterar</a>";
 				?>
 			</td>
 		</tr>

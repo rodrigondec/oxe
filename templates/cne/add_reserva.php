@@ -54,7 +54,7 @@
     		$id = select('id', 'jogadores', 'cpf', $_POST['cpf'], $link);
     		$id_reserva['id_reserva'] = $id['id'];
     		update($id_reserva, 'times', 'sigla', $_SESSION['time'], $link);
-    		swal('', 'Reserva adicionado com sucesso!', 'success', '/oxe/index.php/cne/time');
+    		swal('', 'Reserva adicionado com sucesso!', 'success', '/index.php/cne/time');
     	}
     }
 ?>

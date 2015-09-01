@@ -85,7 +85,7 @@
 			</td>
 			<td>
 				<?php 
-					echo "<a class='btn btn-info' href='/oxe/index.php/admin/alterar?type=2&id=".$times[$key]["id"]."'>Alterar</a>";
+					echo "<a class='btn btn-info' href='/index.php/admin/alterar?type=2&id=".$times[$key]["id"]."'>Alterar</a>";
 				?>
 			</td>
 			<td>
@@ -94,7 +94,7 @@
 					if($times[$key]['pago'] == '1'){
 						echo " disabled";
 					}
-					echo " href='/oxe/index.php/admin/confirmar?id=".$times[$key]["id"]."'>Confirmar</a>";
+					echo " href='/index.php/admin/confirmar?id=".$times[$key]["id"]."'>Confirmar</a>";
 				?>
 			</td>
 			<td>
@@ -103,7 +103,7 @@
 					if($times[$key]['pago'] == '1'){
 						echo " disabled";
 					}
-					echo " href='/oxe/index.php/admin/invalidar?id=".$times[$key]["id"]."'>Invalidar</a>";
+					echo " href='/index.php/admin/invalidar?id=".$times[$key]["id"]."'>Invalidar</a>";
 				?>
 			</td>
 		</tr>

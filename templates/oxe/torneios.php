@@ -7,7 +7,7 @@
 			<div class='row'>
 				<!-- Logo 1º torneio -->
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/oxe.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/oxe.png" width='300' height='300'>
 				</div>
 				<!-- descrição 1º torneio -->
 				<div class='col-md1'>
@@ -23,7 +23,7 @@
 			<div class='row'>
 				Logo 2º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 2º torneio
@@ -40,7 +40,7 @@
 			<div class='row'>
 				Logo 3º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 3º torneio
@@ -57,7 +57,7 @@
 			<div class='row'>
 				Logo 4º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 4º torneio
@@ -78,7 +78,7 @@
 			<div class='row'>
 				Logo 5º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 5º torneio
@@ -95,7 +95,7 @@
 			<div class='row'>
 				Logo 6º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 6º torneio
@@ -112,7 +112,7 @@
 			<div class='row'>
 				Logo 6º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 6º torneio
@@ -129,7 +129,7 @@
 			<div class='row'>
 				Logo 6º torneio
 				<div class='col-md1'>
-					<img src="/oxe/estaticos/source/imgs/logo.png" width='300' height='300'>
+					<img src="/estaticos/source/imgs/logo.png" width='300' height='300'>
 
 				</div>
 				descrição 6º torneio

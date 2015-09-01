@@ -29,7 +29,7 @@
             // END VERIFICAÇÃO
         } 
         else {
-            $pasta = 'oxe';
+            $pasta = 'cne';
             $arquivo = 'home';            
         }
         $caminho = montar_include($pasta, $arquivo);

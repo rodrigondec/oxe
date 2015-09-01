@@ -31,7 +31,7 @@
 			$_SESSION['login'] = $usuario['login'];
 			$_SESSION['privilegio'] = 'admin';
 			ob_clean();
-			header('LOCATION: /oxe/index.php/admin/listar_times');
+			header('LOCATION: /index.php/admin/listar_times');
 		}
 		else{
 			$usuario = select('*', 'capitaes', 'login', $_POST['login'], $link);
@@ -40,7 +40,7 @@
 				$_SESSION['privilegio'] = 'capitao';
 				$_SESSION['time'] = $usuario['sigla'];
 				ob_clean();
-				header('LOCATION: /oxe/index.php/cne/time');
+				header('LOCATION: /index.php/cne/time');
 			}
 			else{
 				swal('Login inválido!', 'Verifique e insira novamente seu login e senha', 'error', '');

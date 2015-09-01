@@ -58,7 +58,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=1&id=".$time["id"]."'>";
+				    echo "<a class='btn btn-info' href='/index.php/cne/alterar?type=1&id=".$time["id"]."'>";
 				?>
 					Alterar
 				</a>
@@ -102,7 +102,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>Alterar</a>";
+				    echo "<a class='btn btn-info' href='/index.php/cne/alterar?type=2&id=".$capitao["id"]."'>Alterar</a>";
 				?>
 			</td>
 		</tr>
@@ -115,11 +115,11 @@
 	<?php 
 		if(!isset($integrantes['reserva'])):
 	?>
-		<a class='btn btn-info' href="/oxe/index.php/cne/add_reserva">Cadastrar reserva</a>
+		<a class='btn btn-info' href="/index.php/cne/add_reserva">Cadastrar reserva</a>
 	<?php		
 		elseif(isset($integrantes['reserva'])):
 	?>
-		<a class='btn btn-danger' href="/oxe/index.php/cne/remove_reserva">Remover reserva</a>
+		<a class='btn btn-danger' href="/index.php/cne/remove_reserva">Remover reserva</a>
 	<?php
 		endif;
 	?>
@@ -154,7 +154,7 @@
 			</td>
 			<td>
 				<?php 
-				    echo "<a class='btn btn-info' href='/oxe/index.php/cne/alterar?type=3&id=".$integrantes[$key]["id"]."'>";
+				    echo "<a class='btn btn-info' href='/index.php/cne/alterar?type=3&id=".$integrantes[$key]["id"]."'>";
 				?>
 					Alterar
 				</a>
